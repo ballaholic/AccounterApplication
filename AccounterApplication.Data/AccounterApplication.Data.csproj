@@ -13,4 +13,8 @@
     <Folder Include="Models\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\AccounterApplication.Common\AccounterApplication.Common.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -9,17 +9,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccounterApplication.Web", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{CE46EB39-7BFC-4982-99EC-45A47772618F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccounterApplication.Data", "AccounterApplication.Data\AccounterApplication.Data.csproj", "{849CC3B9-4557-4C79-A558-B47324C6E641}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccounterApplication.Data", "AccounterApplication.Data\AccounterApplication.Data.csproj", "{849CC3B9-4557-4C79-A558-B47324C6E641}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccounterApplication.Web.Controllers", "AccounterApplication.Web.Controllers\AccounterApplication.Web.Controllers.csproj", "{C2C6039C-27A9-42D3-8294-B9799CA581FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccounterApplication.Web.Controllers", "AccounterApplication.Web.Controllers\AccounterApplication.Web.Controllers.csproj", "{C2C6039C-27A9-42D3-8294-B9799CA581FD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{AB1101A0-7F36-42A5-8EA7-68DF42E5DAB9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccounterApplication.Services", "AccounterApplication.Services\AccounterApplication.Services.csproj", "{13B8824E-CB04-4054-AB76-02857CE01CAD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccounterApplication.Services", "AccounterApplication.Services\AccounterApplication.Services.csproj", "{13B8824E-CB04-4054-AB76-02857CE01CAD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{10FF35C1-6377-4E8B-87E7-E6760740FCD8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccounterApplication.Tests", "AccounterApplication.Tests\AccounterApplication.Tests.csproj", "{42DBE09D-85FB-4BB2-944F-23CB95B886CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccounterApplication.Tests", "AccounterApplication.Tests\AccounterApplication.Tests.csproj", "{42DBE09D-85FB-4BB2-944F-23CB95B886CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccounterApplication.Common", "AccounterApplication.Common\AccounterApplication.Common.csproj", "{3599576C-8D79-4BE9-9633-0BA20D5B9FEE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +49,10 @@ Global
 		{42DBE09D-85FB-4BB2-944F-23CB95B886CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{42DBE09D-85FB-4BB2-944F-23CB95B886CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{42DBE09D-85FB-4BB2-944F-23CB95B886CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3599576C-8D79-4BE9-9633-0BA20D5B9FEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3599576C-8D79-4BE9-9633-0BA20D5B9FEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3599576C-8D79-4BE9-9633-0BA20D5B9FEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3599576C-8D79-4BE9-9633-0BA20D5B9FEE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

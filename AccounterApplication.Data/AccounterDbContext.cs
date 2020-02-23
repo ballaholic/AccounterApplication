@@ -1,13 +1,28 @@
-﻿namespace AccounterApplication.Web.Data
+﻿namespace AccounterApplication.Data
 {
     using Microsoft.EntityFrameworkCore;
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
-    public class AccounterDbContext : IdentityDbContext
+    using Models;
+
+    public class AccounterDbContext : IdentityDbContext<ApplicationUser>
     {
         public AccounterDbContext(DbContextOptions<AccounterDbContext> options)
             : base(options)
         {
+        }
+
+        public DbSet<Expense> Expenses { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder
+                .Entity<Expense>()
+                .HasOne(a => a.User)
+                .WithMany(a => a.Expenses)
+                .HasForeignKey(a => a.UserId);
+
+            base.OnModelCreating(builder);
         }
     }
 }

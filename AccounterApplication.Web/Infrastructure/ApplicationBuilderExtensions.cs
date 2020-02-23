@@ -3,8 +3,12 @@
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Hosting;
+    using Microsoft.Extensions.DependencyInjection;
 
-    public static  class ApplicationBuilderExtensions
+    using AccounterApplication.Data;
+    using Microsoft.EntityFrameworkCore;
+
+    public static class ApplicationBuilderExtensions
     {
         public static IApplicationBuilder UseExceptionHandling(this IApplicationBuilder app, IWebHostEnvironment env)
         {
@@ -30,5 +34,17 @@
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
+
+        public static IApplicationBuilder SeedData(this IApplicationBuilder app)
+        {
+            using (var scope = app.ApplicationServices.CreateScope())
+            {
+                var db = scope.ServiceProvider.GetService<AccounterDbContext>();
+
+                db.Database.Migrate();
+
+                return app;
+            }         
+        }
     }
 }

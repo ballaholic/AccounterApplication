@@ -1,7 +1,7 @@
 namespace AccounterApplication.Web
 {
-    using AccounterApplication.Web.Data;
-    using AccounterApplication.Web.Infrastructure;
+    using Data;
+    using Web.Infrastructure;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Identity;
@@ -44,6 +44,8 @@ namespace AccounterApplication.Web
             app.UseAuthorization();
 
             app.UseEndpoints();
+
+            app.SeedData();
         }
     }
 }

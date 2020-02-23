@@ -1,4 +1,4 @@
-﻿namespace AccounterApplication.Web.Data.Migrations
+﻿namespace AccounterApplication.Data.Migrations
 {
     using System;
     using Microsoft.EntityFrameworkCore.Metadata;

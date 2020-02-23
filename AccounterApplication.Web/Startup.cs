@@ -8,6 +8,7 @@ namespace AccounterApplication.Web
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
+    using AccounterApplication.Data.Models;
 
     public class Startup
     {
@@ -24,7 +25,7 @@ namespace AccounterApplication.Web
 
             // Authentication Layer
             services
-                .AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<AccounterDbContext>();
 
             services.AddControllersWithViews();

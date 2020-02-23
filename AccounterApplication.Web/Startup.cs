@@ -4,11 +4,12 @@ namespace AccounterApplication.Web
     using Web.Infrastructure;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
-    using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
-    using AccounterApplication.Data.Models;
+    using Data.Models;
+    using Services.Contracts;
+    using Services.Implementations;
 
     public class Startup
     {
@@ -28,6 +29,10 @@ namespace AccounterApplication.Web
                 .AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<AccounterDbContext>();
 
+            services
+                .AddTransient<IExpenseService, ExpenseService>();
+
+            // Views
             services.AddControllersWithViews();
             services.AddRazorPages();
         }

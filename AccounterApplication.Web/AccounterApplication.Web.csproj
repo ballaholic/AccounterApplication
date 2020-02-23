@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AccounterApplication.Data\AccounterApplication.Data.csproj" />
+    <ProjectReference Include="..\AccounterApplication.Services\AccounterApplication.Services.csproj" />
     <ProjectReference Include="..\AccounterApplication.Web.Controllers\AccounterApplication.Web.Controllers.csproj" />
   </ItemGroup>
 

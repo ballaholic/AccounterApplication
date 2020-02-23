@@ -7,5 +7,9 @@
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\AccounterApplication.Services\AccounterApplication.Services.csproj" />
+  </ItemGroup>
 
 </Project>

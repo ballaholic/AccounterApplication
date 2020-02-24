@@ -33,8 +33,8 @@ namespace AccounterApplication.Web
                 .AddTransient<IExpenseService, ExpenseService>();
 
             // Views
-            services.AddControllersWithViews();
-            services.AddRazorPages();
+            services
+                .AddMvcWithFilter();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

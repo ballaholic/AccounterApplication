@@ -91,3 +91,12 @@ body {
     /* Support for IE. */
     font-feature-settings: 'liga';
 }
+
+
+.fa-search::before {
+    content: "\f002";
+}
+
+.fa, .fas {
+    font-weight: 900;
+}

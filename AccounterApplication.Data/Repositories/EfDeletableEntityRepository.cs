@@ -1,5 +1,6 @@
 ﻿namespace AccounterApplication.Data.Repositories
 {
+    using Infrastructure;
     using Common.Models;
     using Common.Repositories;
     using Microsoft.EntityFrameworkCore;

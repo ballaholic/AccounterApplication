@@ -9,6 +9,8 @@
   </ItemGroup>
   
   <ItemGroup>
+    <ProjectReference Include="..\AccounterApplication.Data.Common\AccounterApplication.Data.Common.csproj" />
+    <ProjectReference Include="..\AccounterApplication.Data\AccounterApplication.Data.csproj" />
     <ProjectReference Include="..\AccounterApplication.Services\AccounterApplication.Services.csproj" />
   </ItemGroup>
 

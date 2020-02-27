@@ -39,9 +39,12 @@
         {
             using (var scope = app.ApplicationServices.CreateScope())
             {
-                var db = scope.ServiceProvider.GetService<AccounterDbContext>();
+                var context = scope.ServiceProvider.GetService<AccounterDbContext>();
 
-                db.Database.Migrate();
+                if (env.IsDevelopment())
+                {
+                    context.Database.Migrate();
+                }
 
                 return app;
             }         

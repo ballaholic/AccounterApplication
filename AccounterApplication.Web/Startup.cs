@@ -18,6 +18,7 @@ namespace AccounterApplication.Web
     using Controllers.Models;
     using Data.Repositories;
     using Data.Common.Repositories;
+    using Microsoft.AspNetCore.Identity;
 
     public class Startup
     {
@@ -35,6 +36,7 @@ namespace AccounterApplication.Web
             // Authentication Layer
             services
                 .AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<AccounterDbContext>();
 
             services.Configure<CookiePolicyOptions>(

@@ -14,6 +14,8 @@
 
         public DbSet<Expense> Expenses { get; set; }
 
+        public DbSet<MonthlyIncome> MonthlyIncomes { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder

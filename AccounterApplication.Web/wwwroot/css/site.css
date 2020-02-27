@@ -53,14 +53,14 @@ button.accept-policy {
 
 /* Sticky footer styles
 -------------------------------------------------- */
-html {
+html { 
   position: relative;
   min-height: 100%;
 }
 
 body {
   /* Margin bottom by footer height */
-  margin-bottom: 60px;
+  /*margin-bottom: 60px;*/
 }
 .footer {
   position: absolute;
@@ -90,4 +90,8 @@ body {
     -moz-osx-font-smoothing: grayscale;
     /* Support for IE. */
     font-feature-settings: 'liga';
+}
+
+.icons8 {
+    font-size: 10px;
 }

@@ -35,7 +35,7 @@
                 endpoints.MapRazorPages();
             });
 
-        public static IApplicationBuilder MigrateDatabase(this IApplicationBuilder app)
+        public static IApplicationBuilder MigrateDatabase(this IApplicationBuilder app, IWebHostEnvironment env)
         {
             using (var scope = app.ApplicationServices.CreateScope())
             {

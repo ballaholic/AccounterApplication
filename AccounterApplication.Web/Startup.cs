@@ -76,7 +76,7 @@ namespace AccounterApplication.Web
 
             app.UseEndpoints();
 
-            app.MigrateDatabase();
+            app.MigrateDatabase(env);
         }
     }
 }

@@ -35,7 +35,7 @@
                 endpoints.MapRazorPages();
             });
 
-        public static IApplicationBuilder SeedData(this IApplicationBuilder app)
+        public static IApplicationBuilder MigrateDatabase(this IApplicationBuilder app)
         {
             using (var scope = app.ApplicationServices.CreateScope())
             {

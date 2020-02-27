@@ -1,44 +1,39 @@
 ﻿namespace AccounterApplication.Services.Implementations
 {
-    using Data;
-    using Models.Expenses;
-    using Services.Contracts;
+
+    using System.Linq;
     using System.Threading.Tasks;
     using System.Collections.Generic;
-    using System.Linq;
+
     using Microsoft.EntityFrameworkCore;
+
+    using Services.Contracts;
+    using Data.Common.Repositories;
+    using Data.Models;
+    using Mapping;
 
     public class ExpenseService : IExpenseService
     {
-        private readonly AccounterDbContext data;
+        private readonly IDeletableEntityRepository<Expense> expenseRepository;
 
-        public ExpenseService(AccounterDbContext data)
-            => this.data = data;
+        public int GetCount()
+            => this.expenseRepository.All().Count();
 
-        public async Task<IEnumerable<ExpenseListingServiceModel>> All()
-            => await this.data
-                .Expenses
-                .Select(e => new ExpenseListingServiceModel
-                {
-                    Id = e.Id,
-                    Description = e.Description,
-                    Amount = e.ExpenseAmount,
-                    UserName = e.User.UserName
-                })
+        public ExpenseService(IDeletableEntityRepository<Expense> expenseRepository)
+            => this.expenseRepository = expenseRepository;
+
+        public async Task<IEnumerable<T>> All<T>()
+            => await this.expenseRepository
+                .All()
+                .To<T>()
                 .ToListAsync();
 
-        public async Task<IEnumerable<ExpenseListingServiceModel>> AllByUserId(string userId)
-            => await this.data
-                .Expenses
+        public async Task<IEnumerable<T>> AllByUserId<T>(string userId)
+            => await this.expenseRepository
+                .All()
                 .Where(e => e
                     .UserId.Equals(userId))
-                .Select(e => new ExpenseListingServiceModel
-                {
-                    Id = e.Id,
-                    Description = e.Description,
-                    Amount = e.ExpenseAmount,
-                    UserName = e.User.UserName
-                })
+                .To<T>()
                 .ToListAsync();
     }
 }

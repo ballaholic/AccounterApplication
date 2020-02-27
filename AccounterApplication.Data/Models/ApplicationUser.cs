@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations.Schema;
     using AccounterApplication.Data.Common.Models;
     using Microsoft.AspNetCore.Identity;
 
@@ -27,5 +28,7 @@
         public virtual ICollection<IdentityUserLogin<string>> Logins { get; set; }
 
         public ICollection<Expense> Expenses { get; set; } = new List<Expense>();
+
+        public ICollection<MonthlyIncome> MonthlyIncomes { get; set; } = new List<MonthlyIncome>();
     }
 }

@@ -12,6 +12,8 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using System.Security.Claims;
+using AccounterApplication.Web.Controllers.Infrastructure;
 
 namespace AccounterApplication.Web.Areas.Identity.Pages.Account
 {
@@ -84,6 +86,7 @@ namespace AccounterApplication.Web.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
+                    returnUrl = Url.Content($"~/Users/Overview/{User.GetLoggedInUserId<string>()}");
                     return LocalRedirect(returnUrl);
                 }
                 if (result.RequiresTwoFactor)

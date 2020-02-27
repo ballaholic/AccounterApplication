@@ -4,14 +4,18 @@
     using Services.Contracts;
     using System.Threading.Tasks;
 
-    public class ExpensesController : Controller
+    public class ExpensesController : BaseController
     {
         private readonly IExpenseService expenses;
 
         public ExpensesController(IExpenseService expenses)
             => this.expenses = expenses;
 
-        public async Task<IActionResult> Index()
-            => this.Ok(await this.expenses.All());
+        public IActionResult Index()
+        {
+            return View();
+        }
+
+
     }
 }

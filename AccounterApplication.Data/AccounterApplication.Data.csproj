@@ -7,6 +7,8 @@
   <ItemGroup>
     <Compile Remove="Migrations\20200223160222_Expenses.cs" />
     <Compile Remove="Migrations\20200223160222_Expenses.Designer.cs" />
+    <Compile Remove="Migrations\20200227105429_Add_Prop_To_User_MonthlyEarnings.cs" />
+    <Compile Remove="Migrations\20200227105429_Add_Prop_To_User_MonthlyEarnings.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

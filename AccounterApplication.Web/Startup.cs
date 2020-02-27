@@ -1,15 +1,23 @@
 namespace AccounterApplication.Web
 {
-    using Data;
-    using Web.Infrastructure;
+    using System.Reflection;
+    
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.AspNetCore.Http;
+
+    using Data;
     using Data.Models;
+    using Infrastructure;
+    using Services.Mapping;
     using Services.Contracts;
     using Services.Implementations;
+    using Controllers.Models;
+    using Data.Repositories;
+    using Data.Common.Repositories;
 
     public class Startup
     {
@@ -29,16 +37,31 @@ namespace AccounterApplication.Web
                 .AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<AccounterDbContext>();
 
-            services
-                .AddTransient<IExpenseService, ExpenseService>();
+            services.Configure<CookiePolicyOptions>(
+                options =>
+                {
+                    options.CheckConsentNeeded = context => true;
+                    options.MinimumSameSitePolicy = SameSiteMode.None;
+                });
 
             // Views
             services
                 .AddMvcWithFilter();
+
+            services.AddSingleton(this.Configuration);
+
+            // Data repositories
+            services.AddScoped(typeof(IDeletableEntityRepository<>), typeof(EfDeletableEntityRepository<>));
+            services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
+
+            // Application Services
+            services.AddTransient<IExpenseService, ExpenseService>();           
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            AutoMapperConfig.RegisterMappings(typeof(ErrorViewModel).GetTypeInfo().Assembly);
+
             app.UseExceptionHandling(env);
 
             app.UseHttpsRedirection();
@@ -51,7 +74,7 @@ namespace AccounterApplication.Web
 
             app.UseEndpoints();
 
-            app.SeedData();
+            app.MigrateDatabase();
         }
     }
 }

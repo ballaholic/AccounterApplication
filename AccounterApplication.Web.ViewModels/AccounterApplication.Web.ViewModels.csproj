@@ -9,12 +9,4 @@
     <ProjectReference Include="..\AccounterApplication.Services.Mapping\AccounterApplication.Services.Mapping.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Models\Expenses\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="9.0.0" />
-  </ItemGroup>
-
 </Project>

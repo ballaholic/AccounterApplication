@@ -9,9 +9,14 @@
   </ItemGroup>
   
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="9.0.0" />
+  </ItemGroup>
+  
+  <ItemGroup>
     <ProjectReference Include="..\AccounterApplication.Data.Common\AccounterApplication.Data.Common.csproj" />
     <ProjectReference Include="..\AccounterApplication.Data\AccounterApplication.Data.csproj" />
     <ProjectReference Include="..\AccounterApplication.Services\AccounterApplication.Services.csproj" />
+    <ProjectReference Include="..\AccounterApplication.Web.ViewModels\AccounterApplication.Web.ViewModels.csproj" />
   </ItemGroup>
 
 </Project>

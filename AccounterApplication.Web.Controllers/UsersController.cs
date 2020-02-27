@@ -5,8 +5,10 @@
     using Microsoft.AspNetCore.Authorization;
 
     using Data.Models;
-    using Web.ViewModels.Users;
+    using ViewModels.Users;
     using Controllers.Infrastructure;
+
+    using System.Threading.Tasks;
 
     public class UsersController : BaseController
     {
@@ -16,19 +18,14 @@
 
         [HttpGet]
         [Authorize]
-        public IActionResult Overview(string userId)
+        public async Task<IActionResult> OverviewAsync()
         {
-            ApplicationUser currentUser = this.userManager.FindByIdAsync(userId).Result;
-            UserOverviewViewModel viewModel = new UserOverviewViewModel();
+            var userId = this.User.GetLoggedInUserId<string>();
+            var user = await userManager.FindByIdAsync(userId);
+
+            var viewModel = UserOverviewViewModel.FromApplicationUser(user);
 
             return View(viewModel);
-        }
-
-        private string GetCurrentUserId()
-        {
-            string userId = User.GetLoggedInUserId<string>();
-
-            return userId;
         }
     }
 }

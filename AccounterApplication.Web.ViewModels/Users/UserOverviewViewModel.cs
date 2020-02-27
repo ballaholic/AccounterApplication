@@ -1,20 +1,42 @@
 ﻿namespace AccounterApplication.Web.ViewModels.Users
 {
     using System;
-
-    using AutoMapper;
+    using System.Linq;
     using Data.Models;
-    using Services.Mapping;
+    using Common.GlobalConstants;
 
-    public class UserOverviewViewModel : IMapFrom<ApplicationUser>, IHaveCustomMappings
+    public class UserOverviewViewModel
     {
-        public decimal EarningsMonthly { get; set; }
-        public decimal EarningsAnnual { get; set; }
+        public string UserName { get; set; }
+        public decimal? EarningsMonthly { get; set; }
+        public decimal? EarningsAnnual { get; set; }
         public double TasksCompletion { get; set; }
 
-        public void CreateMappings(IProfileExpression configuration)
+        public static UserOverviewViewModel FromApplicationUser(ApplicationUser user)
         {
-            throw new NotImplementedException();
+            return new UserOverviewViewModel()
+            {
+                UserName = user.UserName,
+                EarningsMonthly = user.MonthlyIncomes.FirstOrDefault(y => y.Month.Month.Equals(DateTime.UtcNow.Month)) == null
+                    ? UserConstants.MinEarning 
+                    : user.MonthlyIncomes.FirstOrDefault(y => y.Month.Month.Equals(DateTime.UtcNow.Month)).Amount,
+                EarningsAnnual = CalculateCurrentAnnualEarnings(user),
+                TasksCompletion = 50
+            };
         }
+
+        private static decimal? CalculateCurrentAnnualEarnings(ApplicationUser user)
+        {
+            var currentYear = DateTime.UtcNow.Year;
+
+            decimal? amount = user.MonthlyIncomes
+                .Where(x => x.Month.Year.Equals(currentYear))
+                .Select(x => x.Amount)
+                .Sum();
+
+            return amount;
+        }
+
+
     }
 }

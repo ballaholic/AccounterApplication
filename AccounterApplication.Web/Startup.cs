@@ -35,7 +35,7 @@ namespace AccounterApplication.Web
 
             // Authentication Layer
             services
-                .AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddDefaultIdentity<ApplicationUser>(IdentityOptionsProvider.GetIdentityOptions)
                 .AddRoles<ApplicationRole>()
                 .AddEntityFrameworkStores<AccounterDbContext>();
 

@@ -64,7 +64,7 @@ namespace AccounterApplication.Web
         {
             AutoMapperConfig.RegisterMappings(typeof(ErrorViewModel).GetTypeInfo().Assembly);
 
-            app.MigrateDatabase(env);
+            app.SeedDatabase(env);
 
             app.UseExceptionHandling(env);
 

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace AccounterApplication.Data.Migrations
 {
-    public partial class ApplicationRole : Migration
+    public partial class ApplicationRoleMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

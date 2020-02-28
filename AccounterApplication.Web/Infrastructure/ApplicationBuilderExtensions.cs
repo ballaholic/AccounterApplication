@@ -3,10 +3,11 @@
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Hosting;
+    using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.DependencyInjection;
 
     using AccounterApplication.Data;
-    using Microsoft.EntityFrameworkCore;
+    using AccounterApplication.Data.Seeding;
 
     public static class ApplicationBuilderExtensions
     {
@@ -35,7 +36,7 @@
                 endpoints.MapRazorPages();
             });
 
-        public static IApplicationBuilder MigrateDatabase(this IApplicationBuilder app, IWebHostEnvironment env)
+        public static IApplicationBuilder SeedDatabase(this IApplicationBuilder app, IWebHostEnvironment env)
         {
             using (var scope = app.ApplicationServices.CreateScope())
             {
@@ -45,6 +46,8 @@
                 {
                     context.Database.Migrate();
                 }
+
+                new AccounterDbContextSeeder().SeedAsync(context, scope.ServiceProvider).GetAwaiter().GetResult();
 
                 return app;
             }         

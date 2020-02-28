@@ -11,7 +11,7 @@ namespace AccounterApplication.Data.Migrations
 {
     [DbContext(typeof(AccounterDbContext))]
     [Migration("20200228081116_ApplicationRole")]
-    partial class ApplicationRole
+    partial class ApplicationRoleMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

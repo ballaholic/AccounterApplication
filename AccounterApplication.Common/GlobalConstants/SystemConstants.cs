@@ -2,6 +2,6 @@
 {
     public static class SystemConstants
     {
-        public const string SystemName = "Accounter Application";
+        public const string SystemName = "Accounter";
     }
 }

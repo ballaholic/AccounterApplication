@@ -1,6 +1,5 @@
 ﻿namespace AccounterApplication.Web.ViewModels.Expenses
 {
-    using System;
     using AutoMapper;
     using Data.Models;
     using Services.Mapping;
@@ -15,13 +14,16 @@
 
         public string UserName { get; set; }
 
-        public DateTime CreatedOn { get; set; }
+        public string CreatedOn { get; set; }
 
         public void CreateMappings(IProfileExpression configuration)
         {
             configuration.CreateMap<Expense, ExpenseViewModel>().ForMember(
                 m => m.UserName,
-                opt => opt.MapFrom(x => x.User.UserName));
+                opt => opt.MapFrom(x => x.User.UserName)
+                ).ForMember(
+                m => m.CreatedOn,
+                opt => opt.MapFrom(x => x.CreatedOn.ToShortDateString()));
         }
     }
 }

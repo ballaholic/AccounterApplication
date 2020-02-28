@@ -39,7 +39,7 @@
         {
             using (var scope = app.ApplicationServices.CreateScope())
             {
-                var context = scope.ServiceProvider.GetService<AccounterDbContext>();
+                var context = scope.ServiceProvider.GetRequiredService<AccounterDbContext>();
 
                 if (env.IsDevelopment())
                 {

@@ -1,8 +1,8 @@
 ﻿namespace AccounterApplication.Web.Controllers
 {
-    using Models;
     using System.Diagnostics;
     using Microsoft.AspNetCore.Mvc;
+    using Web.ViewModels;
 
     public class HomeController : BaseController
     {

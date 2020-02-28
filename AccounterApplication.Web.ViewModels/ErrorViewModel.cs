@@ -1,4 +1,4 @@
-namespace AccounterApplication.Web.Controllers.Models
+﻿namespace AccounterApplication.Web.ViewModels
 {
     public class ErrorViewModel
     {

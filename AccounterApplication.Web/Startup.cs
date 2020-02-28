@@ -1,7 +1,7 @@
 namespace AccounterApplication.Web
 {
     using System.Reflection;
-    
+
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.EntityFrameworkCore;
@@ -11,14 +11,14 @@ namespace AccounterApplication.Web
 
     using Data;
     using Data.Models;
+    using Data.Common;
+    using Data.Repositories;
+    using Data.Common.Repositories;
     using Infrastructure;
     using Services.Mapping;
     using Services.Contracts;
     using Services.Implementations;
-    using Controllers.Models;
-    using Data.Repositories;
-    using Data.Common.Repositories;
-    using Microsoft.AspNetCore.Identity;
+    using Web.ViewModels;
 
     public class Startup
     {
@@ -36,7 +36,7 @@ namespace AccounterApplication.Web
             // Authentication Layer
             services
                 .AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddRoles<IdentityRole>()
+                .AddRoles<ApplicationRole>()
                 .AddEntityFrameworkStores<AccounterDbContext>();
 
             services.Configure<CookiePolicyOptions>(
@@ -47,14 +47,14 @@ namespace AccounterApplication.Web
                 });
 
             // Views
-            services
-                .AddMvcWithFilter();
+            services.AddMvcWithFilter();
 
             services.AddSingleton(this.Configuration);
 
             // Data repositories
             services.AddScoped(typeof(IDeletableEntityRepository<>), typeof(EfDeletableEntityRepository<>));
             services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
+            services.AddScoped<IDbQueryRunner, DbQueryRunner>();
 
             // Application Services
             services.AddTransient<IExpenseService, ExpenseService>();           
@@ -64,19 +64,20 @@ namespace AccounterApplication.Web
         {
             AutoMapperConfig.RegisterMappings(typeof(ErrorViewModel).GetTypeInfo().Assembly);
 
+            app.MigrateDatabase(env);
+
             app.UseExceptionHandling(env);
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseCookiePolicy();
 
             app.UseRouting();
 
             app.UseAuthentication();
             app.UseAuthorization();
 
-            app.UseEndpoints();
-
-            app.MigrateDatabase(env);
+            app.UseEndpoints();            
         }
     }
 }

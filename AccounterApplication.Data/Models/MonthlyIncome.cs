@@ -1,6 +1,5 @@
 ﻿namespace AccounterApplication.Data.Models
 {
-    using System;
     using Data.Common.Models;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
@@ -10,9 +9,6 @@
         [Required]
         [Column(TypeName = "decimal(18,2)")]
         public decimal Amount { get; set; }
-
-        [Required]
-        public DateTime Month { get; set; }
 
         [Required]
         public string UserId { get; set; }

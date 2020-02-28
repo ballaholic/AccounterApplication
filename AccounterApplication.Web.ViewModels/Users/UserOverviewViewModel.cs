@@ -17,9 +17,9 @@
             return new UserOverviewViewModel()
             {
                 UserName = user.UserName,
-                EarningsMonthly = user.MonthlyIncomes.FirstOrDefault(y => y.Month.Month.Equals(DateTime.UtcNow.Month)) == null
+                EarningsMonthly = user.MonthlyIncomes.FirstOrDefault(y => y.CreatedOn.Month.Equals(DateTime.UtcNow.Month)) == null
                     ? UserConstants.MinEarning 
-                    : user.MonthlyIncomes.FirstOrDefault(y => y.Month.Month.Equals(DateTime.UtcNow.Month)).Amount,
+                    : user.MonthlyIncomes.FirstOrDefault(y => y.CreatedOn.Month.Equals(DateTime.UtcNow.Month)).Amount,
                 EarningsAnnual = CalculateCurrentAnnualEarnings(user),
                 TasksCompletion = 50
             };
@@ -30,7 +30,7 @@
             var currentYear = DateTime.UtcNow.Year;
 
             decimal? amount = user.MonthlyIncomes
-                .Where(x => x.Month.Year.Equals(currentYear))
+                .Where(x => x.CreatedOn.Year.Equals(currentYear))
                 .Select(x => x.Amount)
                 .Sum();
 

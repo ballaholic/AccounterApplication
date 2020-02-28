@@ -26,9 +26,4 @@
     <ProjectReference Include="..\AccounterApplication.Web.ViewModels\AccounterApplication.Web.ViewModels.csproj" />
   </ItemGroup>
 
-
-  <ItemGroup>
-    <Folder Include="Views\Expenses\" />
-  </ItemGroup>
-
 </Project>

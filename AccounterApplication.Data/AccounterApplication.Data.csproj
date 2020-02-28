@@ -9,6 +9,8 @@
     <Compile Remove="Migrations\20200223160222_Expenses.Designer.cs" />
     <Compile Remove="Migrations\20200227105429_Add_Prop_To_User_MonthlyEarnings.cs" />
     <Compile Remove="Migrations\20200227105429_Add_Prop_To_User_MonthlyEarnings.Designer.cs" />
+    <Compile Remove="Migrations\20200228081328_CheckChanges.cs" />
+    <Compile Remove="Migrations\20200228081328_CheckChanges.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

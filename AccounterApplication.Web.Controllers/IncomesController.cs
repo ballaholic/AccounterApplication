@@ -25,5 +25,12 @@
             var viewModel = new MonthlyIncomesListingViewModel { MonthlyIncomes = monthlyIncomes };
             return View(viewModel);
         }
+
+        [HttpGet]
+        [Authorize]
+        public IActionResult AddMonthlyIncome()
+        {
+            return View();
+        }
     }
 }

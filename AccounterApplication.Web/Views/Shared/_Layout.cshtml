@@ -62,7 +62,7 @@
                            asp-action="@(nameof(ExpensesController.Index))">Overview</a>
                         <a class="collapse-item" 
                            asp-controller="@(nameof(ExpensesController).Replace(nameof(Controller), string.Empty))" 
-                           asp-action="AddExpense">Add Expense</a>
+                           asp-action="@(nameof(ExpensesController.AddExpense))">Add Expense</a>
                     </div>
                 </div>
             </li>
@@ -79,7 +79,7 @@
                            asp-action="@nameof(IncomesController.Index)">Overview</a>
                         <a class="collapse-item" 
                            asp-controller="@(nameof(IncomesController).Replace(nameof(Controller), string.Empty))" 
-                           asp-action="AddIncome">Add Income</a>
+                           asp-action="@(nameof(IncomesController.AddMonthlyIncome))">Add Income</a>
                     </div>
                 </div>
             </li>

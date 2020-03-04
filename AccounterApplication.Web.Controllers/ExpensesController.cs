@@ -25,5 +25,12 @@
             var viewModel = new ExpensesListingViewModel { Expenses = expenses };
             return View(viewModel);
         }
+
+        [HttpGet]
+        [Authorize]
+        public IActionResult AddExpense()
+        {
+            return View();
+        }
     }
 }

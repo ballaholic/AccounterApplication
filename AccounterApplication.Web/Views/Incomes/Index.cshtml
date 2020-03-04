@@ -1,0 +1,54 @@
+﻿@using AccounterApplication.Web.ViewModels.MonthlyIncomes;
+@model MonthlyIncomesListingViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@section Styles
+{
+    <link rel="stylesheet" href="~/css/dataTables.bootstrap4.min.css" type="text/css" />
+}
+
+
+<h1>Incomes</h1>
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3 bg-gradient-primary">
+        <h6 class="m-0 font-weight-bold text-light">Incomes</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Date</th>
+                        <th>Amount</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    @foreach (var expense in Model.MonthlyIncomes)
+                    {
+                        <tr>
+                            <td>@expense.IncomePeriod</td>
+                            <td>@expense.Amount</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script src="~/js/jquery/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/js/jquery/datatables//dataTables.bootstrap4.min.js"></script>
+    <script src="~/js/datatables.js"></script>
+}

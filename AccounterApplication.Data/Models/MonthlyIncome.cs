@@ -1,9 +1,10 @@
 ﻿namespace AccounterApplication.Data.Models
 {
-    using Data.Common.Models;
     using System;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+
+    using Data.Common.Models;
 
     public class MonthlyIncome : BaseDeletableModel<int>
     {

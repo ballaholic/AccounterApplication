@@ -1,11 +1,13 @@
 ﻿namespace AccounterApplication.Web.Controllers
 {
-    using AccounterApplication.Web.Controllers.Infrastructure;
-    using AccounterApplication.Web.ViewModels.Expenses;
-    using Microsoft.AspNetCore.Authorization;
-    using Microsoft.AspNetCore.Mvc;
-    using Services.Contracts;
     using System.Threading.Tasks;
+    
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Authorization;
+
+    using Infrastructure;
+    using Services.Contracts;
+    using ViewModels.Expenses;
 
     public class ExpensesController : BaseController
     {
@@ -23,7 +25,5 @@
             var viewModel = new ExpensesListingViewModel { Expenses = expenses };
             return View(viewModel);
         }
-
-
     }
 }

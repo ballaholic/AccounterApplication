@@ -1,4 +1,6 @@
 ﻿@using AccounterApplication.Common.GlobalConstants
+@using AccounterApplication.Web.Controllers
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,7 +42,9 @@
             <hr class="sidebar-divider my-0">
 
             <li class="nav-item">
-                <a class="nav-link" asp-controller="Users" asp-action="Overview">
+                <a class="nav-link" 
+                   asp-controller="@(nameof(UserDashboardController).Replace(nameof(Controller), string.Empty))" 
+                   asp-action="@(nameof(UserDashboardController.Index))">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span>
                 </a>
@@ -53,8 +57,12 @@
                 </a>
                 <div id="collapseExpenses" class="collapse" aria-labelledby="headingExpenses" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" asp-controller="Expenses" asp-action="Index">Overview</a>
-                        <a class="collapse-item" asp-controller="Expenses" asp-action="AddExpense">Add Expense</a>
+                        <a class="collapse-item" 
+                           asp-controller="@(nameof(ExpensesController).Replace(nameof(Controller), string.Empty))" 
+                           asp-action="@(nameof(ExpensesController.Index))">Overview</a>
+                        <a class="collapse-item" 
+                           asp-controller="@(nameof(ExpensesController).Replace(nameof(Controller), string.Empty))" 
+                           asp-action="AddExpense">Add Expense</a>
                     </div>
                 </div>
             </li>
@@ -66,8 +74,12 @@
                 </a>
                 <div id="collapseIncomes" class="collapse" aria-labelledby="headingIncomes" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" asp-controller="Income" asp-action="Index">Overview</a>
-                        <a class="collapse-item" asp-controller="Income" asp-action="AddIncome">Add Income</a>
+                        <a class="collapse-item" 
+                           asp-controller="@(nameof(IncomesController).Replace(nameof(Controller), string.Empty))" 
+                           asp-action="@nameof(IncomesController.Index)">Overview</a>
+                        <a class="collapse-item" 
+                           asp-controller="@(nameof(IncomesController).Replace(nameof(Controller), string.Empty))" 
+                           asp-action="AddIncome">Add Income</a>
                     </div>
                 </div>
             </li>

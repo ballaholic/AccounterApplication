@@ -5,6 +5,6 @@
 
     public class UserDashboardViewModel
     {
-        public IEnumerable<MonthlyIncomesListingViewModel> MonthlyIncomes { get; set; }
+        public IEnumerable<MonthlyIncomeViewModel> MonthlyIncomes { get; set; }
     }
 }

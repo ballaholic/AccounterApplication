@@ -1,20 +1,19 @@
 ﻿namespace AccounterApplication.Web.Controllers
 {
+    using System.Threading.Tasks;
+    
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Authorization;
 
-    using System.Threading.Tasks;
-
     using Infrastructure;
     using Services.Contracts;
-    using ViewModels.UserDashboard;
-    using ViewModels.MonthlyIncomes;
+    using AccounterApplication.Web.ViewModels.MonthlyIncomes;
 
-    public class UserDashboardController : BaseController
+    public class IncomesController : BaseController
     {
         private readonly IMonthlyIncomeService monthlyIncomeService;
 
-        public UserDashboardController(IMonthlyIncomeService monthlyIncomeService)
+        public IncomesController(IMonthlyIncomeService monthlyIncomeService)
             => this.monthlyIncomeService = monthlyIncomeService;
 
         [HttpGet]
@@ -23,7 +22,7 @@
         {
             var userId = this.User.GetLoggedInUserId<string>();
             var monthlyIncomes = await this.monthlyIncomeService.AllFromCurrentMonthByUserId<MonthlyIncomeViewModel>(userId);
-            var viewModel = new UserDashboardViewModel { MonthlyIncomes = monthlyIncomes };
+            var viewModel = new MonthlyIncomesListingViewModel { MonthlyIncomes = monthlyIncomes };
             return View(viewModel);
         }
     }

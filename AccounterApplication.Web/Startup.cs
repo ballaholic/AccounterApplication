@@ -57,7 +57,8 @@ namespace AccounterApplication.Web
             services.AddScoped<IDbQueryRunner, DbQueryRunner>();
 
             // Application Services
-            services.AddTransient<IExpenseService, ExpenseService>();           
+            services.AddTransient<IExpenseService, ExpenseService>();
+            services.AddTransient<IMonthlyIncomeService, MonthlyIncomeService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

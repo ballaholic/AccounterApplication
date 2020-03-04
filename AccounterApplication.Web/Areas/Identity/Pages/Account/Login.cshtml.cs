@@ -1,19 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using AccounterApplication.Data.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
-using System.Security.Claims;
-using AccounterApplication.Web.Controllers.Infrastructure;
 
 namespace AccounterApplication.Web.Areas.Identity.Pages.Account
 {
@@ -24,7 +19,7 @@ namespace AccounterApplication.Web.Areas.Identity.Pages.Account
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly ILogger<LoginModel> _logger;
 
-        public LoginModel(SignInManager<ApplicationUser> signInManager, 
+        public LoginModel(SignInManager<ApplicationUser> signInManager,
             ILogger<LoginModel> logger,
             UserManager<ApplicationUser> userManager)
         {
@@ -86,7 +81,7 @@ namespace AccounterApplication.Web.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
-                    returnUrl = Url.Content($"~/Users/Overview/{User.GetLoggedInUserId<string>()}");
+                    returnUrl = Url.Content($"~/UserDashboard/");
                     return LocalRedirect(returnUrl);
                 }
                 if (result.RequiresTwoFactor)

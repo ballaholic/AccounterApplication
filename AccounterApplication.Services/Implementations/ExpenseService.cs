@@ -7,20 +7,20 @@
 
     using Microsoft.EntityFrameworkCore;
 
-    using Services.Contracts;
-    using Data.Common.Repositories;
-    using Data.Models;
     using Mapping;
+    using Contracts;
+    using Data.Models;
+    using Data.Common.Repositories;
 
     public class ExpenseService : IExpenseService
     {
         private readonly IDeletableEntityRepository<Expense> expenseRepository;
 
-        public int GetCount()
-            => this.expenseRepository.All().Count();
-
         public ExpenseService(IDeletableEntityRepository<Expense> expenseRepository)
             => this.expenseRepository = expenseRepository;
+
+        public int GetCount()
+            => this.expenseRepository.All().Count();
 
         public async Task<IEnumerable<T>> All<T>()
             => await this.expenseRepository

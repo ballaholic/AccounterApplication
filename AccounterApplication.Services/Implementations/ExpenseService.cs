@@ -35,5 +35,11 @@
                     .UserId.Equals(userId))
                 .To<T>()
                 .ToListAsync();
+
+        public async Task AddAsync(Expense item)
+        {
+            await this.expenseRepository.AddAsync(item);
+            await this.expenseRepository.SaveChangesAsync();
+        }
     }
 }

@@ -8,6 +8,7 @@
     using Infrastructure;
     using Services.Contracts;
     using ViewModels.Expenses;
+    using AccounterApplication.Data.Models;
 
     public class ExpensesController : BaseController
     {
@@ -30,7 +31,31 @@
         [Authorize]
         public IActionResult AddExpense()
         {
+
             return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddExpense(ExpenseInputModel model)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var entityToAdd = new Expense
+            {
+                UserId = this.User.GetLoggedInUserId<string>(),
+                Description = model.Description,
+                ExpenseAmount = model.ExpenseAmount,
+                CreatedOn = model.DateOfExpense,
+                IsDeleted = false,
+                DeletedOn = null
+            };
+
+            await this.expensesService.AddAsync(entityToAdd);
+
+            return this.RedirectToAction("Index");
         }
     }
 }

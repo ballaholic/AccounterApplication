@@ -2,6 +2,7 @@
 {
     using System.Threading.Tasks;
     using System.Collections.Generic;
+    using AccounterApplication.Data.Models;
 
     public interface IMonthlyIncomeService
     {
@@ -14,5 +15,7 @@
         Task<IEnumerable<T>> AllFromCurrentYearByUserId<T>(string userId);
 
         Task<IEnumerable<T>> AllFromCurrentMonthByUserId<T>(string userId);
+
+        Task AddAsync(MonthlyIncome monthlyIncome);
     }
 }

@@ -8,6 +8,7 @@
     using Infrastructure;
     using Services.Contracts;
     using AccounterApplication.Web.ViewModels.MonthlyIncomes;
+    using AccounterApplication.Data.Models;
 
     public class IncomesController : BaseController
     {
@@ -31,6 +32,27 @@
         public IActionResult AddMonthlyIncome()
         {
             return View();
+        }
+
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> AddMonthlyIncome(MonthlyIncomeInputModel model)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var entityToAdd = new MonthlyIncome
+            {
+                Amount = model.Amount,
+                UserId = this.User.GetLoggedInUserId<string>(),
+                IncomePeriod = model.IncomePeriod
+            };
+
+            await this.monthlyIncomeService.AddAsync(entityToAdd);
+
+            return RedirectToAction("Index");
         }
     }
 }

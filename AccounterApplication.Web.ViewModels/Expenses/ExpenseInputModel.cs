@@ -7,6 +7,7 @@
     {
         public ExpenseInputModel()
         {
+            this.ExpenseAmount = 0.1m;
             this.DateOfExpense = DateTime.UtcNow.Date;
         }
 

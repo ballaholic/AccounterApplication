@@ -12,6 +12,6 @@
 
         Task<IEnumerable<T>> AllByUserId<T>(string userId);
 
-        Task AddAsync(Expense item);
+        Task AddAsync(Expense expense);
     }
 }

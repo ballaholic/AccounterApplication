@@ -36,6 +36,7 @@
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> AddExpense(ExpenseInputModel model)
         {
             if (!this.ModelState.IsValid)

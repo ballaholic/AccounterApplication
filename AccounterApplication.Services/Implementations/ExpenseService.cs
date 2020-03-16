@@ -36,9 +36,9 @@
                 .To<T>()
                 .ToListAsync();
 
-        public async Task AddAsync(Expense item)
+        public async Task AddAsync(Expense expense)
         {
-            await this.expenseRepository.AddAsync(item);
+            await this.expenseRepository.AddAsync(expense);
             await this.expenseRepository.SaveChangesAsync();
         }
     }

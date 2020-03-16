@@ -54,5 +54,11 @@
                        x.IncomePeriod.Month.Equals(DateTime.UtcNow.Month))
                 .To<T>()
                 .ToListAsync();
+
+        public async Task AddAsync(MonthlyIncome monthlyIncome)
+        {
+            await this.monthlyIncomeRepository.AddAsync(monthlyIncome);
+            await this.monthlyIncomeRepository.SaveChangesAsync();
+        }
     }
 }

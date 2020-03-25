@@ -17,5 +17,9 @@
         Task<IEnumerable<T>> AllFromCurrentMonthByUserId<T>(string userId);
 
         Task AddAsync(MonthlyIncome monthlyIncome);
+
+        Task<MonthlyIncome> GetByIdAsync(int id);
+
+        Task<bool> Update(MonthlyIncome monthlyIncome);
     }
 }

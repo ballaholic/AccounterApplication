@@ -7,6 +7,7 @@
 
     public class MonthlyIncomeViewModel : IMapFrom<MonthlyIncome>
     {
+        public int Id { get; set; }
         public string UserId { get; set; }
         public decimal Amount { get; set; }
         public DateTime IncomePeriod { get; set; }

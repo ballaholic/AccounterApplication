@@ -60,5 +60,25 @@
             await this.monthlyIncomeRepository.AddAsync(monthlyIncome);
             await this.monthlyIncomeRepository.SaveChangesAsync();
         }
+
+        public async Task<MonthlyIncome> GetByIdAsync(int id)
+            => await this.monthlyIncomeRepository.GetByIdWithoutDeletedAsync(id);
+
+        public async Task<bool> Update(MonthlyIncome monthlyIncome)
+        {
+            MonthlyIncome entityToUpdate = await this.monthlyIncomeRepository.GetByIdWithoutDeletedAsync(monthlyIncome.Id);
+
+            if (entityToUpdate == null)
+            {
+                return false;
+            }
+
+            entityToUpdate.Amount = monthlyIncome.Amount;
+            entityToUpdate.IncomePeriod = monthlyIncome.IncomePeriod;
+
+            await this.monthlyIncomeRepository.SaveChangesAsync();
+
+            return true;
+        }
     }
 }

@@ -12,6 +12,8 @@
 
         Task<TEntity> GetByIdWithDeletedAsync(params object[] id);
 
+        Task<TEntity> GetByIdWithoutDeletedAsync(params object[] id);
+
         void HardDelete(TEntity entity);
 
         void Undelete(TEntity entity);

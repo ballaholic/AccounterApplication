@@ -1,0 +1,15 @@
+﻿@using AccounterApplication.Web.ViewModels
+@using Newtonsoft.Json;
+
+@if (TempData["UserAlertMessage"] != null)
+{
+    var messageModel = JsonConvert.DeserializeObject<MessageAlertViewModel>(TempData["UserAlertMessage"].ToString());
+
+    <div class="alert alert-dismissible @messageModel.CssClass fade show" role="alert">
+        <strong>@messageModel.Title</strong>
+        @messageModel.Message
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <i class="fa @messageModel.ButtonCssClass" aria-hidden="true"></i>
+        </button>
+    </div>
+}

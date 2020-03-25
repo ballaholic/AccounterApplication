@@ -13,42 +13,35 @@
 
 <h1>Incomes</h1>
 
-<div class="card shadow mb-4">
-    <div class="card-header py-3 bg-gradient-primary">
-        <h6 class="m-0 font-weight-bold text-light">Incomes</h6>
-    </div>
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Amount</th>
+<div class="card shadow-lg mb-lg-4">
+    <div class="table-responsive">
+        <table class="table table-borderless table-hover" cellspacing="0">
+            <thead class="card-header py-3 thead-light text-gray-200">
+                <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var income in Model.MonthlyIncomes)
+                {
+                    <tr class="text-gray-800">
+                        <td class="cell-clickable-edit" data-url="@Url.Action("EditMonthlyIncome", "Incomes")" data-id="@income.Id">@income.IncomePeriod</td>
+                        <td class="cell-clickable-edit" data-url="@Url.Action("EditMonthlyIncome", "Incomes")" data-id="@income.Id">@income.Amount</td>
+                        <td>
+                            <a href="#" class="btn btn-no-shadow btn-delete" data-id="@income.Id">
+                                <i class="fas fa-trash"></i>
+                            </a>
+                        </td>
                     </tr>
-                </thead>
-                <tfoot>
-                    <tr>
-                        <th>Date</th>
-                        <th>Amount</th>
-                    </tr>
-                </tfoot>
-                <tbody>
-                    @foreach (var expense in Model.MonthlyIncomes)
-                    {
-                        <tr>
-                            <td>@expense.IncomePeriod</td>
-                            <td>@expense.Amount</td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
+                }
+            </tbody>
+        </table>
     </div>
 </div>
 
 @section Scripts
 {
-    <script src="~/js/jquery/datatables/jquery.dataTables.min.js"></script>
-    <script src="~/js/jquery/datatables//dataTables.bootstrap4.min.js"></script>
-    <script src="~/js/datatables.js"></script>
+    <script src="~/js/custom/monthly-income.js"></script>
 }

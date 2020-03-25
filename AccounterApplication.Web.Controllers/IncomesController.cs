@@ -1,14 +1,15 @@
 ﻿namespace AccounterApplication.Web.Controllers
 {
+    using System;
     using System.Threading.Tasks;
-    
+
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Authorization;
 
+    using Data.Models;
     using Infrastructure;
     using Services.Contracts;
-    using AccounterApplication.Web.ViewModels.MonthlyIncomes;
-    using AccounterApplication.Data.Models;
+    using Web.ViewModels.MonthlyIncomes;
 
     public class IncomesController : BaseController
     {
@@ -31,7 +32,8 @@
         [Authorize]
         public IActionResult AddMonthlyIncome()
         {
-            return View();
+            var model = new MonthlyIncomeInputModel();
+            return View(model);
         }
 
         [HttpPost]
@@ -53,6 +55,56 @@
             await this.monthlyIncomeService.AddAsync(entityToAdd);
 
             return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> EditMonthlyIncome(int id)
+        {
+            var monthlyIncome = await this.monthlyIncomeService.GetByIdAsync(id);
+            var model = new MonthlyIncomeInputModel
+
+            {
+                Id = monthlyIncome.Id,
+                Amount = monthlyIncome.Amount,
+                IncomePeriod = monthlyIncome.IncomePeriod
+            };
+            
+            return View(model);
+        }
+
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> EditMonthlyIncome(MonthlyIncomeInputModel model)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            try
+            {
+                var monthlyIncome = await this.monthlyIncomeService.GetByIdAsync(model.Id);
+
+                this.Mapper.Map(model, monthlyIncome);
+
+                bool isUpdated = await this.monthlyIncomeService.Update(monthlyIncome);
+
+                if (isUpdated)
+                {
+                    this.AddAlertMessageToTempData(Common.Enumerations.AlertMessageTypes.Success, "Monthly Income is updated");                    
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    this.AddAlertMessageToTempData(Common.Enumerations.AlertMessageTypes.Error, "There was an error trying to update Monthly Income");
+                    return RedirectToAction("Index");
+                }
+            }
+            catch (Exception)
+            {
+                return View("Error");
+            }      
         }
     }
 }

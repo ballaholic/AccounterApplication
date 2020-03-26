@@ -30,7 +30,7 @@
                         <td class="cell-clickable-edit" data-url="@Url.Action("EditMonthlyIncome", "Incomes")" data-id="@income.Id">@income.IncomePeriod</td>
                         <td class="cell-clickable-edit" data-url="@Url.Action("EditMonthlyIncome", "Incomes")" data-id="@income.Id">@income.Amount</td>
                         <td>
-                            <a href="#" class="btn btn-no-shadow btn-delete" data-id="@income.Id">
+                            <a href="#" class="btn btn-no-shadow" data-incomeId="@income.Id" data-toggle="modal" data-target="#deleteIncomeModal">
                                 <i class="fas fa-trash"></i>
                             </a>
                         </td>
@@ -40,6 +40,28 @@
         </table>
     </div>
 </div>
+
+<div class="modal fade" id="deleteIncomeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-gray-800" id="exampleModalLabel">Are you sure ?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-gray-800">
+                <p>You are about to delete an Income. Click Continue to proceed.</p>
+                <input id="incomeId-hidden" type="hidden" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary btn-delete text-gray-200">Continue</button>
+                <button type="button" class="btn btn-secondary text-gray-200" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 @section Scripts
 {

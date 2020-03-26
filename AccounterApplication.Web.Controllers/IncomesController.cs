@@ -61,8 +61,10 @@
         [Authorize]
         public async Task<IActionResult> EditMonthlyIncome(int id)
         {
-            var monthlyIncome = await this.monthlyIncomeService.GetByIdAsync(id);
+            var userId = this.User.GetLoggedInUserId<string>();
+            var monthlyIncome = await this.monthlyIncomeService.GetByIdAsync(userId, id);
             var model = new MonthlyIncomeInputModel
+
 
             {
                 Id = monthlyIncome.Id,
@@ -84,11 +86,13 @@
 
             try
             {
-                var monthlyIncome = await this.monthlyIncomeService.GetByIdAsync(model.Id);
+                var userId = this.User.GetLoggedInUserId<string>();
+
+                var monthlyIncome = await this.monthlyIncomeService.GetByIdAsync(userId, model.Id);
 
                 this.Mapper.Map(model, monthlyIncome);
 
-                bool isUpdated = await this.monthlyIncomeService.Update(monthlyIncome);
+                bool isUpdated = await this.monthlyIncomeService.Update(userId, monthlyIncome);
 
                 if (isUpdated)
                 {

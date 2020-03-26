@@ -52,6 +52,7 @@ namespace AccounterApplication.Web
             services.AddSingleton(this.Configuration);
 
             // Data repositories
+            services.AddScoped(typeof(IDeletableUserEntityRepository<>), typeof(EfDeletableUserEntityRepository<>));
             services.AddScoped(typeof(IDeletableEntityRepository<>), typeof(EfDeletableEntityRepository<>));
             services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
             services.AddScoped<IDbQueryRunner, DbQueryRunner>();

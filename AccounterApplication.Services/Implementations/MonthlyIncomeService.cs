@@ -14,9 +14,9 @@
 
     public class MonthlyIncomeService : IMonthlyIncomeService
     {
-        private readonly IDeletableEntityRepository<MonthlyIncome> monthlyIncomeRepository;
+        private readonly IDeletableUserEntityRepository<MonthlyIncome> monthlyIncomeRepository;
 
-        public MonthlyIncomeService(IDeletableEntityRepository<MonthlyIncome> repository)
+        public MonthlyIncomeService(IDeletableUserEntityRepository<MonthlyIncome> repository)
             => this.monthlyIncomeRepository = repository;
 
         public async Task<IEnumerable<T>> All<T>()
@@ -61,12 +61,12 @@
             await this.monthlyIncomeRepository.SaveChangesAsync();
         }
 
-        public async Task<MonthlyIncome> GetByIdAsync(int id)
-            => await this.monthlyIncomeRepository.GetByIdWithoutDeletedAsync(id);
+        public async Task<MonthlyIncome> GetByIdAsync(string userId, int id)
+            => await this.monthlyIncomeRepository.GetByIdWithoutDeletedAsync(userId, id);
 
-        public async Task<bool> Update(MonthlyIncome monthlyIncome)
+        public async Task<bool> Update(string userId, MonthlyIncome monthlyIncome)
         {
-            MonthlyIncome entityToUpdate = await this.monthlyIncomeRepository.GetByIdWithoutDeletedAsync(monthlyIncome.Id);
+            MonthlyIncome entityToUpdate = await this.monthlyIncomeRepository.GetByIdWithoutDeletedAsync(userId, monthlyIncome.Id);
 
             if (entityToUpdate == null)
             {

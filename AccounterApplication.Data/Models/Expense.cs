@@ -5,7 +5,7 @@
     using System.ComponentModel.DataAnnotations.Schema;
     using static AccounterApplication.Common.GlobalConstants.ExpenseConstants;
 
-    public class Expense : BaseDeletableModel<int>
+    public class Expense : BaseDeletableModel<int>, IUserEntity<string>
     {
         [Required]
         [Column(TypeName = "decimal(18,2)")]

@@ -9,11 +9,11 @@
     using Common.Models;
     using Common.Repositories;
 
-    public class EfDeletableEntityRepository<TEntity> : EfRepository<TEntity>, IDeletableEntityRepository<TEntity>
-        where TEntity : class, IDeletableEntity
+    public class EfDeletableUserEntityRepository<TEntity> : EfRepository<TEntity>, IDeletableUserEntityRepository<TEntity>
+        where TEntity : class, IDeletableEntity, IUserEntity<string>
     {
-        public EfDeletableEntityRepository(AccounterDbContext context)
-            : base(context)
+        public EfDeletableUserEntityRepository(AccounterDbContext context) 
+            : base (context)
         {
         }
 
@@ -31,10 +31,13 @@
             return this.AllWithDeleted().FirstOrDefaultAsync(getByIdPredicate);
         }
 
-        public Task<TEntity> GetByIdWithoutDeletedAsync(params object[] id)
+        public Task<TEntity> GetByIdWithoutDeletedAsync(string userId, params object[] id)
         {
             var getByIdPredicate = EfExpressionHelper.BuildByIdPredicate<TEntity>(this.Context, id);
-            return this.All().FirstOrDefaultAsync(getByIdPredicate);
+            return this.All()
+                        .Where(x => x
+                                .UserId.Equals(userId))
+                        .FirstOrDefaultAsync(getByIdPredicate);
         }
 
         public void HardDelete(TEntity entity) => base.Delete(entity);

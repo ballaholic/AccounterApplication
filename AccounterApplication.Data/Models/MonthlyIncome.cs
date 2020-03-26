@@ -6,7 +6,7 @@
 
     using Data.Common.Models;
 
-    public class MonthlyIncome : BaseDeletableModel<int>
+    public class MonthlyIncome : BaseDeletableModel<int>, IUserEntity<string>
     {
         [Required]
         [Column(TypeName = "decimal(18,2)")]

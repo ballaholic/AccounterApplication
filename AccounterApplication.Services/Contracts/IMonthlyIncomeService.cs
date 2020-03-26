@@ -18,8 +18,8 @@
 
         Task AddAsync(MonthlyIncome monthlyIncome);
 
-        Task<MonthlyIncome> GetByIdAsync(int id);
+        Task<MonthlyIncome> GetByIdAsync(string userId, int id);
 
-        Task<bool> Update(MonthlyIncome monthlyIncome);
+        Task<bool> Update(string userId, MonthlyIncome monthlyIncome);
     }
 }

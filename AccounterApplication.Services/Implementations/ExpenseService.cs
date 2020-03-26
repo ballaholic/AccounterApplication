@@ -14,9 +14,9 @@
 
     public class ExpenseService : IExpenseService
     {
-        private readonly IDeletableEntityRepository<Expense> expenseRepository;
+        private readonly IDeletableUserEntityRepository<Expense> expenseRepository;
 
-        public ExpenseService(IDeletableEntityRepository<Expense> expenseRepository)
+        public ExpenseService(IDeletableUserEntityRepository<Expense> expenseRepository)
             => this.expenseRepository = expenseRepository;
 
         public int GetCount()

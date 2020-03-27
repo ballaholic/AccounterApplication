@@ -9,7 +9,9 @@
     using Data.Models;
     using Infrastructure;
     using Services.Contracts;
+    using AlertType = Common.Enumerations.AlertMessageTypes;
     using Web.ViewModels.MonthlyIncomes;
+
 
     public class IncomesController : BaseController
     {
@@ -96,19 +98,45 @@
 
                 if (isUpdated)
                 {
-                    this.AddAlertMessageToTempData(Common.Enumerations.AlertMessageTypes.Success, "Monthly Income is updated");                    
-                    return RedirectToAction("Index");
+                    this.AddAlertMessageToTempData(AlertType.Success, "Monthly Income is updated");
                 }
                 else
                 {
-                    this.AddAlertMessageToTempData(Common.Enumerations.AlertMessageTypes.Error, "There was an error trying to update Monthly Income");
-                    return RedirectToAction("Index");
+                    this.AddAlertMessageToTempData(AlertType.Error, "There was an error trying to update Monthly Income");   
                 }
+
+                return RedirectToAction("Index");
             }
             catch (Exception)
             {
                 return View("Error");
             }      
+        }
+
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> DeleteMonthlyIncome(int id)
+        {
+            var userId = this.User.GetLoggedInUserId<string>();
+            bool itemIdIsValid = this.monthlyIncomeService.CheckIfMonthlyIncomeIdIsValid(id, userId);
+            bool result;
+
+
+            if (itemIdIsValid)
+            {
+                var monthlyIncome = await this.monthlyIncomeService.GetByIdAsync(userId, id);
+                this.monthlyIncomeService.Delete(monthlyIncome);
+
+                this.AddAlertMessageToTempData(AlertType.Success, "Monthly Income was deleted successfully");
+                result = true;
+            }
+            else
+            {
+                this.AddAlertMessageToTempData(AlertType.Error, "There was an error trying to delete the Monthly Income");
+                result = false;
+            }
+
+            return this.Json(result);
         }
     }
 }

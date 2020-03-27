@@ -5,7 +5,7 @@
         $.ajax({
             type: "GET",
             url: url,
-            dataType: 'html',
+            dataType: "html",
             success: function (result) {
                 window.location = url;
             }
@@ -13,24 +13,61 @@
     });
 });
 
-$('#deleteIncomeModal').on('show.bs.modal', function (event) {
+$(function () {
+    var url;
+    var redirectUrl;
+    var target;
 
-    // Button that triggered the modal
-    var button = $(event.relatedTarget);
+    $('body').append(`
+                    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title text-gray-800">Are you sure ?</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        </div>
+                        <div class="modal-body delete-modal-body text-gray-800">
+                            
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary text-gray-200" id="confirm-delete">Continue</button>
+                            <button type="button" class="btn btn-secondary text-gray-200" data-dismiss="modal" id="cancel-delete">Cancel</button>
+                        </div>
+                        </div>
+                    </div>
+                    </div>`);
 
-    // Extract info from data-* attributes
-    var incomeId = button.data('incomeid');
+    //Delete Action
+    $(".trigger-delete").click(function (e) {
+        e.preventDefault();
+        target = $(this);
 
-    // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-    // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-    var modal = $(this);
-    modal.find('#incomeId-hidden').val(incomeId);
-});
+        var incomeId = $(this).data("incomeid");
+        var controller = $(this).data("controller");
+        var action = $(this).data("action");
+        var bodyMessage = $(this).data("body-message");
+        redirectUrl = $(this).data("redirect-url");
 
-$(document).ready(function ($) {
-    $(".btn-delete").click(function () {
-        var id = $('#incomeId-hidden').val();
-
-        alert("Delete " + id);
+        url = "/" + controller + "/" + action + "?id=" + incomeId;
+        $(".delete-modal-body").text(bodyMessage);
+        $("#deleteModal").modal('show');
     });
-});
+
+    $("#confirm-delete").click(function (result) {
+        $.get(url)
+            .done((result) => {
+                if (!redirectUrl) {
+                    return $(target).parent().parent().hide("slow");
+                }
+                window.location.href = redirectUrl;
+            })
+            .fail((error) => {
+                if (redirectUrl)
+                    window.location.href = redirectUrl;
+            }).always(() => {
+                $("#deleteModal").modal('hide');
+            });
+    });
+
+}());
+

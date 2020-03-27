@@ -21,5 +21,9 @@
         Task<MonthlyIncome> GetByIdAsync(string userId, int id);
 
         Task<bool> Update(string userId, MonthlyIncome monthlyIncome);
+
+        bool CheckIfMonthlyIncomeIdIsValid(int id, string userId);
+
+        void Delete(MonthlyIncome monthlyIncome);
     }
 }

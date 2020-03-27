@@ -80,5 +80,13 @@
 
             return true;
         }
+
+        public bool CheckIfMonthlyIncomeIdIsValid(int id, string userId)
+            => this.monthlyIncomeRepository
+                .AllAsNoTracking()
+                .Any(x => x.Id.Equals(id) && userId.Equals(userId));
+
+        public void Delete(MonthlyIncome monthlyIncome)
+            => this.monthlyIncomeRepository.Delete(monthlyIncome);
     }
 }

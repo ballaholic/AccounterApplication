@@ -59,9 +59,10 @@
             var entityToAdd = new Expense
             {
                 UserId = this.User.GetLoggedInUserId<string>(),
+                ExpenseGroupId = model.ExpenseGroupId,
                 Description = model.Description,
                 ExpenseAmount = model.ExpenseAmount,
-                CreatedOn = model.DateOfExpense,
+                ExpenseDate = model.DateOfExpense,
                 IsDeleted = false,
                 DeletedOn = null
             };
@@ -80,6 +81,7 @@
             var model = new ExpenseInputModel
             {
                 Id = expense.Id,
+                ExpenseGroupId = expense.ExpenseGroupId,
                 DateOfExpense = expense.CreatedOn,
                 ExpenseAmount = expense.ExpenseAmount,
                 Description = expense.Description

@@ -9,7 +9,7 @@
     using Data.Models;
     using Services.Mapping;
 
-    public class ExpenseInputModel : IMapTo<Expense>
+    public class ExpenseInputModel : IMapTo<Expense>, IHaveCustomMappings
     {
         public ExpenseInputModel()
         {

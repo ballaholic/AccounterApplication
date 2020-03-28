@@ -55,9 +55,10 @@
                 return false;
             }
 
-            entityToUpdate.CreatedOn = expense.CreatedOn;
+            entityToUpdate.ExpenseDate = expense.ExpenseDate;
             entityToUpdate.ExpenseAmount = expense.ExpenseAmount;
             entityToUpdate.Description = expense.Description;
+            entityToUpdate.ExpenseGroupId = expense.ExpenseGroupId;
 
             await this.expenseRepository.SaveChangesAsync();
 

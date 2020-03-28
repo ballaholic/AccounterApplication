@@ -8,7 +8,7 @@
     using Microsoft.Extensions.DependencyInjection;
 
     using AccounterApplication.Common.GlobalConstants;
-    using AccounterApplication.Data.Models;
+    using Data.Models;
     
     internal class RoleSeeder : ISeeder
     {

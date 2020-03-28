@@ -1,8 +1,11 @@
 ﻿namespace AccounterApplication.Data.Models
 {
-    using Data.Common.Models;
+    using System;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+
+    using Data.Common.Models;
+
     using static AccounterApplication.Common.GlobalConstants.ExpenseConstants;
 
     public class Expense : BaseDeletableModel<int>, IUserEntity<string>
@@ -13,6 +16,9 @@
 
         [MaxLength(MaxDescriptionLength)]
         public string Description { get; set; }
+
+        [Required]
+        public DateTime ExpenseDate { get; set; } 
 
         [Required]
         public int ExpenseGroupId { get; set; }

@@ -29,7 +29,7 @@
                 @foreach (var expense in Model.Expenses)
                 {
                     <tr class="text-gray-800">
-                        <td class="cell-clickable-edit" data-url="@Url.Action("EditExpense", "Expenses")" data-id="@expense.Id">@expense.CreatedOn</td>
+                        <td class="cell-clickable-edit" data-url="@Url.Action("EditExpense", "Expenses")" data-id="@expense.Id">@expense.ExpenseDate</td>
                         <td class="cell-clickable-edit" data-url="@Url.Action("EditExpense", "Expenses")" data-id="@expense.Id">@expense.ExpenseAmount</td>
                         <td class="cell-clickable-edit" data-url="@Url.Action("EditExpense", "Expenses")" data-id="@expense.Id">@expense.Description</td>
                         <td>

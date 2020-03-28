@@ -43,7 +43,7 @@
 
         public void CreateMappings(IProfileExpression configuration)
            => configuration.CreateMap<ExpenseInputModel, Expense>().ForMember(
-               m => m.CreatedOn,
+               m => m.ExpenseDate,
                opt => opt.MapFrom(x => x.DateOfExpense));
     }
 }

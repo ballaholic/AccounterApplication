@@ -81,6 +81,11 @@
                 .WithMany(a => a.Expenses)
                 .HasForeignKey(a => a.UserId);
             builder
+                .Entity<Expense>()
+                .HasOne(a => a.ExpenseGroup)
+                .WithMany()
+                .HasForeignKey(a => a.ExpenseGroupId);
+            builder
                 .Entity<MonthlyIncome>()
                 .HasOne(a => a.User)
                 .WithMany(a => a.MonthlyIncomes)

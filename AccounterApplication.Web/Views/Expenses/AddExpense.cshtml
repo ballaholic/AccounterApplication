@@ -25,9 +25,14 @@
             <input asp-for="DateOfExpense" class="form-control" />
             <span asp-validation-for="DateOfExpense" class="text-danger"></span>
         </div>
-        <div class="modal-footer">
-            <input type="submit" value="Add" class="btn btn-primary" />
+        <div class="form-group">
+            <label asp-for="ExpenseGroupId"></label>
+            <select asp-for="ExpenseGroupId" class="form-control" asp-items="Model.ExpenseGroupListItems"></select>
+            <span asp-validation-for="ExpenseGroupId" class="text-danger"></span>
         </div>
+
+        <hr />
+        <input type="submit" value="Add" class="btn btn-primary" />
     </form>
 
 </div>

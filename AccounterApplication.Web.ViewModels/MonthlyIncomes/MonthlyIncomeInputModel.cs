@@ -18,7 +18,7 @@
         public int Id { get; set; }
 
         [Required]
-        [Range(0.1, 1000000)]
+        [Range(0.1, 100000000)]
         public decimal Amount { get; set; }
 
         [Required]

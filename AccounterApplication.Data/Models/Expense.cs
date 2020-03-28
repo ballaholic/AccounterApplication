@@ -15,6 +15,11 @@
         public string Description { get; set; }
 
         [Required]
+        public int ExpenseGroupId { get; set; }
+        
+        public ExpenseGroup ExpenseGroup { get; set; }
+
+        [Required]
         public string UserId { get; set; }
 
         public ApplicationUser User { get; set; }

@@ -10,15 +10,20 @@
     using Infrastructure;
     using Services.Contracts;
     using ViewModels.Expenses;
+    using ViewModels.ExpenseGroups;
 
     using AlertType = Common.Enumerations.AlertMessageTypes;
 
     public class ExpensesController : BaseController
     {
         private readonly IExpenseService expensesService;
+        private readonly IExpenseGroupService expenseGroupService;
 
-        public ExpensesController(IExpenseService expenses)
-            => this.expensesService = expenses;
+        public ExpensesController(IExpenseService expenses, IExpenseGroupService expenseGroups)
+        {
+            this.expensesService = expenses;
+            this.expenseGroupService = expenseGroups;
+        }
 
         [HttpGet]
         [Authorize]
@@ -32,9 +37,13 @@
 
         [HttpGet]
         [Authorize]
-        public IActionResult AddExpense()
+        public async Task<IActionResult> AddExpense()
         {
-            var model = new ExpenseInputModel();
+            var model = new ExpenseInputModel
+            {
+                ExpenseGroupListItems = await this.expenseGroupService.All<ExpenseGroupSelectListItem>()
+            };
+
             return View(model);
         }
 

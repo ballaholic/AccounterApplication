@@ -85,7 +85,7 @@
 
         public bool CheckIfMonthlyIncomeIdIsValid(int id, string userId)
             => this.monthlyIncomeRepository
-                .AllAsNoTracking()
+                .All()
                 .Any(x => x.Id.Equals(id) && x.UserId.Equals(userId));
 
         public void Delete(MonthlyIncome monthlyIncome)

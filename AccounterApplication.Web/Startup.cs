@@ -59,6 +59,7 @@ namespace AccounterApplication.Web
 
             // Application Services
             services.AddTransient<IExpenseService, ExpenseService>();
+            services.AddTransient<IExpenseGroupService, ExpenseGroupService>();
             services.AddTransient<IMonthlyIncomeService, MonthlyIncomeService>();
         }
 

@@ -26,6 +26,8 @@
 
         public DbSet<Expense> Expenses { get; set; }
 
+        public DbSet<ExpenseGroup> ExpenseGroups { get; set; }
+
         public DbSet<MonthlyIncome> MonthlyIncomes { get; set; }
 
         public override int SaveChanges() => this.SaveChanges(true);

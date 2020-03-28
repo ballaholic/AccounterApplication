@@ -28,7 +28,9 @@
         public async Task<IEnumerable<T>> AllByUserId<T>(string userId)
             => await this.monthlyIncomeRepository
                 .All()
-                .Where(x => x.UserId.Equals(userId))
+                .Where(x => x
+                    .UserId.Equals(userId))
+                .OrderByDescending(x => x.IncomePeriod)
                 .To<T>()
                 .ToListAsync();
 
@@ -84,7 +86,7 @@
         public bool CheckIfMonthlyIncomeIdIsValid(int id, string userId)
             => this.monthlyIncomeRepository
                 .AllAsNoTracking()
-                .Any(x => x.Id.Equals(id) && userId.Equals(userId));
+                .Any(x => x.Id.Equals(id) && x.UserId.Equals(userId));
 
         public void Delete(MonthlyIncome monthlyIncome)
             => this.monthlyIncomeRepository.Delete(monthlyIncome);

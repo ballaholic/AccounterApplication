@@ -1,9 +1,10 @@
 ﻿namespace AccounterApplication.Web.ViewModels.MonthlyIncomes
 {
-    using AccounterApplication.Data.Models;
-    using AccounterApplication.Services.Mapping;
     using System;
     using System.ComponentModel.DataAnnotations;
+
+    using Data.Models;
+    using Services.Mapping;
 
     public class MonthlyIncomeInputModel : IMapTo<MonthlyIncome>
     {

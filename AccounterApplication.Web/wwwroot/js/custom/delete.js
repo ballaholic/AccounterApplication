@@ -1,19 +1,4 @@
-﻿$(document).ready(function ($) {
-    $(".cell-clickable-edit").dblclick(function () {
-        var id = $(this).data("id");
-        var url = $(this).data("url") + "?id=" + id;
-        $.ajax({
-            type: "GET",
-            url: url,
-            dataType: "html",
-            success: function (result) {
-                window.location = url;
-            }
-        });
-    });
-});
-
-$(function () {
+﻿$(function () {
     var url;
     var redirectUrl;
     var target;
@@ -42,13 +27,13 @@ $(function () {
         e.preventDefault();
         target = $(this);
 
-        var incomeId = $(this).data("incomeid");
+        var id = $(this).data("id");
         var controller = $(this).data("controller");
         var action = $(this).data("action");
         var bodyMessage = $(this).data("body-message");
         redirectUrl = $(this).data("redirect-url");
 
-        url = "/" + controller + "/" + action + "?id=" + incomeId;
+        url = "/" + controller + "/" + action + "?id=" + id;
         $(".delete-modal-body").text(bodyMessage);
         $("#deleteModal").modal('show');
     });

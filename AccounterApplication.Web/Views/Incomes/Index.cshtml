@@ -32,12 +32,12 @@
                         <td class="cell-clickable-edit" data-url="@Url.Action("EditMonthlyIncome", "Incomes")" data-id="@income.Id">@income.IncomePeriod</td>
                         <td class="cell-clickable-edit" data-url="@Url.Action("EditMonthlyIncome", "Incomes")" data-id="@income.Id">@income.Amount</td>
                         <td>
-                            <a href="#" class="btn btn-no-shadow trigger-delete" 
-                               data-incomeId="@income.Id" 
-                               data-controller="@nameof(IncomesController).Replace(nameof(Controller), string.Empty)" 
+                            <a href="#" class="btn btn-no-shadow trigger-delete"
+                               data-id="@income.Id"
+                               data-controller="@nameof(IncomesController).Replace(nameof(Controller), string.Empty)"
                                data-action="@nameof(IncomesController.DeleteMonthlyIncome)"
                                data-body-message="You are about to delete an Income. Click Continue to proceed."
-                               data-redirect-url="@Url.Action("Index", "Incomes")">
+                               data-redirect-url="@Url.Action(nameof(IncomesController.Index), nameof(IncomesController).Replace(nameof(Controller), string.Empty))">
                                 <i class="fas fa-trash"></i>
                             </a>
                         </td>
@@ -50,5 +50,6 @@
 
 @section Scripts
 {
-    <script src="~/js/custom/monthly-income.js"></script>
+    <script src="~/js/custom/edit.js" type="text/javascript" asp-append-version="true"></script>
+    <script src="~/js/custom/delete.js" type="text/javascript" asp-append-version="true"></script>
 }

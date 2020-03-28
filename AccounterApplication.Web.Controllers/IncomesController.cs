@@ -9,8 +9,9 @@
     using Data.Models;
     using Infrastructure;
     using Services.Contracts;
+    using ViewModels.MonthlyIncomes;
+
     using AlertType = Common.Enumerations.AlertMessageTypes;
-    using Web.ViewModels.MonthlyIncomes;
 
 
     public class IncomesController : BaseController
@@ -66,8 +67,6 @@
             var userId = this.User.GetLoggedInUserId<string>();
             var monthlyIncome = await this.monthlyIncomeService.GetByIdAsync(userId, id);
             var model = new MonthlyIncomeInputModel
-
-
             {
                 Id = monthlyIncome.Id,
                 Amount = monthlyIncome.Amount,
@@ -98,11 +97,11 @@
 
                 if (isUpdated)
                 {
-                    this.AddAlertMessageToTempData(AlertType.Success, "Monthly Income is updated");
+                    this.AddAlertMessageToTempData(AlertType.Success, "The Monthly Income was updated");
                 }
                 else
                 {
-                    this.AddAlertMessageToTempData(AlertType.Error, "There was an error trying to update Monthly Income");   
+                    this.AddAlertMessageToTempData(AlertType.Error, "There was an error trying to update the Monthly Income");   
                 }
 
                 return RedirectToAction("Index");
@@ -127,7 +126,7 @@
                 var monthlyIncome = await this.monthlyIncomeService.GetByIdAsync(userId, id);
                 this.monthlyIncomeService.Delete(monthlyIncome);
 
-                this.AddAlertMessageToTempData(AlertType.Success, "Monthly Income was deleted successfully");
+                this.AddAlertMessageToTempData(AlertType.Success, "The Monthly Income was deleted successfully");
                 result = true;
             }
             else

@@ -3,13 +3,21 @@
     using System;
     using System.ComponentModel.DataAnnotations;
 
-    public class ExpenseInputModel
+    using AutoMapper;
+
+    using Data.Models;
+    using Services.Mapping;
+
+    public class ExpenseInputModel : IMapTo<Expense>
     {
         public ExpenseInputModel()
         {
             this.ExpenseAmount = 0.1m;
             this.DateOfExpense = DateTime.UtcNow.Date;
         }
+
+        [Required]
+        public int Id { get; set; }
 
         [Required]
         [MinLength(2)]
@@ -25,5 +33,10 @@
         [Display(Name = "Date of Expense")]
         [DataType(DataType.Date)]
         public DateTime DateOfExpense { get; set; }
+
+        public void CreateMappings(IProfileExpression configuration)
+           => configuration.CreateMap<ExpenseInputModel, Expense>().ForMember(
+               m => m.CreatedOn,
+               opt => opt.MapFrom(x => x.DateOfExpense));
     }
 }

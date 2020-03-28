@@ -3,13 +3,16 @@
 
 @model ExpenseInputModel
 @{
-    ViewData["Title"] = "Add Expense";
+    ViewData["Title"] = "Edit Expense";
 }
 
 <h1>Add Expense</h1>
 
 <div class="col-md-6">
     <form asp-controller="@nameof(ExpensesController).Replace(nameof(Controller), string.Empty)" asp-action="@nameof(ExpensesController.AddExpense)" class="form" method="post">
+        <div class="form-group">
+            <input asp-for="Id" type="hidden" />
+        </div>
         <div class="form-group">
             <label asp-for="Description"></label>
             <input asp-for="Description" class="form-control" />

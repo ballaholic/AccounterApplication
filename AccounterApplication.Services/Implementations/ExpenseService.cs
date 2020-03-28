@@ -33,6 +33,7 @@
                 .All()
                 .Where(e => e
                     .UserId.Equals(userId))
+                .OrderByDescending(e => e.CreatedOn)
                 .To<T>()
                 .ToListAsync();
 
@@ -41,5 +42,34 @@
             await this.expenseRepository.AddAsync(expense);
             await this.expenseRepository.SaveChangesAsync();
         }
+
+        public async Task<Expense> GetByIdAsync(string userId, int id)
+            => await this.expenseRepository.GetByIdWithoutDeletedAsync(userId, id);
+
+        public async Task<bool> Update(string userId, Expense expense)
+        {
+            Expense entityToUpdate = await this.expenseRepository.GetByIdWithoutDeletedAsync(userId, expense.Id);
+
+            if (entityToUpdate == null)
+            {
+                return false;
+            }
+
+            entityToUpdate.CreatedOn = expense.CreatedOn;
+            entityToUpdate.ExpenseAmount = expense.ExpenseAmount;
+            entityToUpdate.Description = expense.Description;
+
+            await this.expenseRepository.SaveChangesAsync();
+
+            return true;
+        }
+
+        public bool CheckIfExpenseIdIsValid(int id, string userId)
+            => this.expenseRepository
+                .AllAsNoTracking()
+                .Any(x => x.Id.Equals(id) && x.UserId.Equals(userId));
+
+        public void Delete(Expense expense)
+            => this.expenseRepository.Delete(expense);
     }
 }

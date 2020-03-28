@@ -51,6 +51,7 @@
             entity.IsDeleted = true;
             entity.DeletedOn = DateTime.UtcNow;
             this.Update(entity);
+            this.SaveChangesAsync();
         }
     }
 }

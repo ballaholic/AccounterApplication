@@ -1,16 +1,16 @@
 ﻿namespace AccounterApplication.Data
 {
+    using System;
+    using System.Linq;
+    using System.Threading;
+    using System.Reflection;
+    using System.Threading.Tasks;
+
     using Microsoft.EntityFrameworkCore;
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
     using Models;
-    using Microsoft.AspNetCore.Identity;
-    using System.Reflection;
-    using System.Threading.Tasks;
-    using System.Threading;
-    using System.Linq;
-    using AccounterApplication.Data.Common.Models;
-    using System;
+    using Common.Models;
 
     public class AccounterDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
     {

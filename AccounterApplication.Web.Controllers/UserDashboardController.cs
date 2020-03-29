@@ -24,6 +24,7 @@
             var userId = this.User.GetLoggedInUserId<string>();
             var monthlyIncomes = await this.monthlyIncomeService.AllFromCurrentMonthByUserId<MonthlyIncomeViewModel>(userId);
             var viewModel = new UserDashboardViewModel { MonthlyIncomes = monthlyIncomes };
+
             return View(viewModel);
         }
     }

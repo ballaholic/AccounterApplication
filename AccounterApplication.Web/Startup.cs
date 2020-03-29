@@ -14,10 +14,13 @@ namespace AccounterApplication.Web
     using Data.Common;
     using Data.Repositories;
     using Data.Common.Repositories;
+
     using Infrastructure;
+
     using Services.Mapping;
     using Services.Contracts;
     using Services.Implementations;
+
     using Web.ViewModels;
 
     public class Startup
@@ -28,6 +31,9 @@ namespace AccounterApplication.Web
 
         public void ConfigureServices(IServiceCollection services)
         {
+            // Add localization services (StringLocalizer, HtmlLocalizer, etc.)
+            services.AddLocalization(options => options.ResourcesPath = "LocalizationResources");
+
             // Data Layer
             services
                 .AddDbContext<AccounterDbContext>(options => options
@@ -39,6 +45,7 @@ namespace AccounterApplication.Web
                 .AddRoles<ApplicationRole>()
                 .AddEntityFrameworkStores<AccounterDbContext>();
 
+            // Cookies configuration
             services.Configure<CookiePolicyOptions>(
                 options =>
                 {
@@ -69,10 +76,14 @@ namespace AccounterApplication.Web
 
             app.SeedDatabase(env);
 
+            app.UseLocalization();
+
             app.UseExceptionHandling(env);
 
-            app.UseHttpsRedirection();
             app.UseStaticFiles();
+
+            app.UseHttpsRedirection();
+      
             app.UseCookiePolicy();
 
             app.UseRouting();

@@ -1,5 +1,15 @@
 ﻿@using AccounterApplication.Common.GlobalConstants
 @using AccounterApplication.Web.Controllers
+@using Microsoft.AspNetCore.Localization;
+
+@{
+    string culture = string.Empty;
+
+    if(Context.Request.Cookies.TryGetValue(CookieRequestCultureProvider.DefaultCookieName, out string langCookie))
+    {
+        culture = langCookie;
+    }
+}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -96,6 +106,19 @@
                 <header>
                     <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
                         <div class="navbar-nav ml-auto">
+                            <span class="margin-15 switch-label-left">BG</span>
+                            <div class="switch-wrap">
+                                @if (culture == string.Empty || culture.Contains("en-US"))
+                                {
+                                    <input class="switch-input" type="checkbox" id="switchLang" checked />
+                                }
+                                else if (culture.Contains("bg-BG"))
+                                {
+                                    <input class="switch-input" type="checkbox" id="switchLang" />
+                                }
+                                <label class="slider-v3 margin-15" for="switchLang"></label>
+                            </div>
+                            <span class="margin-15 switch-label-right">EN</span>
                             <div class="topbar-divider d-none d-sm-block"></div>
                             <partial name="_LoginPartial" />
                         </div>
@@ -121,11 +144,12 @@
     </div>
     <environment names="Development">
         <script src="~/lib/jquery/dist/jquery.js" type="text/javascript" asp-append-version="true"></script>
-        <script src="~/js/jquery/jquery.min.js" type="text/javascript" asp-append-version="true"></script>
+        <script src="~/js/jquery/jquery.js" type="text/javascript" asp-append-version="true"></script>
         <script src="~/js/jquery/jquery.easing.js" type="text/javascript" asp-append-version="true"></script>
+        <script src="~/js/jquery/jquery.cookie.js" type="text/javascript" asp-append-version="true"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js" type="text/javascript" asp-append-version="true"></script>
         <script src="~/js/sb-admin-2.js" type="text/javascript" asp-append-version="true"></script>
-        <script src="~/js/site.js" type="text/javascript" asp-append-version="true"></script>      
+        <script src="~/js/site.js" type="text/javascript" asp-append-version="true"></script>
     </environment>
     @*<environment names="Staging,Production">
             <script src="~/lib/jquery/dist/jquery.min.js" type="text/javascript" asp-append-version="true"></script>

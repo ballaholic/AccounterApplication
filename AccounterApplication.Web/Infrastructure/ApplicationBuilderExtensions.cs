@@ -1,13 +1,16 @@
 ﻿namespace AccounterApplication.Web.Infrastructure
 {
+    using System.Globalization;
+
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Hosting;
     using Microsoft.EntityFrameworkCore;
+    using Microsoft.AspNetCore.Localization;
     using Microsoft.Extensions.DependencyInjection;
 
-    using AccounterApplication.Data;
-    using AccounterApplication.Data.Seeding;
+    using Data;
+    using Data.Seeding;
 
     public static class ApplicationBuilderExtensions
     {
@@ -23,6 +26,26 @@
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
+
+            return app;
+        }
+
+        public static IApplicationBuilder UseLocalization(this IApplicationBuilder app)
+        {
+            var supportedCultures = new[]
+            {
+                new CultureInfo("en-US"),
+                new CultureInfo("bg-BG")
+            };
+
+            var localizationOptions = new RequestLocalizationOptions
+            {
+                DefaultRequestCulture = new RequestCulture("en-US"),
+                SupportedCultures = supportedCultures,
+                SupportedUICultures = supportedCultures
+            };
+
+            app.UseRequestLocalization(localizationOptions);
 
             return app;
         }

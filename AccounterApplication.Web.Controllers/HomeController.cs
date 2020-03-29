@@ -1,12 +1,26 @@
 ﻿namespace AccounterApplication.Web.Controllers
 {
     using System.Diagnostics;
+
     using Microsoft.AspNetCore.Mvc;
-    using Web.ViewModels;
+    using Microsoft.Extensions.Localization;
+
+    using ViewModels;
 
     public class HomeController : BaseController
     {
-        public IActionResult Index() => View();
+        private readonly IStringLocalizer<HomeController> localizer;
+
+        public HomeController(IStringLocalizer<HomeController> localizer)
+        {
+            this.localizer = localizer;
+        }
+
+        public IActionResult Index() 
+        {
+            var localizedText = this.localizer["Greeting"];
+            return View();
+        }    
 
         public IActionResult Privacy() => View();
 
@@ -16,5 +30,11 @@
             { 
                 RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier 
             });
+
+        public IActionResult SetCulture(string culture)
+        {
+            this.CreateCultureCookie(culture);
+            return this.Json(culture);
+        }
     }
 }

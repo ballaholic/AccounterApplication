@@ -3,7 +3,7 @@
     var redirectUrl;
     var target;
 
-    $('body').append(`
+    $("body").append(`
                     <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">

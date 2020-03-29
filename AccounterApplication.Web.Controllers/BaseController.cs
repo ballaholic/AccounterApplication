@@ -1,11 +1,17 @@
 ﻿namespace AccounterApplication.Web.Controllers
 {
-    using AccounterApplication.Common.Enumerations;
-    using AccounterApplication.Services.Mapping;
-    using AccounterApplication.Web.ViewModels;
+    using System;
+
     using AutoMapper;
-    using Microsoft.AspNetCore.Mvc;
     using Newtonsoft.Json;
+
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Localization;
+
+    using Web.ViewModels;
+    using Services.Mapping;
+    using Common.Enumerations;
 
     public class BaseController : Controller
     {
@@ -19,10 +25,17 @@
                 {
                     this.mapper = AutoMapperConfig.MapperInstance;
                 }
-                
+
                 return this.mapper;
             }
         }
+
+        protected void CreateCultureCookie(string culture)
+            => Response.Cookies.Append(
+               CookieRequestCultureProvider.DefaultCookieName,
+               CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture)),
+               new CookieOptions { Expires = DateTimeOffset.UtcNow.AddYears(1) }
+            );
 
         protected void AddAlertMessageToTempData(AlertMessageTypes alertMessageType, string message)
         {
@@ -38,7 +51,7 @@
                     break;
                 default:
                     break;
-            }           
+            }
         }
     }
 }

@@ -2,10 +2,12 @@
 @using AccounterApplication.Web.Controllers
 @using Microsoft.AspNetCore.Localization;
 
+@inject IViewLocalizer Localizer;
+
 @{
     string culture = string.Empty;
 
-    if(Context.Request.Cookies.TryGetValue(CookieRequestCultureProvider.DefaultCookieName, out string langCookie))
+    if (Context.Request.Cookies.TryGetValue(CookieRequestCultureProvider.DefaultCookieName, out string langCookie))
     {
         culture = langCookie;
     }
@@ -52,27 +54,27 @@
             <hr class="sidebar-divider my-0">
 
             <li class="nav-item">
-                <a class="nav-link" 
-                   asp-controller="@(nameof(UserDashboardController).Replace(nameof(Controller), string.Empty))" 
+                <a class="nav-link"
+                   asp-controller="@(nameof(UserDashboardController).Replace(nameof(Controller), string.Empty))"
                    asp-action="@(nameof(UserDashboardController.Index))">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span>
+                    <span>@Localizer["Dashboard"]</span>
                 </a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseExpenses" aria-expanded="true" aria-controls="collapseExpenses">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Expenses</span>
+                    <span>@Localizer["Expenses"]</span>
                 </a>
                 <div id="collapseExpenses" class="collapse" aria-labelledby="headingExpenses" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" 
-                           asp-controller="@(nameof(ExpensesController).Replace(nameof(Controller), string.Empty))" 
-                           asp-action="@(nameof(ExpensesController.Index))">Overview</a>
-                        <a class="collapse-item" 
-                           asp-controller="@(nameof(ExpensesController).Replace(nameof(Controller), string.Empty))" 
-                           asp-action="@(nameof(ExpensesController.AddExpense))">Add Expense</a>
+                        <a class="collapse-item"
+                           asp-controller="@(nameof(ExpensesController).Replace(nameof(Controller), string.Empty))"
+                           asp-action="@(nameof(ExpensesController.Index))">@Localizer["Overview"]</a>
+                        <a class="collapse-item"
+                           asp-controller="@(nameof(ExpensesController).Replace(nameof(Controller), string.Empty))"
+                           asp-action="@(nameof(ExpensesController.AddExpense))">@Localizer["Add Expense"]</a>
                     </div>
                 </div>
             </li>
@@ -80,16 +82,16 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseIncomes" aria-expanded="true" aria-controls="collapseIncomes">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Incomes</span>
+                    <span>@Localizer["Incomes"]</span>
                 </a>
                 <div id="collapseIncomes" class="collapse" aria-labelledby="headingIncomes" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" 
-                           asp-controller="@(nameof(IncomesController).Replace(nameof(Controller), string.Empty))" 
-                           asp-action="@nameof(IncomesController.Index)">Overview</a>
-                        <a class="collapse-item" 
-                           asp-controller="@(nameof(IncomesController).Replace(nameof(Controller), string.Empty))" 
-                           asp-action="@(nameof(IncomesController.AddMonthlyIncome))">Add Income</a>
+                        <a class="collapse-item"
+                           asp-controller="@(nameof(IncomesController).Replace(nameof(Controller), string.Empty))"
+                           asp-action="@nameof(IncomesController.Index)">@Localizer["Overview"]</a>
+                        <a class="collapse-item"
+                           asp-controller="@(nameof(IncomesController).Replace(nameof(Controller), string.Empty))"
+                           asp-action="@(nameof(IncomesController.AddMonthlyIncome))">@Localizer["Add Income"]</a>
                     </div>
                 </div>
             </li>

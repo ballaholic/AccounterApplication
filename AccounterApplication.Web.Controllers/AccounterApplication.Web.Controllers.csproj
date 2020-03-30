@@ -20,5 +20,9 @@
     <ProjectReference Include="..\AccounterApplication.Services\AccounterApplication.Services.csproj" />
     <ProjectReference Include="..\AccounterApplication.Web.ViewModels\AccounterApplication.Web.ViewModels.csproj" />
   </ItemGroup>
+  
+  <ItemGroup>
+    <Folder Include="LocalizationResources\" />
+  </ItemGroup>
 
 </Project>

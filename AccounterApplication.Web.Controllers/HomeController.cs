@@ -18,7 +18,6 @@
 
         public IActionResult Index() 
         {
-            var localizedText = this.localizer["Greeting"];
             return View();
         }    
 

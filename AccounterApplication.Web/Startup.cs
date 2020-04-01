@@ -2,12 +2,12 @@ namespace AccounterApplication.Web
 {
     using System.Reflection;
 
+    using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
-    using Microsoft.AspNetCore.Http;
 
     using Data;
     using Data.Models;
@@ -54,7 +54,7 @@ namespace AccounterApplication.Web
                 });
 
             // Views
-            services.AddMvcWithFilter();
+            services.AddMvcWithFilterAndLocalization();
 
             services.AddSingleton(this.Configuration);
 

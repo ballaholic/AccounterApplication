@@ -6,7 +6,7 @@
 
     public static class ServiceCollectionExtensions
     {
-        public static IServiceCollection AddMvcWithFilter(this IServiceCollection services)
+        public static IServiceCollection AddMvcWithFilterAndLocalization(this IServiceCollection services)
         {
             services.AddControllersWithViews(options => options
                                                             .Filters

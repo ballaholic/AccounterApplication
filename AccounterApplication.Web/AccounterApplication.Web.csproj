@@ -26,4 +26,11 @@
     <ProjectReference Include="..\AccounterApplication.Web.ViewModels\AccounterApplication.Web.ViewModels.csproj" />
   </ItemGroup>
 
+
+  <ItemGroup>
+    <EmbeddedResource Update="LocalizationResources\Areas\Identity\Pages\Account\Login.bg-BG.resx">
+      <Generator></Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
 </Project>

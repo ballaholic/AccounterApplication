@@ -1,12 +1,15 @@
 ﻿@using AccounterApplication.Web.Controllers
 @using AccounterApplication.Web.ViewModels.Expenses
 
+@inject IViewLocalizer Localizer
+
+
 @model ExpenseInputModel
 @{
-    ViewData["Title"] = "Add Expense";
+    ViewData["Title"] = Localizer["Add Expense"];
 }
 
-<h1>Add Expense</h1>
+<h1>@ViewData["Title"]</h1>
 
 <div class="col-md-6">
     <form asp-controller="@nameof(ExpensesController).Replace(nameof(Controller), string.Empty)" asp-action="@nameof(ExpensesController.AddExpense)" class="form" method="post">
@@ -17,7 +20,7 @@
         </div>
         <div class="form-group">
             <label asp-for="ExpenseAmount"></label>
-            <input asp-for="ExpenseAmount" class="form-control" />
+            <input asp-for="ExpenseAmount" class="form-control" data-val="false" />
             <span asp-validation-for="ExpenseAmount" class="text-danger"></span>
         </div>
         <div class="form-group">
@@ -32,7 +35,7 @@
         </div>
 
         <hr />
-        <input type="submit" value="Add" class="btn btn-primary" />
+        <input type="submit" value=@Localizer["Add"] class="btn btn-primary" />
     </form>
 
 </div>

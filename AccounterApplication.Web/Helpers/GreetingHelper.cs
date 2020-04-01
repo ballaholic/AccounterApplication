@@ -1,4 +1,4 @@
-﻿namespace AccounterApplication.Web.HtmlHelpers
+﻿namespace AccounterApplication.Web.Helpers
 {
     public static class GreetingHelper
     {

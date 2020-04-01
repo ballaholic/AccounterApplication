@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AccounterApplication.Common\AccounterApplication.Common.csproj" />
     <ProjectReference Include="..\AccounterApplication.Data\AccounterApplication.Data.csproj" />
     <ProjectReference Include="..\AccounterApplication.Services.Mapping\AccounterApplication.Services.Mapping.csproj" />
   </ItemGroup>

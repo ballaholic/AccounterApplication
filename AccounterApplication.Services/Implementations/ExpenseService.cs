@@ -11,6 +11,7 @@
     using Contracts;
     using Data.Models;
     using Data.Common.Repositories;
+    using Common.Enumerations;
 
     public class ExpenseService : IExpenseService
     {
@@ -35,6 +36,15 @@
                     .UserId.Equals(userId))
                 .OrderByDescending(e => e.CreatedOn)
                 .To<T>()
+                .ToListAsync();
+
+        public async Task<IEnumerable<T>> AllByUserIdLocalized<T>(string userId, Languages language)
+            => await this.expenseRepository
+                .All()
+                .Where(e => e
+                    .UserId.Equals(userId))
+                .OrderByDescending(e => e.CreatedOn)
+                .To<T>(new { language })
                 .ToListAsync();
 
         public async Task AddAsync(Expense expense)

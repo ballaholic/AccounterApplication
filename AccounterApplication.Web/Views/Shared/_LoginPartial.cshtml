@@ -1,6 +1,6 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @using AccounterApplication.Data.Models
-@using AccounterApplication.Web.HtmlHelpers
+@using AccounterApplication.Web.Helpers
 
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
@@ -11,7 +11,7 @@
     {       
         <li class="nav-item dropdown no-arrow">
             <a class="nav-link text-dark" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
-                <span class="mr-2 d-none d-lg-inline text-gray-600">@(Localizer[GreetingHelper.GetGreet(DateTime.Now.Hour)]), @User.Identity.Name!</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600">@(Localizer[GreetingHelper.GetGreet(DateTime.Now.Hour)]), @User.GetShortName()!</span>
                 <i class="fa fa-user" aria-hidden="true"></i>
 
             </a>

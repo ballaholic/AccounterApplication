@@ -1,8 +1,10 @@
 ﻿namespace AccounterApplication.Services.Contracts
 {
-    using AccounterApplication.Data.Models;
-    using System.Collections.Generic;
     using System.Threading.Tasks;
+    using System.Collections.Generic;
+
+    using Data.Models;
+    using Common.Enumerations;
 
     public interface IExpenseService
     {
@@ -11,6 +13,8 @@
         Task<IEnumerable<T>> All<T>();
 
         Task<IEnumerable<T>> AllByUserId<T>(string userId);
+
+        Task<IEnumerable<T>> AllByUserIdLocalized<T>(string userId, Languages language);
 
         Task AddAsync(Expense expense);
 

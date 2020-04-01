@@ -7,6 +7,7 @@
     using Services.Mapping;
     using Services.Contracts;
     using Data.Common.Repositories;
+    using Common.Enumerations;
 
     using Microsoft.EntityFrameworkCore;
 
@@ -21,6 +22,12 @@
             => await this.expenseGroupRepository
                 .All()
                 .To<T>()
+                .ToListAsync();
+
+        public async Task<IEnumerable<T>> AllLocalized<T>(Languages language)
+            => await this.expenseGroupRepository
+                .All()
+                .To<T>(language)
                 .ToListAsync();
     }
 }

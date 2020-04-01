@@ -29,8 +29,9 @@
         [Authorize]
         public async Task<IActionResult> Index()
         {
+            var language = this.GetCurrentLanguage();
             var userId = this.User.GetLoggedInUserId<string>();
-            var expenses = await this.expensesService.AllByUserId<ExpenseViewModel>(userId);
+            var expenses = await this.expensesService.AllByUserIdLocalized<ExpenseViewModel>(userId, language);
             var viewModel = new ExpensesListingViewModel { Expenses = expenses };
             return View(viewModel);
         }
@@ -39,9 +40,11 @@
         [Authorize]
         public async Task<IActionResult> AddExpense()
         {
+            var language = this.GetCurrentLanguage();
+
             var model = new ExpenseInputModel
             {
-                ExpenseGroupListItems = await this.expenseGroupService.All<ExpenseGroupSelectListItem>()
+                ExpenseGroupListItems = await this.expenseGroupService.AllLocalized<ExpenseGroupSelectListItem>(language)
             };
 
             return View(model);
@@ -53,6 +56,8 @@
         {
             if (!this.ModelState.IsValid)
             {
+                var language = this.GetCurrentLanguage();
+                model.ExpenseGroupListItems = await this.expenseGroupService.AllLocalized<ExpenseGroupSelectListItem>(language);
                 return View(model);
             }
 

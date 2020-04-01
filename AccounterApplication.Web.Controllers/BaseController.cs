@@ -37,6 +37,20 @@
                new CookieOptions { Expires = DateTimeOffset.UtcNow.AddYears(1) }
             );
 
+        protected Languages GetCurrentLanguage()
+        {
+            string langCookie = this.Request.Cookies[CookieRequestCultureProvider.DefaultCookieName];
+
+            if (langCookie != null && langCookie.Contains("bg-BG"))
+            {
+                return Languages.Bulgarian;
+            }
+            else
+            {
+                return Languages.English;
+            }
+        }
+
         protected void AddAlertMessageToTempData(AlertMessageTypes alertMessageType, string message)
         {
             switch (alertMessageType)

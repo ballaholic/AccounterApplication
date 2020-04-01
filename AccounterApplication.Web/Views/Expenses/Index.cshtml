@@ -1,8 +1,10 @@
 ﻿@using AccounterApplication.Web.ViewModels.Expenses
 @using AccounterApplication.Web.Controllers
 
+@inject IViewLocalizer Localizer
+
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = Localizer["Expenses"];
 }
 
 @model ExpensesListingViewModel
@@ -12,37 +14,39 @@
     <link rel="stylesheet" href="~/css/dataTables.bootstrap4.min.css" type="text/css" />
 }
 
-<h1>Expenses</h1>
+<h1>@Localizer["Expenses"]</h1>
 
 <div class="card shadow-lg mb-lg-4">
     <div class="table-responsive">
         <table class="table table-borderless table-hover" cellspacing="0">
             <thead class="card-header py-3 thead-light text-gray-200">
                 <tr>
-                    <th scope="col">Date</th>
-                    <th scope="col">Amount</th>
-                    <th scope="col">Description</th>
+                    <th scope="col">@Localizer["Date"]</th>
+                    <th scope="col">@Localizer["Amount"]</th>
+                    <th scope="col">@Localizer["Description"]</th>
+                    <th scope="col">@Localizer["Expense Group"]</th>
                     <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var expense in Model.Expenses)
                 {
-                    <tr class="text-gray-800">
-                        <td class="cell-clickable-edit" data-url="@Url.Action("EditExpense", "Expenses")" data-id="@expense.Id">@expense.ExpenseDate</td>
-                        <td class="cell-clickable-edit" data-url="@Url.Action("EditExpense", "Expenses")" data-id="@expense.Id">@expense.ExpenseAmount</td>
-                        <td class="cell-clickable-edit" data-url="@Url.Action("EditExpense", "Expenses")" data-id="@expense.Id">@expense.Description</td>
-                        <td>
-                            <a href="#" class="btn btn-no-shadow trigger-delete"
-                               data-id="@expense.Id"
-                               data-controller="@nameof(ExpensesController).Replace(nameof(Controller), string.Empty)"
-                               data-action="@nameof(ExpensesController.DeleteExpense)"
-                               data-body-message="You are about to delete an Expense. Click Continue to proceed."
-                               data-redirect-url="@Url.Action(nameof(ExpensesController.Index), nameof(ExpensesController).Replace(nameof(Controller), string.Empty))">
-                                <i class="fas fa-trash"></i>
-                            </a>
-                        </td>
-                    </tr>
+                <tr class="text-gray-800">
+                    <td class="cell-clickable-edit" data-url="@Url.Action("EditExpense", "Expenses")" data-id="@expense.Id">@expense.ExpenseDate</td>
+                    <td class="cell-clickable-edit" data-url="@Url.Action("EditExpense", "Expenses")" data-id="@expense.Id">@expense.ExpenseAmount</td>
+                    <td class="cell-clickable-edit" data-url="@Url.Action("EditExpense", "Expenses")" data-id="@expense.Id">@expense.Description</td>
+                    <td class="cell-clickable-edit" data-url="@Url.Action("EditExpense", "Expenses")" data-id="@expense.Id">@expense.ExpenseGroupName</td>
+                    <td>
+                        <a href="#" class="btn btn-no-shadow trigger-delete"
+                           data-id="@expense.Id"
+                           data-controller="@nameof(ExpensesController).Replace(nameof(Controller), string.Empty)"
+                           data-action="@nameof(ExpensesController.DeleteExpense)"
+                           data-body-message="@Localizer["You are about to delete an Expense. Click Continue to proceed."]"
+                           data-redirect-url="@Url.Action(nameof(ExpensesController.Index), nameof(ExpensesController).Replace(nameof(Controller), string.Empty))">
+                            <i class="fas fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
                 }
             </tbody>
         </table>

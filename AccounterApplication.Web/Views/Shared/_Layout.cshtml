@@ -1,8 +1,7 @@
 ﻿@using AccounterApplication.Common.GlobalConstants
 @using AccounterApplication.Web.Controllers
 @using Microsoft.AspNetCore.Localization;
-
-@inject IViewLocalizer Localizer;
+@using Resources = AccounterApplication.Common.LocalizationResources.Views.Shared.LayoutResources;
 
 @{
     string culture = string.Empty;
@@ -58,23 +57,23 @@
                    asp-controller="@(nameof(UserDashboardController).Replace(nameof(Controller), string.Empty))"
                    asp-action="@(nameof(UserDashboardController.Index))">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>@Localizer["Dashboard"]</span>
+                    <span>@Resources.Dashboard</span>
                 </a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseExpenses" aria-expanded="true" aria-controls="collapseExpenses">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>@Localizer["Expenses"]</span>
+                    <span>@Resources.Expenses</span>
                 </a>
                 <div id="collapseExpenses" class="collapse" aria-labelledby="headingExpenses" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item"
                            asp-controller="@(nameof(ExpensesController).Replace(nameof(Controller), string.Empty))"
-                           asp-action="@(nameof(ExpensesController.Index))">@Localizer["Overview"]</a>
+                           asp-action="@(nameof(ExpensesController.Index))">@Resources.Overview</a>
                         <a class="collapse-item"
                            asp-controller="@(nameof(ExpensesController).Replace(nameof(Controller), string.Empty))"
-                           asp-action="@(nameof(ExpensesController.AddExpense))">@Localizer["Add Expense"]</a>
+                           asp-action="@(nameof(ExpensesController.AddExpense))">@Resources.AddExpense</a>
                     </div>
                 </div>
             </li>
@@ -82,16 +81,16 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseIncomes" aria-expanded="true" aria-controls="collapseIncomes">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>@Localizer["Incomes"]</span>
+                    <span>@Resources.Incomes</span>
                 </a>
                 <div id="collapseIncomes" class="collapse" aria-labelledby="headingIncomes" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item"
                            asp-controller="@(nameof(IncomesController).Replace(nameof(Controller), string.Empty))"
-                           asp-action="@nameof(IncomesController.Index)">@Localizer["Overview"]</a>
+                           asp-action="@nameof(IncomesController.Index)">@Resources.Overview</a>
                         <a class="collapse-item"
                            asp-controller="@(nameof(IncomesController).Replace(nameof(Controller), string.Empty))"
-                           asp-action="@(nameof(IncomesController.AddMonthlyIncome))">@Localizer["Add Income"]</a>
+                           asp-action="@(nameof(IncomesController.AddMonthlyIncome))">@Resources.AddIncome</a>
                     </div>
                 </div>
             </li>
@@ -110,11 +109,11 @@
                         <div class="navbar-nav ml-auto">
                             <span class="margin-15 switch-label-left">BG</span>
                             <div class="switch-wrap">
-                                @if (culture == string.Empty || culture.Contains("en-US"))
+                                @if (culture == string.Empty || culture.Contains(SystemConstants.EnglishLocale))
                                 {
                                     <input class="switch-input" type="checkbox" id="switchLang" checked />
                                 }
-                                else if (culture.Contains("bg-BG"))
+                                else if (culture.Contains(SystemConstants.BulgarianLocale))
                                 {
                                     <input class="switch-input" type="checkbox" id="switchLang" />
                                 }

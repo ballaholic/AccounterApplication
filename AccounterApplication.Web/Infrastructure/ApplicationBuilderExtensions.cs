@@ -11,6 +11,7 @@
 
     using Data;
     using Data.Seeding;
+    using AccounterApplication.Common.GlobalConstants;
 
     public static class ApplicationBuilderExtensions
     {
@@ -34,13 +35,13 @@
         {
             var supportedCultures = new[]
             {
-                new CultureInfo("en-US"),
-                new CultureInfo("bg-BG")
+                new CultureInfo(SystemConstants.EnglishLocale),
+                new CultureInfo(SystemConstants.BulgarianLocale)
             };
 
             var localizationOptions = new RequestLocalizationOptions
             {
-                DefaultRequestCulture = new RequestCulture("en-US"),
+                DefaultRequestCulture = new RequestCulture(SystemConstants.EnglishLocale),
                 SupportedCultures = supportedCultures,
                 SupportedUICultures = supportedCultures
             };

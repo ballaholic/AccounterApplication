@@ -1,11 +1,11 @@
-﻿@inject IViewLocalizer Localizer
+﻿@using Resources = AccounterApplication.Common.LocalizationResources.Views.Home.HomeViewResources; 
 
 @{
-    ViewData["Title"] = Localizer["Home Page"];
+    ViewData["Title"] = Resources.HomePage;
 }
 
 <div class="text-center">
-    <h1 class="display-4">@Localizer["Welcome to Accounter"]</h1>
+    <h1 class="display-4">@Resources.WelcomeToAccounter</h1>
 </div>
 <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
     <div class="carousel-inner">

@@ -1,17 +1,17 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @using AccounterApplication.Data.Models
 @using AccounterApplication.Web.Helpers
+@using Resources = AccounterApplication.Common.LocalizationResources.Views.Shared.LoginResources;
 
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
-@inject IViewLocalizer Localizer
 
 <ul class="navbar-nav">
     @if (SignInManager.IsSignedIn(User))
     {       
         <li class="nav-item dropdown no-arrow">
             <a class="nav-link text-dark" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
-                <span class="mr-2 d-none d-lg-inline text-gray-600">@(Localizer[GreetingHelper.GetGreet(DateTime.Now.Hour)]), @User.GetShortName()!</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600">@GreetingHelper.GreetingMessage(User.GetShortName())</span>
                 <i class="fa fa-user" aria-hidden="true"></i>
 
             </a>
@@ -19,15 +19,15 @@
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                 <a class="dropdown-item" asp-controller="Users" asp-action="Overview">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                    @Localizer["Profile"]
+                    @Resources.Profile
                 </a>
                 <a class="dropdown-item" href="/Identity/Account/Manage">
                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                    @Localizer["Settings"]
+                    @Resources.Settings
                 </a>
                 <div class="dropdown-divider"></div>
                 <form class="form-inline dropdown-item" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                    <button type="submit" class="nav-link btn btn-link text-dark">@Localizer["Log out"]</button>
+                    <button type="submit" class="nav-link btn btn-link text-dark">@Resources.LogOut</button>
                 </form>
             </div>
         </li>
@@ -35,10 +35,10 @@
     else
     {
         <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">@Localizer["Register"]</a>
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">@Resources.Register</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">@Localizer["Log In"]</a>
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">@Resources.LogIn</a>
         </li>
     }
 </ul>

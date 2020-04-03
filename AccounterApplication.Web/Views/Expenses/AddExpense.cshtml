@@ -1,12 +1,10 @@
 ﻿@using AccounterApplication.Web.Controllers
 @using AccounterApplication.Web.ViewModels.Expenses
-
-@inject IViewLocalizer Localizer
-
+@using Resources = AccounterApplication.Common.LocalizationResources.Views.Expenses.ExpensesViewsResources;
 
 @model ExpenseInputModel
 @{
-    ViewData["Title"] = Localizer["Add Expense"];
+    ViewData["Title"] = Resources.AddExpense;
 }
 
 <h1>@ViewData["Title"]</h1>
@@ -35,7 +33,7 @@
         </div>
 
         <hr />
-        <input type="submit" value=@Localizer["Add"] class="btn btn-primary" />
+        <input type="submit" value=@ButtonsResources.Add class="btn btn-primary" />
     </form>
 
 </div>

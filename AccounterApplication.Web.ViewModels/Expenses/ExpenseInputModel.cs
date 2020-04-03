@@ -3,11 +3,14 @@
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using AccounterApplication.Web.ViewModels.ExpenseGroups;
+
     using AutoMapper;
 
     using Data.Models;
+    using ExpenseGroups;
     using Services.Mapping;
+
+    using Resources = Common.LocalizationResources.ViewModels.ExpenseInputModelResources;
 
     public class ExpenseInputModel : IMapTo<Expense>, IHaveCustomMappings
     {
@@ -20,23 +23,23 @@
         [Required]
         public int Id { get; set; }
 
-        [Required]
-        [MinLength(2)]
-        [MaxLength(200)]
+        [Required(ErrorMessageResourceType = typeof(Resources), ErrorMessageResourceName = "Required")]
+        [Display(Name = "Description", ResourceType = typeof(Resources))]
+        [MaxLength(200, ErrorMessageResourceType = typeof(Resources), ErrorMessageResourceName = "DescriptionTooLong")]
         public string Description { get; set; }
 
-        [Required]
-        [Display(Name = "Amount")]
-        [Range(0.1, 100000000)]
+        [Required(ErrorMessageResourceType = typeof(Resources), ErrorMessageResourceName = "Required")]
+        [Display(Name = "Amount", ResourceType = typeof(Resources))]
+        [Range(0.01, 1000000000, ErrorMessageResourceType = typeof(Resources), ErrorMessageResourceName = "ExpenseAmountNotInRange")]
         public decimal ExpenseAmount { get; set; }
 
-        [Required]
-        [Display(Name = "Date of Expense")]
-        [DataType(DataType.Date)]
+        [Required(ErrorMessageResourceType = typeof(Resources), ErrorMessageResourceName = "Required")]
+        [Display(Name = "ExpenseDate", ResourceType = typeof(Resources))]
+        [DataType(DataType.Date, ErrorMessageResourceType = typeof(Resources), ErrorMessageResourceName = "DateNotValid")]
         public DateTime DateOfExpense { get; set; }
 
-        [Required]
-        [Display(Name = "Expense Group")]
+        [Required(ErrorMessageResourceType = typeof(Resources), ErrorMessageResourceName = "Required")]
+        [Display(Name = "ExpenseGroup", ResourceType = typeof(Resources))]
         public int ExpenseGroupId { get; set; }
 
         public IEnumerable<ExpenseGroupSelectListItem> ExpenseGroupListItems { get; set; }

@@ -1,10 +1,11 @@
 ﻿@page
+
+@using Resources = AccounterApplication.Common.LocalizationResources.Views.Identity.IdentityResources;
+
 @model LoginModel
 
-@inject IViewLocalizer Localizer
-
 @{
-    ViewData["Title"] = Localizer["Log in"];
+    ViewData["Title"] = Resources.Login;
 }
 
 <h1>@ViewData["Title"]</h1>
@@ -32,14 +33,14 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary">@Localizer["Log in"]</button>
+                    <button type="submit" class="btn btn-primary">@Resources.Login</button>
                 </div>
                 <div class="form-group">
                     <p>
-                        <a id="forgot-password" asp-page="./ForgotPassword">@Localizer["Forgot your password?"]</a>
+                        <a id="forgot-password" asp-page="./ForgotPassword">@Resources.ForgotPassword</a>
                     </p>
                     <p>
-                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">@Localizer["Register as a new user"]</a>
+                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">@Resources.RegisterUser</a>
                     </p>
                 </div>
             </form>

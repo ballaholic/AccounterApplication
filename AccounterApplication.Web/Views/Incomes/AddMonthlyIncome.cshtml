@@ -1,28 +1,29 @@
 ﻿@using AccounterApplication.Web.Controllers
 @using AccounterApplication.Web.ViewModels.MonthlyIncomes
+@using Resources = AccounterApplication.Common.LocalizationResources.Views.MonthlyIncomes.IncomesViewsResources;
 
 @model MonthlyIncomeInputModel
 
 @{
-    ViewData["Title"] = "Add Monthly Income";
+    ViewData["Title"] = Resources.AddMonthlyIncome;
 }
 
-<h1>Add Monthly Income</h1>
+<h1>@ViewData["Title"]</h1>
 
 <div class="col-md-6">
     <form asp-controller="@nameof(IncomesController).Replace(nameof(Controller), string.Empty)" asp-action="@(nameof(IncomesController.AddMonthlyIncome))" class="form" method="post">
         <div class="form-group">
             <label asp-for="Amount"></label>
-            <input asp-for="Amount" class="form-control" />
+            <input asp-for="Amount" class="form-control" data-val="false" />
             <span asp-validation-for="Amount" class="text-danger"></span>
         </div>
         <div class="form-group">
             <label asp-for="IncomePeriod"></label>
-            <input asp-for="IncomePeriod" class="form-control" data-val="false" />
+            <input asp-for="IncomePeriod" class="form-control" />
             <span asp-validation-for="IncomePeriod" class="text-danger"></span>
         </div>
         <div class="modal-footer">
-            <input type="submit" value="Add" class="btn btn-primary" />
+            <input type="submit" value="@ButtonsResources.Add" class="btn btn-primary" />
         </div>
     </form>
 </div>

@@ -1,10 +1,11 @@
 ﻿@using AccounterApplication.Web.Controllers
 @using AccounterApplication.Web.ViewModels.MonthlyIncomes
+@using Resources = AccounterApplication.Common.LocalizationResources.Views.MonthlyIncomes.IncomesViewsResources
 
 @model MonthlyIncomeInputModel
 
 @{
-    ViewData["Title"] = "Edit Monthly Income";
+    ViewData["Title"] = Resources.EditMonthlyIncome;
 }
 
 <h1>Edit Monthly Income</h1>
@@ -25,7 +26,7 @@
             <span asp-validation-for="IncomePeriod" class="text-danger"></span>
         </div>
         <div class="modal-footer">
-            <input type="submit" value="Update" class="btn btn-primary" />
+            <input type="submit" value="@ButtonsResources.Update" class="btn btn-primary" />
         </div>
     </form>
 </div>

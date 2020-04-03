@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using Resources = AccounterApplication.Common.LocalizationResources.ViewModels.LoginModelResources;
 
 namespace AccounterApplication.Web.Areas.Identity.Pages.Account
 {
@@ -46,20 +47,20 @@ namespace AccounterApplication.Web.Areas.Identity.Pages.Account
 
         public class InputModel
         {
-            [Required]
-            [EmailAddress]
-            [Display(Name = "Email")]
+            [Required(ErrorMessageResourceType = typeof(Resources), ErrorMessageResourceName = "Required")]
+            [EmailAddress(ErrorMessageResourceType = typeof(Resources), ErrorMessageResourceName = "ValidateEmail")]
+            [Display(Name = "Email", ResourceType = typeof(Resources))]
             public string Email { get; set; }
 
-            [Required]
+            [Required(ErrorMessageResourceType = typeof(Resources), ErrorMessageResourceName = "Required")]
             [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
             [DataType(DataType.Password)]
-            [Display(Name = "Password")]
+            [Display(Name = "Password", ResourceType = typeof(Resources))]
             public string Password { get; set; }
 
             [DataType(DataType.Password)]
-            [Display(Name = "Confirm password")]
-            [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+            [Display(Name = "ConfirmPassword", ResourceType = typeof(Resources))]
+            [Compare("Password", ErrorMessageResourceType = typeof(Resources), ErrorMessageResourceName = "PasswordNotMatch")]
             public string ConfirmPassword { get; set; }
         }
 

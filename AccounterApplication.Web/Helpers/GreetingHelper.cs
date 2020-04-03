@@ -1,32 +1,45 @@
 ﻿namespace AccounterApplication.Web.Helpers
 {
+    using System;
+
+    using Resources = Common.LocalizationResources.Shared.Helpers.GreetingHelperResources;
+
     public static class GreetingHelper
     {
-        public static string GetGreet(int currentHour)
+        public static string GreetingMessage(string userName)
         {
+            string greet = GetGreet();
+
+            return $"{greet}, {userName}!";
+        }
+
+        private static string GetGreet()
+        {
+            var currentHour = DateTime.Now.Hour;
+
             if (currentHour < 5)
             {
-                return "Hello";
+                return Resources.Hello;
             }
             else if (currentHour >= 5 && currentHour < 8)
             {
-                return "Good Morning";
+                return Resources.GoodMorning;
             }
             else if (currentHour >= 8 && currentHour < 12)
             {
-                return "Hello";
+                return Resources.Hello;
             }
             else if (currentHour >= 12 && currentHour < 18)
             {
-                return "Good Afternoon";
+                return Resources.GoodAfternoon;
             }
             else if (currentHour >= 18 && currentHour < 24)
             {
-                return "Good Evening";
+                return Resources.GoodEvening;
             }
             else
             {
-                return "Hello";
+                return Resources.Hello;
             }
         }
     }

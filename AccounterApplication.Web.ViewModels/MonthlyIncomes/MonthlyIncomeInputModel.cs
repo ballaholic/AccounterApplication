@@ -6,6 +6,8 @@
     using Data.Models;
     using Services.Mapping;
 
+    using Resources = Common.LocalizationResources.ViewModels.MonthlyIncomeInputModelResources;
+
     public class MonthlyIncomeInputModel : IMapTo<MonthlyIncome>
     {
         public MonthlyIncomeInputModel()
@@ -17,13 +19,14 @@
         [Required]
         public int Id { get; set; }
 
-        [Required]
-        [Range(0.1, 100000000)]
+        [Required(ErrorMessageResourceType = typeof(Resources), ErrorMessageResourceName = "Required")]
+        [Display(Name = "Amount", ResourceType = typeof(Resources))]
+        [Range(0.01, 1000000000, ErrorMessageResourceType = typeof(Resources), ErrorMessageResourceName = "IncomeAmountNotInRange")]
         public decimal Amount { get; set; }
 
-        [Required]
-        [Display(Name = "Period of Income")]
-        [DataType(DataType.Date)]
+        [Required(ErrorMessageResourceType = typeof(Resources), ErrorMessageResourceName = "Required")]
+        [Display(Name = "IncomePeriod", ResourceType = typeof(Resources))]
+        [DataType(DataType.Date, ErrorMessageResourceType = typeof(Resources), ErrorMessageResourceName = "DateNotValid")]
         public DateTime IncomePeriod { get; set; }
     }
 }

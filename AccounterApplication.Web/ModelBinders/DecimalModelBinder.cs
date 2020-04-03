@@ -1,10 +1,12 @@
 ﻿namespace AccounterApplication.Web.ModelBinders
 {
-    using System;
     using System.Globalization;
     using System.Threading.Tasks;
-
     using Microsoft.AspNetCore.Mvc.ModelBinding;
+
+    using AccounterApplication.Common.GlobalConstants;
+
+    using Resources = Common.LocalizationResources.ModelBinders.ModelBinderResources;
 
     public class DecimalModelBinder : IModelBinder
     {
@@ -24,17 +26,15 @@
                 return Task.CompletedTask;
             }
 
-            string errorMessage = string.Empty;
+            string errorMessage = Resources.NotValidNumber;
 
-            if (CultureInfo.CurrentCulture.Name == "bg-BG")
+            if (CultureInfo.CurrentCulture.Name == SystemConstants.BulgarianLocale)
             {
                 value = value.Replace(".", CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator).Trim();
-                errorMessage = "Въведената стойност не е валидно число";
             }
-            else if (CultureInfo.CurrentCulture.Name == "en-US")
+            else if (CultureInfo.CurrentCulture.Name == SystemConstants.EnglishLocale)
             {
                 value = value.Replace(",", CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator).Trim();
-                errorMessage = "Provided value is not a valid number";
             }
 
             if (decimal.TryParse(value, NumberStyles.AllowDecimalPoint, CultureInfo.CurrentCulture, out decimal parsedValue))

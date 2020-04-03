@@ -1,10 +1,11 @@
-﻿@using AccounterApplication.Web.ViewModels.MonthlyIncomes;
-@using AccounterApplication.Web.Controllers;
+﻿@using AccounterApplication.Web.Controllers;
+@using AccounterApplication.Web.ViewModels.MonthlyIncomes;
+@using Resources = AccounterApplication.Common.LocalizationResources.Views.MonthlyIncomes.IncomesViewsResources;
 
 @model MonthlyIncomesListingViewModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = Resources.MonthlyIncomes;
 }
 
 @section Styles
@@ -13,15 +14,15 @@
 }
 
 
-<h1>Incomes</h1>
+<h1>@ViewData["Title"]</h1>
 
 <div class="card shadow-lg mb-lg-4">
     <div class="table-responsive">
         <table class="table table-borderless table-hover" cellspacing="0">
             <thead class="card-header py-3 thead-light text-gray-200">
                 <tr>
-                    <th scope="col">Date</th>
-                    <th scope="col">Amount</th>
+                    <th scope="col">@Resources.Date</th>
+                    <th scope="col">@Resources.Amount</th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -36,7 +37,10 @@
                                data-id="@income.Id"
                                data-controller="@nameof(IncomesController).Replace(nameof(Controller), string.Empty)"
                                data-action="@nameof(IncomesController.DeleteMonthlyIncome)"
-                               data-body-message="You are about to delete an Income. Click Continue to proceed."
+                               data-modal-title="@MessagesResources.Confirmation"
+                               data-body-message="@MessagesResources.DeleteIncomeConfirmation"
+                               data-button-delete="@ButtonsResources.Delete"
+                               data-button-cancel="@ButtonsResources.Cancel"
                                data-redirect-url="@Url.Action(nameof(IncomesController.Index), nameof(IncomesController).Replace(nameof(Controller), string.Empty))">
                                 <i class="fas fa-trash"></i>
                             </a>

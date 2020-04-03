@@ -1,12 +1,13 @@
 ﻿@using AccounterApplication.Web.Controllers
 @using AccounterApplication.Web.ViewModels.Expenses
+@using Resources = AccounterApplication.Common.LocalizationResources.Views.Expenses.ExpensesViewsResources;
 
 @model ExpenseInputModel
 @{
-    ViewData["Title"] = "Edit Expense";
+    ViewData["Title"] = Resources.EditExpense;
 }
 
-<h1>Add Expense</h1>
+<h1>@ViewData["Title"]</h1>
 
 <div class="col-md-6">
     <form asp-controller="@nameof(ExpensesController).Replace(nameof(Controller), string.Empty)" asp-action="@nameof(ExpensesController.AddExpense)" class="form" method="post">
@@ -29,7 +30,7 @@
             <span asp-validation-for="DateOfExpense" class="text-danger"></span>
         </div>
         <div class="modal-footer">
-            <input type="submit" value="Add" class="btn btn-primary" />
+            <input type="submit" value="@ButtonsResources.Update" class="btn btn-primary" />
         </div>
     </form>
 

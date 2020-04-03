@@ -10,6 +10,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 
+using Resources = AccounterApplication.Common.LocalizationResources.ViewModels.LoginModelResources;
+
 namespace AccounterApplication.Web.Areas.Identity.Pages.Account
 {
     [AllowAnonymous]
@@ -40,15 +42,17 @@ namespace AccounterApplication.Web.Areas.Identity.Pages.Account
 
         public class InputModel
         {
-            [Required]
-            [EmailAddress]
+            [Required(ErrorMessageResourceType = typeof(Resources), ErrorMessageResourceName = "Required")]
+            [Display(Name = "Email", ResourceType = typeof(Resources))]
+            [EmailAddress(ErrorMessageResourceType = typeof(Resources), ErrorMessageResourceName = "ValidateEmail")]
             public string Email { get; set; }
 
-            [Required]
+            [Required(ErrorMessageResourceType = typeof(Resources), ErrorMessageResourceName = "Required")]
+            [Display(Name = "Password", ResourceType = typeof(Resources))]
             [DataType(DataType.Password)]
             public string Password { get; set; }
 
-            [Display(Name = "Remember me?")]
+            [Display(Name = "RememberMe", ResourceType = typeof(Resources))]
             public bool RememberMe { get; set; }
         }
 

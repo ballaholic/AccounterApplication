@@ -75,7 +75,7 @@
 
             await this.expensesService.AddAsync(entityToAdd);
 
-            this.AddAlertMessageToTempData(AlertType.Success, Resources.ExpenseAddSuccess);
+            this.AddAlertMessageToTempData(AlertType.Success, Resources.Success, Resources.ExpenseAddSuccess);
 
             return this.RedirectToAction("Index");
         }
@@ -119,11 +119,11 @@
 
                 if (isUpdated)
                 {
-                    this.AddAlertMessageToTempData(AlertType.Success, Resources.ExpenseUpdatedSuccess);
+                    this.AddAlertMessageToTempData(AlertType.Success, Resources.Success, Resources.ExpenseUpdatedSuccess);
                 }
                 else
                 {
-                    this.AddAlertMessageToTempData(AlertType.Error, Resources.ExpenseUpdatedError);
+                    this.AddAlertMessageToTempData(AlertType.Error, Resources.Error, Resources.ExpenseUpdatedError);
                 }
 
                 return RedirectToAction("Index");
@@ -147,12 +147,12 @@
                 var expense = await this.expensesService.GetByIdAsync(userId, id);
                 this.expensesService.Delete(expense);
 
-                this.AddAlertMessageToTempData(AlertType.Success, Resources.ExpenseDeleteSuccess);
+                this.AddAlertMessageToTempData(AlertType.Success, Resources.Success, Resources.ExpenseDeleteSuccess);
                 result = true;
             }
             else
             {
-                this.AddAlertMessageToTempData(AlertType.Error, Resources.ExpenseDeleteError);
+                this.AddAlertMessageToTempData(AlertType.Error, Resources.Error, Resources.ExpenseDeleteError);
                 result = false;
             }
 

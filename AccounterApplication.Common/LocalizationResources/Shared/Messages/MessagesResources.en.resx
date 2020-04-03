@@ -126,6 +126,9 @@
   <data name="DeleteIncomeConfirmation" xml:space="preserve">
     <value>Are you sure you want to delete this expense ?</value>
   </data>
+  <data name="Error" xml:space="preserve">
+    <value>Error!</value>
+  </data>
   <data name="ExpenseAddError" xml:space="preserve">
     <value>There was an error trying to create the Expense.</value>
   </data>
@@ -161,5 +164,8 @@
   </data>
   <data name="MonthlyIncomeUpdatedSuccess" xml:space="preserve">
     <value>The Monthly Income was updated successfully.</value>
+  </data>
+  <data name="Success" xml:space="preserve">
+    <value>Success!</value>
   </data>
 </root>

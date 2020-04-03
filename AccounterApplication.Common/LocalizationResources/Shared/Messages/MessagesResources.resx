@@ -126,6 +126,9 @@
   <data name="DeleteIncomeConfirmation" xml:space="preserve">
     <value>Сигурни ли сте, че искате да изтриете този приход ?</value>
   </data>
+  <data name="Error" xml:space="preserve">
+    <value>Грешка!</value>
+  </data>
   <data name="ExpenseAddError" xml:space="preserve">
     <value>Възникна проблем при добавяне на разхода.</value>
   </data>
@@ -161,5 +164,8 @@
   </data>
   <data name="MonthlyIncomeUpdatedSuccess" xml:space="preserve">
     <value>Приходът беше обновен успешно.</value>
+  </data>
+  <data name="Success" xml:space="preserve">
+    <value>Успех!</value>
   </data>
 </root>

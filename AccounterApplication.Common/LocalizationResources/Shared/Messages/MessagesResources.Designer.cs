@@ -89,6 +89,15 @@ namespace AccounterApplication.Common.LocalizationResources.Shared.Messages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Грешка!.
+        /// </summary>
+        public static string Error {
+            get {
+                return ResourceManager.GetString("Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Възникна проблем при добавяне на разхода..
         /// </summary>
         public static string ExpenseAddError {
@@ -193,6 +202,15 @@ namespace AccounterApplication.Common.LocalizationResources.Shared.Messages {
         public static string MonthlyIncomeUpdatedSuccess {
             get {
                 return ResourceManager.GetString("MonthlyIncomeUpdatedSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Успех!.
+        /// </summary>
+        public static string Success {
+            get {
+                return ResourceManager.GetString("Success", resourceCulture);
             }
         }
     }

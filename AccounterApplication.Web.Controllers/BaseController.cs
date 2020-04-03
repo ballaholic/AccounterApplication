@@ -51,17 +51,17 @@
             }
         }
 
-        protected void AddAlertMessageToTempData(AlertMessageTypes alertMessageType, string message)
+        protected void AddAlertMessageToTempData(AlertMessageTypes alertMessageType, string title, string message)
         {
             switch (alertMessageType)
             {
                 case AlertMessageTypes.Success:
-                    TempData["UserAlertMessage"] = JsonConvert.SerializeObject(new MessageAlertViewModel("alert-success", "fa-check", "Success!", message));
+                    TempData["UserAlertMessage"] = JsonConvert.SerializeObject(new MessageAlertViewModel("alert-success", "fa-check", title, message));
                     break;
                 case AlertMessageTypes.Info:
                     break;
                 case AlertMessageTypes.Error:
-                    TempData["UserAlertMessage"] = JsonConvert.SerializeObject(new MessageAlertViewModel("alert-danger", "fa-times ", "Error!", message));
+                    TempData["UserAlertMessage"] = JsonConvert.SerializeObject(new MessageAlertViewModel("alert-danger", "fa-times ", title, message));
                     break;
                 default:
                     break;

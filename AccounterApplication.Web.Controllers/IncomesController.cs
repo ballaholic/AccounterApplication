@@ -58,7 +58,7 @@
 
             await this.monthlyIncomeService.AddAsync(entityToAdd);
 
-            this.AddAlertMessageToTempData(AlertType.Success, Resources.MonthlyIncomeAddSuccess);
+            this.AddAlertMessageToTempData(AlertType.Success, Resources.Success, Resources.MonthlyIncomeAddSuccess);
 
             return RedirectToAction("Index");
         }
@@ -100,11 +100,11 @@
 
                 if (isUpdated)
                 {
-                    this.AddAlertMessageToTempData(AlertType.Success, Resources.MonthlyIncomeUpdatedSuccess);
+                    this.AddAlertMessageToTempData(AlertType.Success, Resources.Success, Resources.MonthlyIncomeUpdatedSuccess);
                 }
                 else
                 {
-                    this.AddAlertMessageToTempData(AlertType.Error, Resources.MonthlyIncomeUpdatedError);   
+                    this.AddAlertMessageToTempData(AlertType.Error, Resources.Error, Resources.MonthlyIncomeUpdatedError);   
                 }
 
                 return RedirectToAction("Index");
@@ -129,12 +129,12 @@
                 var monthlyIncome = await this.monthlyIncomeService.GetByIdAsync(userId, id);
                 this.monthlyIncomeService.Delete(monthlyIncome);
 
-                this.AddAlertMessageToTempData(AlertType.Success, Resources.MonthlyIncomeDeleteSuccess);
+                this.AddAlertMessageToTempData(AlertType.Success, Resources.Success, Resources.MonthlyIncomeDeleteSuccess);
                 result = true;
             }
             else
             {
-                this.AddAlertMessageToTempData(AlertType.Error, Resources.MonthlyIncomeDeleteError);
+                this.AddAlertMessageToTempData(AlertType.Error, Resources.Error, Resources.MonthlyIncomeDeleteError);
                 result = false;
             }
 

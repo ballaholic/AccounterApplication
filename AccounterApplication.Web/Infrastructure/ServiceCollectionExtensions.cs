@@ -4,17 +4,23 @@
     using Microsoft.AspNetCore.Mvc.Razor;
     using Microsoft.Extensions.DependencyInjection;
 
+    using ModelBinders;
+
     public static class ServiceCollectionExtensions
     {
         public static IServiceCollection AddMvcWithFilterAndLocalization(this IServiceCollection services)
         {
-            services.AddControllersWithViews(options => options
-                                                            .Filters
-                                                                .Add(new AutoValidateAntiforgeryTokenAttribute()))
-                        .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
-                        .AddDataAnnotationsLocalization();
+            services
+                .AddControllersWithViews(options =>
+                {
+                    options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
+                    options.ModelBinderProviders.Insert(0, new DecimalModelBinderProvider());
+                })
+                .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
+                .AddDataAnnotationsLocalization();
 
-            services.AddRazorPages();
+            services
+                .AddRazorPages();
 
             return services;
         }

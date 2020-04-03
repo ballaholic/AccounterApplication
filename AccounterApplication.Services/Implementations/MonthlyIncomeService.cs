@@ -11,6 +11,7 @@
     using Services.Mapping;
     using Data.Models;
     using Data.Common.Repositories;
+    using Common.Enumerations;
 
     public class MonthlyIncomeService : IMonthlyIncomeService
     {
@@ -32,6 +33,15 @@
                     .UserId.Equals(userId))
                 .OrderByDescending(x => x.IncomePeriod)
                 .To<T>()
+                .ToListAsync();
+
+        public async Task<IEnumerable<T>> AllByUserIdLocalized<T>(string userId, Languages language)
+            => await this.monthlyIncomeRepository
+                .All()
+                .Where(x => x
+                    .UserId.Equals(userId))
+                .OrderByDescending(x => x.IncomePeriod)
+                .To<T>(new { language })
                 .ToListAsync();
 
         public async Task<IEnumerable<T>> AllFromCurrentYear<T>()

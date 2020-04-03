@@ -13,6 +13,7 @@
     using ViewModels.ExpenseGroups;
 
     using AlertType = Common.Enumerations.AlertMessageTypes;
+    using Resources = Common.LocalizationResources.Shared.Messages.MessagesResources;
 
     public class ExpensesController : BaseController
     {
@@ -74,6 +75,8 @@
 
             await this.expensesService.AddAsync(entityToAdd);
 
+            this.AddAlertMessageToTempData(AlertType.Success, Resources.ExpenseAddSuccess);
+
             return this.RedirectToAction("Index");
         }
 
@@ -116,11 +119,11 @@
 
                 if (isUpdated)
                 {
-                    this.AddAlertMessageToTempData(AlertType.Success, "The Expense was updated");
+                    this.AddAlertMessageToTempData(AlertType.Success, Resources.ExpenseUpdatedSuccess);
                 }
                 else
                 {
-                    this.AddAlertMessageToTempData(AlertType.Error, "There was an error trying to update the Expense");
+                    this.AddAlertMessageToTempData(AlertType.Error, Resources.ExpenseUpdatedError);
                 }
 
                 return RedirectToAction("Index");
@@ -144,12 +147,12 @@
                 var expense = await this.expensesService.GetByIdAsync(userId, id);
                 this.expensesService.Delete(expense);
 
-                this.AddAlertMessageToTempData(AlertType.Success, "The Expense was deleted successfully");
+                this.AddAlertMessageToTempData(AlertType.Success, Resources.ExpenseDeleteSuccess);
                 result = true;
             }
             else
             {
-                this.AddAlertMessageToTempData(AlertType.Error, "There was an error trying to delete the Expense");
+                this.AddAlertMessageToTempData(AlertType.Error, Resources.ExpenseDeleteError);
                 result = false;
             }
 

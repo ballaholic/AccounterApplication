@@ -12,6 +12,7 @@
     using ViewModels.MonthlyIncomes;
 
     using AlertType = Common.Enumerations.AlertMessageTypes;
+    using Resources = Common.LocalizationResources.Shared.Messages.MessagesResources;
 
 
     public class IncomesController : BaseController
@@ -57,6 +58,8 @@
 
             await this.monthlyIncomeService.AddAsync(entityToAdd);
 
+            this.AddAlertMessageToTempData(AlertType.Success, Resources.MonthlyIncomeAddSuccess);
+
             return RedirectToAction("Index");
         }
 
@@ -97,11 +100,11 @@
 
                 if (isUpdated)
                 {
-                    this.AddAlertMessageToTempData(AlertType.Success, "The Monthly Income was updated");
+                    this.AddAlertMessageToTempData(AlertType.Success, Resources.MonthlyIncomeUpdatedSuccess);
                 }
                 else
                 {
-                    this.AddAlertMessageToTempData(AlertType.Error, "There was an error trying to update the Monthly Income");   
+                    this.AddAlertMessageToTempData(AlertType.Error, Resources.MonthlyIncomeUpdatedError);   
                 }
 
                 return RedirectToAction("Index");
@@ -126,12 +129,12 @@
                 var monthlyIncome = await this.monthlyIncomeService.GetByIdAsync(userId, id);
                 this.monthlyIncomeService.Delete(monthlyIncome);
 
-                this.AddAlertMessageToTempData(AlertType.Success, "The Monthly Income was deleted successfully");
+                this.AddAlertMessageToTempData(AlertType.Success, Resources.MonthlyIncomeDeleteSuccess);
                 result = true;
             }
             else
             {
-                this.AddAlertMessageToTempData(AlertType.Error, "There was an error trying to delete the Monthly Income");
+                this.AddAlertMessageToTempData(AlertType.Error, Resources.MonthlyIncomeDeleteError);
                 result = false;
             }
 

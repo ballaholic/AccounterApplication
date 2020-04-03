@@ -87,5 +87,113 @@ namespace AccounterApplication.Common.LocalizationResources.Shared.Messages {
                 return ResourceManager.GetString("DeleteIncomeConfirmation", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Възникна проблем при добавяне на разхода..
+        /// </summary>
+        public static string ExpenseAddError {
+            get {
+                return ResourceManager.GetString("ExpenseAddError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Разходът беше добавен успешно..
+        /// </summary>
+        public static string ExpenseAddSuccess {
+            get {
+                return ResourceManager.GetString("ExpenseAddSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Възникна проблем при изтриване на разхода..
+        /// </summary>
+        public static string ExpenseDeleteError {
+            get {
+                return ResourceManager.GetString("ExpenseDeleteError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Разходът беше изтрит успешно..
+        /// </summary>
+        public static string ExpenseDeleteSuccess {
+            get {
+                return ResourceManager.GetString("ExpenseDeleteSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Възникна проблем при обновяване на разхода..
+        /// </summary>
+        public static string ExpenseUpdatedError {
+            get {
+                return ResourceManager.GetString("ExpenseUpdatedError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Разходът беше обновен успешно..
+        /// </summary>
+        public static string ExpenseUpdatedSuccess {
+            get {
+                return ResourceManager.GetString("ExpenseUpdatedSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Възникна проблем при добавяне на прихода..
+        /// </summary>
+        public static string MonthlyIncomeAddError {
+            get {
+                return ResourceManager.GetString("MonthlyIncomeAddError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Приходът беше добавен успешно..
+        /// </summary>
+        public static string MonthlyIncomeAddSuccess {
+            get {
+                return ResourceManager.GetString("MonthlyIncomeAddSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Възникна проблем при изтриване на прихода..
+        /// </summary>
+        public static string MonthlyIncomeDeleteError {
+            get {
+                return ResourceManager.GetString("MonthlyIncomeDeleteError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Приходът беше изтрит успешно..
+        /// </summary>
+        public static string MonthlyIncomeDeleteSuccess {
+            get {
+                return ResourceManager.GetString("MonthlyIncomeDeleteSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Възникна проблем при обновяване на прихода..
+        /// </summary>
+        public static string MonthlyIncomeUpdatedError {
+            get {
+                return ResourceManager.GetString("MonthlyIncomeUpdatedError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Приходът беше обновен успешно..
+        /// </summary>
+        public static string MonthlyIncomeUpdatedSuccess {
+            get {
+                return ResourceManager.GetString("MonthlyIncomeUpdatedSuccess", resourceCulture);
+            }
+        }
     }
 }

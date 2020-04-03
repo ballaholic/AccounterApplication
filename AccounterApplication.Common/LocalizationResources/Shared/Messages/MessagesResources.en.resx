@@ -126,4 +126,40 @@
   <data name="DeleteIncomeConfirmation" xml:space="preserve">
     <value>Are you sure you want to delete this expense ?</value>
   </data>
+  <data name="ExpenseAddError" xml:space="preserve">
+    <value>There was an error trying to create the Expense.</value>
+  </data>
+  <data name="ExpenseAddSuccess" xml:space="preserve">
+    <value>The Expense was created successfully.</value>
+  </data>
+  <data name="ExpenseDeleteError" xml:space="preserve">
+    <value>There was an error trying to delete the Expense.</value>
+  </data>
+  <data name="ExpenseDeleteSuccess" xml:space="preserve">
+    <value>The Expense was deleted successfully.</value>
+  </data>
+  <data name="ExpenseUpdatedError" xml:space="preserve">
+    <value>There was an error trying to update the Expense.</value>
+  </data>
+  <data name="ExpenseUpdatedSuccess" xml:space="preserve">
+    <value>The Expense was updated successfully.</value>
+  </data>
+  <data name="MonthlyIncomeAddError" xml:space="preserve">
+    <value>There was an error trying to add the Monthly Income.</value>
+  </data>
+  <data name="MonthlyIncomeAddSuccess" xml:space="preserve">
+    <value>The Monthly Income was added successfully.</value>
+  </data>
+  <data name="MonthlyIncomeDeleteError" xml:space="preserve">
+    <value>There was an error trying to delete the Monthly Income.</value>
+  </data>
+  <data name="MonthlyIncomeDeleteSuccess" xml:space="preserve">
+    <value>The Monthly Income was deleted successfully.</value>
+  </data>
+  <data name="MonthlyIncomeUpdatedError" xml:space="preserve">
+    <value>There was an error trying to update the Monthly Income.</value>
+  </data>
+  <data name="MonthlyIncomeUpdatedSuccess" xml:space="preserve">
+    <value>The Monthly Income was updated successfully.</value>
+  </data>
 </root>

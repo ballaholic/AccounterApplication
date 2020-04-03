@@ -27,7 +27,7 @@
         public async Task<IEnumerable<T>> AllLocalized<T>(Languages language)
             => await this.expenseGroupRepository
                 .All()
-                .To<T>(language)
+                .To<T>(new { language })
                 .ToListAsync();
     }
 }

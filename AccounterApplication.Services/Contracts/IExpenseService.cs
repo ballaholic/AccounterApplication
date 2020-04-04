@@ -16,6 +16,14 @@
 
         Task<IEnumerable<T>> AllByUserIdLocalized<T>(string userId, Languages language);
 
+        Task<IEnumerable<T>> AllByUserIdAndGroupIdLocalized<T>(string userId, int groupId, Languages language);
+
+        Task<IEnumerable<T>> AllByUserIdAndGroupIdLocalizedSortedByDate<T>(string userId, int groupId, Languages language, SortTypes sortType);
+
+        Task<IEnumerable<T>> AllByUserIdAndGroupIdLocalizedSortedByAmount<T>(string userId, int groupId, Languages language, SortTypes sortType);
+
+        Task<IEnumerable<T>> AllByUserIdAndGroupIdLocalizedSortedByDescription<T>(string userId, int groupId, Languages language, SortTypes sortType);
+
         Task AddAsync(Expense expense);
 
         Task<Expense> GetByIdAsync(string userId, int id);

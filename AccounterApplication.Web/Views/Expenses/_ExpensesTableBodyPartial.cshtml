@@ -1,0 +1,27 @@
+﻿@using AccounterApplication.Web.Controllers
+@using AccounterApplication.Web.ViewModels.Expenses
+
+@model ExpensesListingViewModel
+
+@foreach (var expense in Model.Expenses)
+{
+    <tr class="text-gray-800">
+        <td class="cell-clickable-edit" data-url="@Url.Action(nameof(ExpensesController.EditExpense), nameof(ExpensesController).Replace(nameof(Controller), string.Empty))" data-id="@expense.Id">@expense.ExpenseDate</td>
+        <td class="cell-clickable-edit" data-url="@Url.Action(nameof(ExpensesController.EditExpense), nameof(ExpensesController).Replace(nameof(Controller), string.Empty))" data-id="@expense.Id">@expense.ExpenseAmount</td>
+        <td class="cell-clickable-edit" data-url="@Url.Action(nameof(ExpensesController.EditExpense), nameof(ExpensesController).Replace(nameof(Controller), string.Empty))" data-id="@expense.Id">@expense.Description</td>
+        <td class="cell-clickable-edit" data-url="@Url.Action(nameof(ExpensesController.EditExpense), nameof(ExpensesController).Replace(nameof(Controller), string.Empty))" data-id="@expense.Id">@expense.ExpenseGroupName</td>
+        <td>
+            <a href="#" class="btn btn-no-shadow trigger-delete"
+               data-id="@expense.Id"
+               data-controller="@nameof(ExpensesController).Replace(nameof(Controller), string.Empty)"
+               data-action="@nameof(ExpensesController.DeleteExpense)"
+               data-modal-title="@MessagesResources.Confirmation"
+               data-body-message="@MessagesResources.DeleteExpenseConfirmation"
+               data-button-delete="@ButtonsResources.Delete"
+               data-button-cancel="@ButtonsResources.Cancel"
+               data-redirect-url="@Url.Action(nameof(ExpensesController.Index), nameof(ExpensesController).Replace(nameof(Controller), string.Empty))">
+                <i class="fas fa-trash"></i>
+            </a>
+        </td>
+    </tr>
+}

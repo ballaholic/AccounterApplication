@@ -25,11 +25,11 @@
             {
                 return Resources.GoodMorning;
             }
-            else if (currentHour >= 8 && currentHour < 12)
+            else if (currentHour >= 8 && currentHour < 14)
             {
                 return Resources.Hello;
             }
-            else if (currentHour >= 12 && currentHour < 18)
+            else if (currentHour >= 14 && currentHour < 18)
             {
                 return Resources.GoodAfternoon;
             }

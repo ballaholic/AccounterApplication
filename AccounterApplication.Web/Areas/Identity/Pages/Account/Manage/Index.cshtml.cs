@@ -91,7 +91,6 @@ namespace AccounterApplication.Web.Areas.Identity.Pages.Account.Manage
 
             }
 
-
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
             if (Input.PhoneNumber != phoneNumber)
             {

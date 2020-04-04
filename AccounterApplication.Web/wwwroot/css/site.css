@@ -158,3 +158,20 @@ input:checked + .slider-v3::after {
     position: absolute;
     left: -9999px;
 }
+
+a.th-sortable {
+    color: #6e707e;
+}
+
+    a.th-sortable:hover {
+        color: #0366d6;
+    }
+
+.th-dropdown {
+    color: #6e707e;
+    border: none;
+}
+
+    .th-dropdown:focus {
+        box-shadow:none !important;
+    }

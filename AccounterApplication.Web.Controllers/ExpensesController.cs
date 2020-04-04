@@ -14,6 +14,8 @@
 
     using AlertType = Common.Enumerations.AlertMessageTypes;
     using Resources = Common.LocalizationResources.Shared.Messages.MessagesResources;
+    using AccounterApplication.Common.Enumerations;
+    using System.Collections.Generic;
 
     public class ExpensesController : BaseController
     {
@@ -33,8 +35,116 @@
             var language = this.GetCurrentLanguage();
             var userId = this.User.GetLoggedInUserId<string>();
             var expenses = await this.expensesService.AllByUserIdLocalized<ExpenseViewModel>(userId, language);
-            var viewModel = new ExpensesListingViewModel { Expenses = expenses };
+            var viewModel = new ExpensesListingViewModel 
+            { 
+                Expenses = expenses,
+                ExpenseGroupListItems = await this.expenseGroupService.AllLocalized<ExpenseGroupSelectListItem>(language)
+            };
             return View(viewModel);
+        }
+
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> GetSortedByDate(string sortType, int groupId)
+        {
+            var language = this.GetCurrentLanguage();
+            var userId = this.User.GetLoggedInUserId<string>();
+            IEnumerable<ExpenseViewModel> expenses;
+
+            if (Enum.TryParse(sortType, true, out SortTypes parsedType))
+            {
+                expenses = await this.expensesService.AllByUserIdAndGroupIdLocalizedSortedByDate<ExpenseViewModel>(userId, groupId, language, parsedType);
+            }
+            else
+            {
+                expenses = await this.expensesService.AllByUserIdLocalized<ExpenseViewModel>(userId, language);
+            }
+          
+            var viewModel = new ExpensesListingViewModel 
+            { 
+                Expenses = expenses,
+                ExpenseGroupListItems = await this.expenseGroupService.AllLocalized<ExpenseGroupSelectListItem>(language)
+            };
+
+            return PartialView("_ExpensesTableBodyPartial", viewModel);
+        }
+
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> GetSortedByAmount(string sortType, int groupId)
+        {
+            var language = this.GetCurrentLanguage();
+            var userId = this.User.GetLoggedInUserId<string>();
+            IEnumerable<ExpenseViewModel> expenses;
+
+            if (Enum.TryParse(sortType, true, out SortTypes parsedType))
+            {
+                expenses = await this.expensesService.AllByUserIdAndGroupIdLocalizedSortedByAmount<ExpenseViewModel>(userId, groupId, language, parsedType);
+            }
+            else
+            {
+                expenses = await this.expensesService.AllByUserIdLocalized<ExpenseViewModel>(userId, language);
+            }
+
+            var viewModel = new ExpensesListingViewModel 
+            {
+                Expenses = expenses,
+                ExpenseGroupListItems = await this.expenseGroupService.AllLocalized<ExpenseGroupSelectListItem>(language)
+            };
+
+            return PartialView("_ExpensesTableBodyPartial", viewModel);
+        }
+
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> GetSortedByDescription(string sortType, int groupId)
+        {
+            var language = this.GetCurrentLanguage();
+            var userId = this.User.GetLoggedInUserId<string>();
+            IEnumerable<ExpenseViewModel> expenses;
+
+            if (Enum.TryParse(sortType, true, out SortTypes parsedType))
+            {
+                expenses = await this.expensesService.AllByUserIdAndGroupIdLocalizedSortedByDescription<ExpenseViewModel>(userId, groupId, language, parsedType);
+            }
+            else
+            {
+                expenses = await this.expensesService.AllByUserIdLocalized<ExpenseViewModel>(userId, language);
+            }
+
+            var viewModel = new ExpensesListingViewModel 
+            {
+                Expenses = expenses,
+                ExpenseGroupListItems = await this.expenseGroupService.AllLocalized<ExpenseGroupSelectListItem>(language)
+            };
+
+            return PartialView("_ExpensesTableBodyPartial", viewModel);
+        }
+
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> GetGrouped(int groupId)
+        {
+            var language = this.GetCurrentLanguage();
+            var userId = this.User.GetLoggedInUserId<string>();
+            IEnumerable<ExpenseViewModel> expenses;
+
+            if (groupId == 0)
+            {
+                expenses = await this.expensesService.AllByUserIdLocalized<ExpenseViewModel>(userId, language);
+            }
+            else
+            {
+                expenses = await this.expensesService.AllByUserIdAndGroupIdLocalized<ExpenseViewModel>(userId, groupId, language);
+            }
+            
+            var viewModel = new ExpensesListingViewModel
+            {
+                Expenses = expenses,
+                ExpenseGroupListItems = await this.expenseGroupService.AllLocalized<ExpenseGroupSelectListItem>(language)
+            };
+
+            return PartialView("_ExpensesTableBodyPartial", viewModel);
         }
 
         [HttpGet]

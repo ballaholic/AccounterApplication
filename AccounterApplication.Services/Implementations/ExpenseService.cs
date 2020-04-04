@@ -1,6 +1,5 @@
 ﻿namespace AccounterApplication.Services.Implementations
 {
-
     using System.Linq;
     using System.Threading.Tasks;
     using System.Collections.Generic;
@@ -32,8 +31,7 @@
         public async Task<IEnumerable<T>> AllByUserId<T>(string userId)
             => await this.expenseRepository
                 .All()
-                .Where(e => e
-                    .UserId.Equals(userId))
+                .Where(e => e.UserId.Equals(userId))
                 .OrderByDescending(e => e.CreatedOn)
                 .To<T>()
                 .ToListAsync();
@@ -41,11 +39,92 @@
         public async Task<IEnumerable<T>> AllByUserIdLocalized<T>(string userId, Languages language)
             => await this.expenseRepository
                 .All()
-                .Where(e => e
-                    .UserId.Equals(userId))
+                .Where(e => e.UserId.Equals(userId))
                 .OrderByDescending(e => e.CreatedOn)
                 .To<T>(new { language })
                 .ToListAsync();
+
+        public async Task<IEnumerable<T>> AllByUserIdAndGroupIdLocalized<T>(string userId, int groupId, Languages language)
+            => await this.expenseRepository
+                .All()
+                .Where(e => e.UserId.Equals(userId) && e.ExpenseGroupId.Equals(groupId))
+                .OrderByDescending(e => e.CreatedOn)
+                .To<T>(new { language })
+                .ToListAsync();
+        public async Task<IEnumerable<T>> AllByUserIdAndGroupIdLocalizedSortedByDate<T>(string userId, int groupId, Languages language, SortTypes sortType)
+        {
+            var expenses = this.expenseRepository
+                .All()
+                .Where(e => e.UserId.Equals(userId));
+
+            if (groupId != 0)
+            {
+                expenses = expenses.Where(e => e.ExpenseGroupId.Equals(groupId));
+            }
+
+            if (sortType.Equals(SortTypes.Ascending))
+            {
+                expenses = expenses.OrderBy(x => x.ExpenseDate);
+            }
+            else
+            {
+                expenses = expenses.OrderByDescending(x => x.ExpenseDate);
+            }
+
+            return await expenses
+                    .To<T>(new { language })
+                    .ToListAsync();
+        }
+
+        public async Task<IEnumerable<T>> AllByUserIdAndGroupIdLocalizedSortedByAmount<T>(string userId, int groupId, Languages language, SortTypes sortType)
+        {
+            var expenses = this.expenseRepository
+                .All()
+                .Where(e => e.UserId.Equals(userId));
+
+            if (groupId != 0)
+            {
+                expenses = expenses.Where(e => e.ExpenseGroupId.Equals(groupId));
+            }
+
+            if (sortType.Equals(SortTypes.Ascending))
+            {
+                expenses = expenses.OrderBy(x => x.ExpenseAmount);
+            }
+            else
+            {
+                expenses = expenses.OrderByDescending(x => x.ExpenseAmount);
+            }
+
+            return await expenses
+                    .To<T>(new { language })
+                    .ToListAsync();
+        }
+
+        public async Task<IEnumerable<T>> AllByUserIdAndGroupIdLocalizedSortedByDescription<T>(string userId, int groupId, Languages language, SortTypes sortType)
+        {
+            var expenses = this.expenseRepository
+                .All()
+                .Where(e => e.UserId.Equals(userId));
+
+            if (groupId != 0)
+            {
+                expenses = expenses.Where(e => e.ExpenseGroupId.Equals(groupId));
+            }
+
+            if (sortType.Equals(SortTypes.Ascending))
+            {
+                expenses = expenses.OrderBy(x => x.Description);
+            }
+            else
+            {
+                expenses = expenses.OrderByDescending(x => x.Description);
+            }
+
+            return await expenses
+                    .To<T>(new { language })
+                    .ToListAsync();
+        }
 
         public async Task AddAsync(Expense expense)
         {

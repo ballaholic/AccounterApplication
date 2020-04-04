@@ -23,7 +23,6 @@ namespace AccounterApplication.Web.Areas.Identity.Pages.Account.Manage
             _signInManager = signInManager;
         }
 
-        [BindProperty]
         [Display(Name = "Username", ResourceType = typeof(Resources))]
         public string Username { get; set; }
 
@@ -77,18 +76,6 @@ namespace AccounterApplication.Web.Areas.Identity.Pages.Account.Manage
             {
                 await LoadAsync(user);
                 return Page();
-            }
-
-            var username = await _userManager.GetUserNameAsync(user);
-            if (Username != username)
-            {
-                var setUsernameResult = await _userManager.SetUserNameAsync(user, Username);
-                if (!setUsernameResult.Succeeded)
-                {
-                    var userId = await _userManager.GetUserIdAsync(user);
-                    throw new InvalidOperationException($"Unexpected error occurred setting username for user with ID '{userId}'.");
-                }
-
             }
 
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);

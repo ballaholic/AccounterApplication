@@ -12,6 +12,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 
+using Resources = AccounterApplication.Common.LocalizationResources.ViewModels.ManageAccountModelResources;
+
 namespace AccounterApplication.Web.Areas.Identity.Pages.Account.Manage
 {
     public partial class EmailModel : PageModel
@@ -32,6 +34,7 @@ namespace AccounterApplication.Web.Areas.Identity.Pages.Account.Manage
 
         public string Username { get; set; }
 
+        [Display(Name = "Email", ResourceType = typeof(Resources))]
         public string Email { get; set; }
 
         public bool IsEmailConfirmed { get; set; }
@@ -46,7 +49,7 @@ namespace AccounterApplication.Web.Areas.Identity.Pages.Account.Manage
         {
             [Required]
             [EmailAddress]
-            [Display(Name = "New email")]
+            [Display(Name = "NewEmail", ResourceType = typeof(Resources))]
             public string NewEmail { get; set; }
         }
 

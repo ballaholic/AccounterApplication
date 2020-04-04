@@ -1,12 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
 using System.Threading.Tasks;
 using AccounterApplication.Data.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+
+using Resources = AccounterApplication.Common.LocalizationResources.ViewModels.ManageAccountModelResources;
 
 namespace AccounterApplication.Web.Areas.Identity.Pages.Account.Manage
 {
@@ -23,6 +23,8 @@ namespace AccounterApplication.Web.Areas.Identity.Pages.Account.Manage
             _signInManager = signInManager;
         }
 
+        [BindProperty]
+        [Display(Name = "Username", ResourceType = typeof(Resources))]
         public string Username { get; set; }
 
         [TempData]
@@ -34,7 +36,7 @@ namespace AccounterApplication.Web.Areas.Identity.Pages.Account.Manage
         public class InputModel
         {
             [Phone]
-            [Display(Name = "Phone number")]
+            [Display(Name = "PhoneNumber", ResourceType = typeof(Resources))]
             public string PhoneNumber { get; set; }
         }
 
@@ -77,6 +79,19 @@ namespace AccounterApplication.Web.Areas.Identity.Pages.Account.Manage
                 return Page();
             }
 
+            var username = await _userManager.GetUserNameAsync(user);
+            if (Username != username)
+            {
+                var setUsernameResult = await _userManager.SetUserNameAsync(user, Username);
+                if (!setUsernameResult.Succeeded)
+                {
+                    var userId = await _userManager.GetUserIdAsync(user);
+                    throw new InvalidOperationException($"Unexpected error occurred setting username for user with ID '{userId}'.");
+                }
+
+            }
+
+
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
             if (Input.PhoneNumber != phoneNumber)
             {
@@ -89,7 +104,7 @@ namespace AccounterApplication.Web.Areas.Identity.Pages.Account.Manage
             }
 
             await _signInManager.RefreshSignInAsync(user);
-            StatusMessage = "Your profile has been updated";
+            StatusMessage = Resources.ProfileUpdated;
             return RedirectToPage();
         }
     }

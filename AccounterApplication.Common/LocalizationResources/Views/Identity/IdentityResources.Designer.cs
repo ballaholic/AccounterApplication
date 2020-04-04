@@ -62,11 +62,56 @@ namespace AccounterApplication.Common.LocalizationResources.Views.Identity {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Промени настройките на акаунта си.
+        /// </summary>
+        public static string ChangeAccountSettings {
+            get {
+                return ResourceManager.GetString("ChangeAccountSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Промяна на електронна поща.
+        /// </summary>
+        public static string ChangeEmail {
+            get {
+                return ResourceManager.GetString("ChangeEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Промени паролата си.
+        /// </summary>
+        public static string ChangePassword {
+            get {
+                return ResourceManager.GetString("ChangePassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Създай нов акаунт.
         /// </summary>
         public static string CreateAccount {
             get {
                 return ResourceManager.GetString("CreateAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Електронна поща.
+        /// </summary>
+        public static string Email {
+            get {
+                return ResourceManager.GetString("Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Външни акаунти.
+        /// </summary>
+        public static string ExternalLogins {
+            get {
+                return ResourceManager.GetString("ExternalLogins", resourceCulture);
             }
         }
         
@@ -89,6 +134,42 @@ namespace AccounterApplication.Common.LocalizationResources.Views.Identity {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Управление на личен акаунт.
+        /// </summary>
+        public static string ManageYourAccount {
+            get {
+                return ResourceManager.GetString("ManageYourAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Парола.
+        /// </summary>
+        public static string Password {
+            get {
+                return ResourceManager.GetString("Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Лични данни.
+        /// </summary>
+        public static string PersonalData {
+            get {
+                return ResourceManager.GetString("PersonalData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Профил.
+        /// </summary>
+        public static string Profile {
+            get {
+                return ResourceManager.GetString("Profile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Регистрация.
         /// </summary>
         public static string Register {
@@ -103,6 +184,24 @@ namespace AccounterApplication.Common.LocalizationResources.Views.Identity {
         public static string RegisterUser {
             get {
                 return ResourceManager.GetString("RegisterUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Изпратете имейл за потвърждение.
+        /// </summary>
+        public static string SendVerificationEmail {
+            get {
+                return ResourceManager.GetString("SendVerificationEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Двуфакторна автентификация.
+        /// </summary>
+        public static string TwoFactorAuthentication {
+            get {
+                return ResourceManager.GetString("TwoFactorAuthentication", resourceCulture);
             }
         }
     }

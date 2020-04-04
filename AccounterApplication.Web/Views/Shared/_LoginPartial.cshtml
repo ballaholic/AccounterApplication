@@ -11,17 +11,17 @@
     {       
         <li class="nav-item dropdown no-arrow">
             <a class="nav-link text-dark" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
-                <span class="mr-2 d-none d-lg-inline text-gray-600">@GreetingHelper.GreetingMessage(User.GetShortName())</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600">@GreetingHelper.GreetingMessage(User.Identity.Name)</span>
                 <i class="fa fa-user" aria-hidden="true"></i>
 
             </a>
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" asp-controller="Users" asp-action="Overview">
+                <a class="dropdown-item"href="/Identity/Account/Manage">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                     @Resources.Profile
                 </a>
-                <a class="dropdown-item" href="/Identity/Account/Manage">
+                <a class="dropdown-item" href="#">
                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                     @Resources.Settings
                 </a>

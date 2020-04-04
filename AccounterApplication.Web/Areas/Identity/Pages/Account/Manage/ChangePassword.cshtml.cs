@@ -10,6 +10,9 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 namespace AccounterApplication.Web.Areas.Identity.Pages.Account.Manage
 {
+
+    using Resources = AccounterApplication.Common.LocalizationResources.ViewModels.ManageAccountModelResources;
+
     public class ChangePasswordModel : PageModel
     {
         private readonly UserManager<ApplicationUser> _userManager;
@@ -34,20 +37,20 @@ namespace AccounterApplication.Web.Areas.Identity.Pages.Account.Manage
 
         public class InputModel
         {
-            [Required]
+            [Required(ErrorMessageResourceType = typeof(Resources), ErrorMessageResourceName = "Required")]
             [DataType(DataType.Password)]
-            [Display(Name = "Current password")]
+            [Display(Name = "CurrentPassword", ResourceType = typeof(Resources))]
             public string OldPassword { get; set; }
 
-            [Required]
+            [Required(ErrorMessageResourceType = typeof(Resources), ErrorMessageResourceName = "Required")]
             [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
             [DataType(DataType.Password)]
-            [Display(Name = "New password")]
+            [Display(Name = "NewPassword", ResourceType = typeof(Resources))]
             public string NewPassword { get; set; }
 
             [DataType(DataType.Password)]
-            [Display(Name = "Confirm new password")]
-            [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
+            [Display(Name = "ConfirmPassword", ResourceType = typeof(Resources))]
+            [Compare("NewPassword", ErrorMessageResourceType = typeof(Resources), ErrorMessageResourceName = "PasswordsNotMatch")]
             public string ConfirmPassword { get; set; }
         }
 
@@ -93,7 +96,7 @@ namespace AccounterApplication.Web.Areas.Identity.Pages.Account.Manage
 
             await _signInManager.RefreshSignInAsync(user);
             _logger.LogInformation("User changed their password successfully.");
-            StatusMessage = "Your password has been changed.";
+            StatusMessage = Resources.PasswordChanged;
 
             return RedirectToPage();
         }

@@ -117,8 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ChangeAccountSettings" xml:space="preserve">
+    <value>Промени настройките на акаунта си</value>
+  </data>
+  <data name="ChangeEmail" xml:space="preserve">
+    <value>Промяна на електронна поща</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Промени паролата си</value>
+  </data>
   <data name="CreateAccount" xml:space="preserve">
     <value>Създай нов акаунт</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Електронна поща</value>
+  </data>
+  <data name="ExternalLogins" xml:space="preserve">
+    <value>Външни акаунти</value>
   </data>
   <data name="ForgotPassword" xml:space="preserve">
     <value>Забравена парола ?</value>
@@ -126,10 +141,28 @@
   <data name="Login" xml:space="preserve">
     <value>Влез</value>
   </data>
+  <data name="ManageYourAccount" xml:space="preserve">
+    <value>Управление на личен акаунт</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Парола</value>
+  </data>
+  <data name="PersonalData" xml:space="preserve">
+    <value>Лични данни</value>
+  </data>
+  <data name="Profile" xml:space="preserve">
+    <value>Профил</value>
+  </data>
   <data name="Register" xml:space="preserve">
     <value>Регистрация</value>
   </data>
   <data name="RegisterUser" xml:space="preserve">
     <value>Регистрирай се като нов потребител</value>
+  </data>
+  <data name="SendVerificationEmail" xml:space="preserve">
+    <value>Изпратете имейл за потвърждение</value>
+  </data>
+  <data name="TwoFactorAuthentication" xml:space="preserve">
+    <value>Двуфакторна автентификация</value>
   </data>
 </root>

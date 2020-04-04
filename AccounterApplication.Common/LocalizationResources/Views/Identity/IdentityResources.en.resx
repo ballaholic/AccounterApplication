@@ -117,8 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ChangeAccountSettings" xml:space="preserve">
+    <value>Change your account settings</value>
+  </data>
+  <data name="ChangeEmail" xml:space="preserve">
+    <value>Change Email</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Change password</value>
+  </data>
   <data name="CreateAccount" xml:space="preserve">
     <value>Create a new account</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="ExternalLogins" xml:space="preserve">
+    <value>External logins</value>
   </data>
   <data name="ForgotPassword" xml:space="preserve">
     <value>Forgot your password ?</value>
@@ -126,10 +141,28 @@
   <data name="Login" xml:space="preserve">
     <value>Log in</value>
   </data>
+  <data name="ManageYourAccount" xml:space="preserve">
+    <value>Manage your account</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="PersonalData" xml:space="preserve">
+    <value>Personal data</value>
+  </data>
+  <data name="Profile" xml:space="preserve">
+    <value>Profile</value>
+  </data>
   <data name="Register" xml:space="preserve">
     <value>Register</value>
   </data>
   <data name="RegisterNewUser" xml:space="preserve">
     <value>Register as a new user</value>
+  </data>
+  <data name="SendVerificationEmail" xml:space="preserve">
+    <value>Send verification email</value>
+  </data>
+  <data name="TwoFactorAuthentication" xml:space="preserve">
+    <value>Two-factor authentication</value>
   </data>
 </root>

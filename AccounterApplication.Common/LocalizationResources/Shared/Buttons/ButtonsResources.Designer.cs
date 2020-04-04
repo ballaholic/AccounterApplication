@@ -114,5 +114,14 @@ namespace AccounterApplication.Common.LocalizationResources.Shared.Buttons {
                 return ResourceManager.GetString("Update", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Обнови паролата.
+        /// </summary>
+        public static string UpdatePassword {
+            get {
+                return ResourceManager.GetString("UpdatePassword", resourceCulture);
+            }
+        }
     }
 }

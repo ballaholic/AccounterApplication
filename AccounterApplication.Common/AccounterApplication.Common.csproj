@@ -39,6 +39,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>LoginModelResources.resx</DependentUpon>
     </Compile>
+    <Compile Update="LocalizationResources\ViewModels\ManageAccountModelResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ManageAccountModelResources.resx</DependentUpon>
+    </Compile>
     <Compile Update="LocalizationResources\ViewModels\MonthlyIncomeInputModelResources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -103,6 +108,10 @@
     <EmbeddedResource Update="LocalizationResources\ViewModels\LoginModelResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>LoginModelResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="LocalizationResources\ViewModels\ManageAccountModelResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ManageAccountModelResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="LocalizationResources\ViewModels\MonthlyIncomeInputModelResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

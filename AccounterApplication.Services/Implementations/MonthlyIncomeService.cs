@@ -44,6 +44,47 @@
                 .To<T>(new { language })
                 .ToListAsync();
 
+        public async Task<IEnumerable<T>> AllByUserIdLocalizedSortedByDate<T>(string userId, Languages language, SortTypes sortType)
+        {
+            var incomes = this.monthlyIncomeRepository
+                .All()
+                .Where(i => i.UserId.Equals(userId));
+
+            if (sortType.Equals(SortTypes.Ascending))
+            {
+                incomes = incomes.OrderBy(i => i.IncomePeriod);
+            }
+            else
+            {
+                incomes = incomes.OrderByDescending(i => i.IncomePeriod);
+            }
+
+            return await incomes
+                    .To<T>(new { language })
+                    .ToListAsync();
+        }
+
+
+        public async Task<IEnumerable<T>> AllByUserIdLocalizedSortedByAmount<T>(string userId, Languages language, SortTypes sortType)
+        {
+            var incomes = this.monthlyIncomeRepository
+                .All()
+                .Where(i => i.UserId.Equals(userId));
+
+            if (sortType.Equals(SortTypes.Ascending))
+            {
+                incomes = incomes.OrderBy(i => i.Amount);
+            }
+            else
+            {
+                incomes = incomes.OrderByDescending(i => i.Amount);
+            }
+
+            return await incomes
+                    .To<T>(new { language })
+                    .ToListAsync();
+        }
+
         public async Task<IEnumerable<T>> AllFromCurrentYear<T>()
             => await this.monthlyIncomeRepository
                 .All()

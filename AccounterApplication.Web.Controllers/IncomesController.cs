@@ -13,7 +13,8 @@
 
     using AlertType = Common.Enumerations.AlertMessageTypes;
     using Resources = Common.LocalizationResources.Shared.Messages.MessagesResources;
-
+    using System.Collections.Generic;
+    using AccounterApplication.Common.Enumerations;
 
     public class IncomesController : BaseController
     {
@@ -26,10 +27,55 @@
         [Authorize]
         public async Task<IActionResult> Index()
         {
+            var language = this.GetCurrentLanguage();
             var userId = this.User.GetLoggedInUserId<string>();
-            var monthlyIncomes = await this.monthlyIncomeService.AllFromCurrentMonthByUserId<MonthlyIncomeViewModel>(userId);
+            var monthlyIncomes = await this.monthlyIncomeService.AllByUserIdLocalized<MonthlyIncomeViewModel>(userId, language);
             var viewModel = new MonthlyIncomesListingViewModel { MonthlyIncomes = monthlyIncomes };
             return View(viewModel);
+        }
+
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> GetSortedByDate(string sortType)
+        {
+            var language = this.GetCurrentLanguage();
+            var userId = this.User.GetLoggedInUserId<string>();
+            IEnumerable<MonthlyIncomeViewModel> incomes;
+
+            if (Enum.TryParse(sortType, true, out SortTypes parsedType))
+            {
+                incomes = await this.monthlyIncomeService.AllByUserIdLocalizedSortedByDate<MonthlyIncomeViewModel>(userId, language, parsedType);
+            }
+            else
+            {
+                incomes = await this.monthlyIncomeService.AllByUserIdLocalized<MonthlyIncomeViewModel>(userId, language);
+            }
+
+            var viewModel = new MonthlyIncomesListingViewModel { MonthlyIncomes = incomes };
+
+            return PartialView("_MonthlyIncomesTableBodyPartial", viewModel);
+        }
+
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> GetSortedByAmount(string sortType)
+        {
+            var language = this.GetCurrentLanguage();
+            var userId = this.User.GetLoggedInUserId<string>();
+            IEnumerable<MonthlyIncomeViewModel> incomes;
+
+            if (Enum.TryParse(sortType, true, out SortTypes parsedType))
+            {
+                incomes = await this.monthlyIncomeService.AllByUserIdLocalizedSortedByAmount<MonthlyIncomeViewModel>(userId, language, parsedType);
+            }
+            else
+            {
+                incomes = await this.monthlyIncomeService.AllByUserIdLocalized<MonthlyIncomeViewModel>(userId, language);
+            }
+
+            var viewModel = new MonthlyIncomesListingViewModel { MonthlyIncomes = incomes };
+
+            return PartialView("_MonthlyIncomesTableBodyPartial", viewModel);
         }
 
         [HttpGet]

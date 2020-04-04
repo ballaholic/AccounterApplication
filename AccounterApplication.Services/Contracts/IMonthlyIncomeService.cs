@@ -2,13 +2,21 @@
 {
     using System.Threading.Tasks;
     using System.Collections.Generic;
-    using AccounterApplication.Data.Models;
+
+    using Data.Models;
+    using Common.Enumerations;
 
     public interface IMonthlyIncomeService
     {
         Task<IEnumerable<T>> All<T>();
 
         Task<IEnumerable<T>> AllByUserId<T>(string userId);
+
+        Task<IEnumerable<T>> AllByUserIdLocalized<T>(string userId, Languages language);
+
+        Task<IEnumerable<T>> AllByUserIdLocalizedSortedByDate<T>(string userId, Languages language, SortTypes sortType);
+
+        Task<IEnumerable<T>> AllByUserIdLocalizedSortedByAmount<T>(string userId, Languages language, SortTypes sortType);
 
         Task<IEnumerable<T>> AllFromCurrentYear<T>();
 

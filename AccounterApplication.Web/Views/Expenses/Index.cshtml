@@ -21,19 +21,19 @@
             <thead class="card-header py-3 thead-light text-gray-200">
                 <tr>
                     <th scope="col">
-                        <a href="#" class="th-sortable sort-date" data-sort-type="ascending" data-url="@Url.Action(nameof(ExpensesController.GetSortedByDate), nameof(ExpensesController).Replace(nameof(Controller), string.Empty))">
+                        <a href="#" class="th-sortable sort-date-expenses" data-sort-type="ascending" data-url="@Url.Action(nameof(ExpensesController.GetSortedByDate), nameof(ExpensesController).Replace(nameof(Controller), string.Empty))">
                             @Resources.Date
                             <i class="fa fa-sort" aria-hidden="true"></i>
                         </a>
                     </th>
                     <th scope="col">
-                        <a href="#" class="th-sortable sort-amount" data-sort-type="ascending" data-url="@Url.Action(nameof(ExpensesController.GetSortedByAmount), nameof(ExpensesController).Replace(nameof(Controller), string.Empty))">
+                        <a href="#" class="th-sortable sort-amount-expenses" data-sort-type="ascending" data-url="@Url.Action(nameof(ExpensesController.GetSortedByAmount), nameof(ExpensesController).Replace(nameof(Controller), string.Empty))">
                             @Resources.Amount
                             <i class="fa fa-sort" aria-hidden="true"></i>
                         </a>
                     </th>
                     <th scope="col">
-                        <a href="#" class="th-sortable sort-description" data-sort-type="ascending" data-url="@Url.Action(nameof(ExpensesController.GetSortedByDescription), nameof(ExpensesController).Replace(nameof(Controller), string.Empty))">
+                        <a href="#" class="th-sortable sort-description-expenses" data-sort-type="ascending" data-url="@Url.Action(nameof(ExpensesController.GetSortedByDescription), nameof(ExpensesController).Replace(nameof(Controller), string.Empty))">
                             @Resources.Description
                             <i class="fa fa-sort" aria-hidden="true"></i>
                         </a>

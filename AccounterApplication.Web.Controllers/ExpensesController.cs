@@ -33,7 +33,7 @@
         public async Task<IActionResult> Index()
         {
             var language = this.GetCurrentLanguage();
-            var userId = this.User.GetLoggedInUserId<string>();
+            var userId = this.GetUserId<string>();
             var expenses = await this.expensesService.AllByUserIdLocalized<ExpenseViewModel>(userId, language);
             var viewModel = new ExpensesListingViewModel 
             { 
@@ -48,7 +48,7 @@
         public async Task<IActionResult> GetSortedByDate(string sortType, int groupId)
         {
             var language = this.GetCurrentLanguage();
-            var userId = this.User.GetLoggedInUserId<string>();
+            var userId = this.GetUserId<string>();
             IEnumerable<ExpenseViewModel> expenses;
 
             if (Enum.TryParse(sortType, true, out SortTypes parsedType))
@@ -74,7 +74,7 @@
         public async Task<IActionResult> GetSortedByAmount(string sortType, int groupId)
         {
             var language = this.GetCurrentLanguage();
-            var userId = this.User.GetLoggedInUserId<string>();
+            var userId = this.GetUserId<string>();
             IEnumerable<ExpenseViewModel> expenses;
 
             if (Enum.TryParse(sortType, true, out SortTypes parsedType))
@@ -100,7 +100,7 @@
         public async Task<IActionResult> GetSortedByDescription(string sortType, int groupId)
         {
             var language = this.GetCurrentLanguage();
-            var userId = this.User.GetLoggedInUserId<string>();
+            var userId = this.GetUserId<string>();
             IEnumerable<ExpenseViewModel> expenses;
 
             if (Enum.TryParse(sortType, true, out SortTypes parsedType))
@@ -126,7 +126,7 @@
         public async Task<IActionResult> GetGrouped(int groupId)
         {
             var language = this.GetCurrentLanguage();
-            var userId = this.User.GetLoggedInUserId<string>();
+            var userId = this.GetUserId<string>();
             IEnumerable<ExpenseViewModel> expenses;
 
             if (groupId == 0)
@@ -194,7 +194,7 @@
         [Authorize]
         public async Task<IActionResult> EditExpense(int id)
         {
-            var userId = this.User.GetLoggedInUserId<string>();
+            var userId = this.GetUserId<string>();
             var expense = await this.expensesService.GetByIdAsync(userId, id);
             var model = new ExpenseInputModel
             {
@@ -219,7 +219,7 @@
 
             try
             {
-                var userId = this.User.GetLoggedInUserId<string>();
+                var userId = this.GetUserId<string>();
 
                 var expense = await this.expensesService.GetByIdAsync(userId, model.Id);
 
@@ -248,7 +248,7 @@
         [Authorize]
         public async Task<IActionResult> DeleteExpense(int id)
         {
-            var userId = this.User.GetLoggedInUserId<string>();
+            var userId = this.GetUserId<string>();
             bool itemIdIsValid = this.expensesService.CheckIfExpenseIdIsValid(id, userId);
             bool result;
 

@@ -21,7 +21,7 @@
         [Authorize]
         public async Task<IActionResult> Index()
         {
-            var userId = this.User.GetLoggedInUserId<string>();
+            var userId = this.GetUserId<string>();
             var monthlyIncomes = await this.monthlyIncomeService.AllFromCurrentMonthByUserId<MonthlyIncomeViewModel>(userId);
             var viewModel = new UserDashboardViewModel { MonthlyIncomes = monthlyIncomes };
 

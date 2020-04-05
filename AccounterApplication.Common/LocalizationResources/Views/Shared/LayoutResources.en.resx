@@ -129,6 +129,9 @@
   <data name="Expenses" xml:space="preserve">
     <value>Expenses</value>
   </data>
+  <data name="Funds" xml:space="preserve">
+    <value>Funds</value>
+  </data>
   <data name="Incomes" xml:space="preserve">
     <value>Incomes</value>
   </data>

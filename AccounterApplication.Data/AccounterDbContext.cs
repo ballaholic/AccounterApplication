@@ -30,6 +30,12 @@
 
         public DbSet<MonthlyIncome> MonthlyIncomes { get; set; }
 
+        public DbSet<ComponentType> ComponentTypes { get; set; }
+
+        public DbSet<Currency> Currencies { get; set; }
+
+        public DbSet<Component> Components { get; set; }
+
         public override int SaveChanges() => this.SaveChanges(true);
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)
@@ -63,6 +69,7 @@
             // Set global query filter for not deleted entities only
             var deletableEntityTypes = entityTypes
                 .Where(et => et.ClrType != null && typeof(IDeletableEntity).IsAssignableFrom(et.ClrType));
+
             foreach (var deletableEntityType in deletableEntityTypes)
             {
                 var method = SetIsDeletedQueryFilterMethod.MakeGenericMethod(deletableEntityType.ClrType);
@@ -72,6 +79,7 @@
             // Disable cascade delete
             var foreignKeys = entityTypes
                 .SelectMany(e => e.GetForeignKeys().Where(f => f.DeleteBehavior == DeleteBehavior.Cascade));
+
             foreach (var foreignKey in foreignKeys)
             {
                 foreignKey.DeleteBehavior = DeleteBehavior.Restrict;
@@ -91,7 +99,22 @@
                 .Entity<MonthlyIncome>()
                 .HasOne(a => a.User)
                 .WithMany(a => a.MonthlyIncomes)
-                .HasForeignKey(a => a.UserId);         
+                .HasForeignKey(a => a.UserId);
+            builder
+                .Entity<Component>()
+                .HasOne(c => c.ComponentType)
+                .WithMany()
+                .HasForeignKey(c => c.ComponentTypeId);
+            builder
+                .Entity<Component>()
+                .HasOne(c => c.Currency)
+                .WithMany()
+                .HasForeignKey(c => c.CurrencyId);
+            builder
+                .Entity<Component>()
+                .HasOne(c => c.User)
+                .WithMany(a => a.Components)
+                .HasForeignKey(e => e.UserId);
         }
 
         private static void ConfigureUserIdentityRelations(ModelBuilder builder)

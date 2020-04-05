@@ -132,6 +132,9 @@
   <data name="Expenses" xml:space="preserve">
     <value>Разходи</value>
   </data>
+  <data name="Funds" xml:space="preserve">
+    <value>Средства</value>
+  </data>
   <data name="Incomes" xml:space="preserve">
     <value>Приходи</value>
   </data>

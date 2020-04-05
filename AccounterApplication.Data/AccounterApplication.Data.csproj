@@ -11,6 +11,12 @@
     <Compile Remove="Migrations\20200227105429_Add_Prop_To_User_MonthlyEarnings.Designer.cs" />
     <Compile Remove="Migrations\20200228081328_CheckChanges.cs" />
     <Compile Remove="Migrations\20200228081328_CheckChanges.Designer.cs" />
+    <Compile Remove="Migrations\20200405124833_Made_Columns_In_Components_Table_Required.cs" />
+    <Compile Remove="Migrations\20200405124833_Made_Columns_In_Components_Table_Required.Designer.cs" />
+    <Compile Remove="Migrations\20200405125549_Create_Currency_ComponentType_And_Component.cs" />
+    <Compile Remove="Migrations\20200405125549_Create_Currency_ComponentType_And_Component.Designer.cs" />
+    <Compile Remove="Migrations\20200405132804_Added_Code_To_Currencies.cs" />
+    <Compile Remove="Migrations\20200405132804_Added_Code_To_Currencies.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -10,6 +10,7 @@
     using Microsoft.AspNetCore.Localization;
 
     using Web.ViewModels;
+    using Infrastructure;
     using Services.Mapping;
     using Common.Enumerations;
 
@@ -50,6 +51,8 @@
                 return Languages.English;
             }
         }
+
+        protected T GetUserId<T>() => this.User.GetLoggedInUserId<T>();
 
         protected void AddAlertMessageToTempData(AlertMessageTypes alertMessageType, string title, string message)
         {

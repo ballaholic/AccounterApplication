@@ -28,7 +28,7 @@
         public async Task<IActionResult> Index()
         {
             var language = this.GetCurrentLanguage();
-            var userId = this.User.GetLoggedInUserId<string>();
+            var userId = this.GetUserId<string>();
             var monthlyIncomes = await this.monthlyIncomeService.AllByUserIdLocalized<MonthlyIncomeViewModel>(userId, language);
             var viewModel = new MonthlyIncomesListingViewModel { MonthlyIncomes = monthlyIncomes };
             return View(viewModel);
@@ -39,7 +39,7 @@
         public async Task<IActionResult> GetSortedByDate(string sortType)
         {
             var language = this.GetCurrentLanguage();
-            var userId = this.User.GetLoggedInUserId<string>();
+            var userId = this.GetUserId<string>();
             IEnumerable<MonthlyIncomeViewModel> incomes;
 
             if (Enum.TryParse(sortType, true, out SortTypes parsedType))
@@ -61,7 +61,7 @@
         public async Task<IActionResult> GetSortedByAmount(string sortType)
         {
             var language = this.GetCurrentLanguage();
-            var userId = this.User.GetLoggedInUserId<string>();
+            var userId = this.GetUserId<string>();
             IEnumerable<MonthlyIncomeViewModel> incomes;
 
             if (Enum.TryParse(sortType, true, out SortTypes parsedType))
@@ -113,7 +113,7 @@
         [Authorize]
         public async Task<IActionResult> EditMonthlyIncome(int id)
         {
-            var userId = this.User.GetLoggedInUserId<string>();
+            var userId = this.GetUserId<string>();
             var monthlyIncome = await this.monthlyIncomeService.GetByIdAsync(userId, id);
             var model = new MonthlyIncomeInputModel
             {
@@ -136,7 +136,7 @@
 
             try
             {
-                var userId = this.User.GetLoggedInUserId<string>();
+                var userId = this.GetUserId<string>();
 
                 var monthlyIncome = await this.monthlyIncomeService.GetByIdAsync(userId, model.Id);
 
@@ -165,7 +165,7 @@
         [Authorize]
         public async Task<IActionResult> DeleteMonthlyIncome(int id)
         {
-            var userId = this.User.GetLoggedInUserId<string>();
+            var userId = this.GetUserId<string>();
             bool itemIdIsValid = this.monthlyIncomeService.CheckIfMonthlyIncomeIdIsValid(id, userId);
             bool result;
 

@@ -2,9 +2,10 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using AccounterApplication.Data.Common.Models;
+
     using Microsoft.AspNetCore.Identity;
+    
+    using Common.Models;
 
     public class ApplicationUser : IdentityUser, IAuditInfo, IDeletableEntity
     {
@@ -30,5 +31,7 @@
         public ICollection<Expense> Expenses { get; set; } = new List<Expense>();
 
         public ICollection<MonthlyIncome> MonthlyIncomes { get; set; } = new List<MonthlyIncome>();
+
+        public ICollection<Component> Components { get; set; } = new List<Component>();
     }
 }

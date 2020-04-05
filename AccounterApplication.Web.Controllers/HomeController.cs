@@ -3,23 +3,12 @@
     using System.Diagnostics;
 
     using Microsoft.AspNetCore.Mvc;
-    using Microsoft.Extensions.Localization;
 
     using ViewModels;
 
     public class HomeController : BaseController
     {
-        private readonly IStringLocalizer<HomeController> localizer;
-
-        public HomeController(IStringLocalizer<HomeController> localizer)
-        {
-            this.localizer = localizer;
-        }
-
-        public IActionResult Index() 
-        {
-            return View();
-        }    
+        public IActionResult Index() => View();
 
         public IActionResult Privacy() => View();
 

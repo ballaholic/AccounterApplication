@@ -106,6 +106,15 @@ namespace AccounterApplication.Common.LocalizationResources.Views.Shared {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Средства.
+        /// </summary>
+        public static string Funds {
+            get {
+                return ResourceManager.GetString("Funds", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Приходи.
         /// </summary>
         public static string Incomes {

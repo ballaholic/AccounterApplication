@@ -26,7 +26,9 @@
             {
                 new RoleSeeder(),
                 new AdminUserSeeder(),
-                new ExpenseGroupsSeeder()
+                new ExpenseGroupsSeeder(),
+                new CurrenciesSeeder(),
+                new ComponentTypesSeeder()
             };
 
             foreach (ISeeder seeder in seeders)

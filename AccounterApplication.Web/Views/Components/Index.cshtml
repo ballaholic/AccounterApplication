@@ -1,0 +1,48 @@
+﻿@using AccounterApplication.Web.ViewModels.Components
+
+@model ComponentsListingViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="card shadow-lg mb-lg-4">
+    <div class="table-responsive">
+        <table class="table table-borderless table-hover" cellspacing="0">
+            <thead class="card-header py-3 thead-light text-gray-200">
+                <tr>
+                    <th scope="col">
+                      Name
+                    </th>
+                    <th scope="col">
+                        Amount
+                    </th>
+                    <th scope="col">
+                        Type
+                    </th>
+                    <th scope="col">
+                        Currency
+                    </th>
+                    <th scope="col">
+                        Active
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="expenses-table-body">
+                @foreach (var component in Model.Components)
+                {
+                <tr class="text-gray-800">
+                    <td class="cell-clickable-edit">@component.Name</td>
+                    <td class="cell-clickable-edit">@component.Amount</td>
+                    <td class="cell-clickable-edit">@component.ComponentTypeName</td>
+                    <td class="cell-clickable-edit">@component.CurrencyCode</td>
+                    <td class="cell-clickable-edit">@component.IsActive</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

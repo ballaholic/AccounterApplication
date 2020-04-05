@@ -22,15 +22,16 @@
         {
             var language = Languages.English;
 
-            configuration.CreateMap<Expense, ExpenseViewModel>().ForMember(
-                m => m.ExpenseDate,
-                opt => opt.MapFrom(x => x.ExpenseDate.ToShortDateString()))
-            .ForMember(
-                m => m.ExpenseGroupName,
-                opt => opt.MapFrom(x => 
-                    language.Equals(Languages.Bulgarian)
-                        ? x.ExpenseGroup.NameBG
-                        : x.ExpenseGroup.NameEN));
+            configuration.CreateMap<Expense, ExpenseViewModel>()
+                .ForMember(
+                    m => m.ExpenseDate,
+                    opt => opt.MapFrom(x => x.ExpenseDate.ToShortDateString()))
+                .ForMember(
+                    m => m.ExpenseGroupName,
+                    opt => opt.MapFrom(x =>
+                        language.Equals(Languages.Bulgarian)
+                            ? x.ExpenseGroup.NameBG
+                            : x.ExpenseGroup.NameEN));
         }
     }
 }

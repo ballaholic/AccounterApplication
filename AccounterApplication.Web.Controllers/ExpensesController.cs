@@ -2,6 +2,7 @@
 {
     using System;
     using System.Threading.Tasks;
+    using System.Collections.Generic;
     
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Authorization;
@@ -9,13 +10,12 @@
     using Data.Models;
     using Infrastructure;
     using Services.Contracts;
+    using Common.Enumerations;
     using ViewModels.Expenses;
     using ViewModels.ExpenseGroups;
 
     using AlertType = Common.Enumerations.AlertMessageTypes;
     using Resources = Common.LocalizationResources.Shared.Messages.MessagesResources;
-    using AccounterApplication.Common.Enumerations;
-    using System.Collections.Generic;
 
     public class ExpensesController : BaseController
     {

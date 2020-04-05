@@ -6,8 +6,8 @@
 @foreach (var income in Model.MonthlyIncomes)
 {
     <tr class="text-gray-800">
-        <td class="cell-clickable-edit" data-url="@Url.Action(nameof(IncomesController.EditMonthlyIncome), nameof(IncomesController).Replace(nameof(Controller), string.Empty))" data-id="@income.Id">@income.IncomePeriod</td>
-        <td class="cell-clickable-edit" data-url="@Url.Action(nameof(IncomesController.EditMonthlyIncome), nameof(IncomesController).Replace(nameof(Controller), string.Empty))" data-id="@income.Id">@income.Amount</td>
+        <td class="cell-clickable-edit pointer" data-url="@Url.Action(nameof(IncomesController.EditMonthlyIncome), nameof(IncomesController).Replace(nameof(Controller), string.Empty))" data-id="@income.Id">@income.IncomePeriod</td>
+        <td class="cell-clickable-edit pointer" data-url="@Url.Action(nameof(IncomesController.EditMonthlyIncome), nameof(IncomesController).Replace(nameof(Controller), string.Empty))" data-id="@income.Id">@income.Amount</td>
         <td>
             <a href="#" class="btn btn-no-shadow trigger-delete"
                data-id="@income.Id"

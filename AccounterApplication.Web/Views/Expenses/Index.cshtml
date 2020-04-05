@@ -8,10 +8,6 @@
 
 @model ExpensesListingViewModel
 
-@section Styles
-{
-    <link rel="stylesheet" href="~/css/dataTables.bootstrap4.min.css" type="text/css" />
-}
 
 <h1>@ViewData["Title"]</h1>
 
@@ -67,8 +63,5 @@
 
 @section Scripts
 {
-    <script src="~/js/custom/sort.js" type="text/javascript" asp-append-version="true"></script>
-    <script src="~/js/custom/group.js" type="text/javascript" asp-append-version="true"></script>
-    <script src="~/js/custom/edit.js" type="text/javascript" asp-append-version="true"></script>
-    <script src="~/js/custom/delete.js" type="text/javascript" asp-append-version="true"></script>
+    <script src="~/js/table-functions.js" type="text/javascript" asp-append-version="true"></script>
 }

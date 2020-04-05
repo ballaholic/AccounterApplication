@@ -175,3 +175,7 @@ a.th-sortable {
     .th-dropdown:focus {
         box-shadow:none !important;
     }
+
+.pointer {
+    cursor: pointer;
+}

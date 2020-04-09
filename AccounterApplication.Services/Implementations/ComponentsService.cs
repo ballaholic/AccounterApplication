@@ -73,5 +73,11 @@
 
             return true;
         }
+
+        public async Task AddAsync(Component component)
+        {
+            await this.componentsRepository.AddAsync(component);
+            await this.componentsRepository.SaveChangesAsync();
+        }
     }
 }

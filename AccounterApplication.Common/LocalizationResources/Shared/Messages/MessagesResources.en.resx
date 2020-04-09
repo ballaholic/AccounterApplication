@@ -117,6 +117,30 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ComponentAddAmountError" xml:space="preserve">
+    <value>There was an error trying to add the amount.</value>
+  </data>
+  <data name="ComponentAddAmountSuccess" xml:space="preserve">
+    <value>The amount was added successfully.</value>
+  </data>
+  <data name="ComponentAddError" xml:space="preserve">
+    <value>There was an error trying to create the Component.</value>
+  </data>
+  <data name="ComponentAddSuccess" xml:space="preserve">
+    <value>The Component was created successfully.</value>
+  </data>
+  <data name="ComponentDeleteError" xml:space="preserve">
+    <value>There was an error trying to delete the Component.</value>
+  </data>
+  <data name="ComponentDeleteSuccess" xml:space="preserve">
+    <value>The Component was deleted successfully.</value>
+  </data>
+  <data name="ComponentUpdatedError" xml:space="preserve">
+    <value>There was an error trying to update the Component.</value>
+  </data>
+  <data name="ComponentUpdatedSuccess" xml:space="preserve">
+    <value>The Component was updated successfully.</value>
+  </data>
   <data name="Confirmation" xml:space="preserve">
     <value>Are you sure ?</value>
   </data>

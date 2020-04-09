@@ -126,6 +126,9 @@
   <data name="Cancel" xml:space="preserve">
     <value>Отказ</value>
   </data>
+  <data name="CreateFund" xml:space="preserve">
+    <value>Създай нова сметка</value>
+  </data>
   <data name="Delete" xml:space="preserve">
     <value>Изтрий</value>
   </data>

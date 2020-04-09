@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AccounterApplication.Common.LocalizationResources.Shared.Buttons {
+namespace AccounterApplication.Common.LocalizationResources.ViewModels {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace AccounterApplication.Common.LocalizationResources.Shared.Buttons {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class ButtonsResources {
+    public class ComponentInputModelResources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal ButtonsResources() {
+        internal ComponentInputModelResources() {
         }
         
         /// <summary>
@@ -39,8 +39,8 @@ namespace AccounterApplication.Common.LocalizationResources.Shared.Buttons {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AccounterApplication.Common.LocalizationResources.Shared.Buttons.ButtonsResources" +
-                            "", typeof(ButtonsResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AccounterApplication.Common.LocalizationResources.ViewModels.ComponentInputModelR" +
+                            "esources", typeof(ComponentInputModelResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -62,74 +62,56 @@ namespace AccounterApplication.Common.LocalizationResources.Shared.Buttons {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Приемам.
+        ///   Looks up a localized string similar to Тип на сметката.
         /// </summary>
-        public static string Accept {
+        public static string ComponentType {
             get {
-                return ResourceManager.GetString("Accept", resourceCulture);
+                return ResourceManager.GetString("ComponentType", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Добави.
+        ///   Looks up a localized string similar to Валута.
         /// </summary>
-        public static string Add {
+        public static string Currency {
             get {
-                return ResourceManager.GetString("Add", resourceCulture);
+                return ResourceManager.GetString("Currency", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Отказ.
+        ///   Looks up a localized string similar to Активна.
         /// </summary>
-        public static string Cancel {
+        public static string IsActive {
             get {
-                return ResourceManager.GetString("Cancel", resourceCulture);
+                return ResourceManager.GetString("IsActive", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Създай нова сметка.
+        ///   Looks up a localized string similar to Име на сметката.
         /// </summary>
-        public static string CreateFund {
+        public static string Name {
             get {
-                return ResourceManager.GetString("CreateFund", resourceCulture);
+                return ResourceManager.GetString("Name", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Изтрий.
+        ///   Looks up a localized string similar to Името е твърде дълго..
         /// </summary>
-        public static string Delete {
+        public static string NameTooLong {
             get {
-                return ResourceManager.GetString("Delete", resourceCulture);
+                return ResourceManager.GetString("NameTooLong", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Регистрация.
+        ///   Looks up a localized string similar to Полето е задължително..
         /// </summary>
-        public static string Register {
+        public static string Required {
             get {
-                return ResourceManager.GetString("Register", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Обнови.
-        /// </summary>
-        public static string Update {
-            get {
-                return ResourceManager.GetString("Update", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Обнови паролата.
-        /// </summary>
-        public static string UpdatePassword {
-            get {
-                return ResourceManager.GetString("UpdatePassword", resourceCulture);
+                return ResourceManager.GetString("Required", resourceCulture);
             }
         }
     }

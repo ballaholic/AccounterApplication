@@ -10138,7 +10138,7 @@ button.bg-dark:focus {
 }
 
 .text-primary {
-    color: #4e73df !important;
+    color: #227abd !important;
 }
 
 a.text-primary:hover, a.text-primary:focus {
@@ -10606,7 +10606,7 @@ a:focus {
 }
 
 .border-left-primary {
-    border-left: 0.25rem solid #4e73df !important;
+    border-left: 0.25rem solid #227abd !important;
 }
 
 .border-bottom-primary {

@@ -103,8 +103,16 @@ body {
     font-size: 10px;
 }
 
+.fa-dollar-sign:hover:before {
+    color: #099 !important;
+}
+
 .fa-trash:hover:before {
     color: red;
+}
+
+.fa-clipboard-list:hover:before {
+    color: #f6c23e !important
 }
 
 /*Language Toggle*/
@@ -178,4 +186,20 @@ a.th-sortable {
 
 .pointer {
     cursor: pointer;
+}
+
+.amount-primary {
+    color: #099;
+}
+
+.hov-green:hover {
+    color: #099 !important;
+}
+
+.hov-red:hover {
+    color: red !important;
+}
+
+.hov-yellow:hover {
+    color: #f6c23e !important
 }

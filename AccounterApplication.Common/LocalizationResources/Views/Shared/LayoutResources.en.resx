@@ -120,6 +120,9 @@
   <data name="AddExpense" xml:space="preserve">
     <value>Add Expense</value>
   </data>
+  <data name="AddIncome" xml:space="preserve">
+    <value>Add Income</value>
+  </data>
   <data name="CookieConsent" xml:space="preserve">
     <value>We use cookies to understand how you use our site and to improve your experience.</value>
   </data>

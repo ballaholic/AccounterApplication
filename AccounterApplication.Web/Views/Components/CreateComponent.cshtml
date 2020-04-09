@@ -1,0 +1,40 @@
+﻿@using AccounterApplication.Web.Controllers
+@using AccounterApplication.Web.ViewModels.Components
+
+@using Resources = AccounterApplication.Common.LocalizationResources.Views.Components.ComponentsViewsResources;
+
+@model ComponentInputModel
+
+@{
+    ViewData["Title"] = Resources.AddComponent;
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="col-md-6">
+    <form asp-controller="@nameof(ComponentsController).Replace(nameof(Controller), string.Empty)" asp-action="@nameof(ComponentsController.CreateComponent)" class="form" method="post">
+        <div class="form-group">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ComponentTypeId"></label>
+            <select asp-for="ComponentTypeId" class="form-control" asp-items="Model.ComponentTypeListItems"></select>
+            <span asp-validation-for="ComponentTypeId" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="CurrencyId"></label>
+            <select asp-for="CurrencyId" class="form-control" asp-items="Model.CurrencyListItems"></select>
+            <span asp-validation-for="CurrencyId" class="text-danger"></span>
+        </div>
+
+        <hr />
+        <input type="submit" value=@ButtonsResources.Add class="btn btn-primary" />
+    </form>
+</div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}
+

@@ -18,6 +18,8 @@
 
         Task<bool> RemoveAmount(string userId, Component component);
 
+        Task AddAsync(Component component);
+
         void Delete(Component component);
     }
 }

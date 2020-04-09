@@ -102,6 +102,10 @@
                 .HasForeignKey(a => a.UserId);
             builder
                 .Entity<Component>()
+                .Property(c => c.Id)
+                .ValueGeneratedOnAdd();
+            builder
+                .Entity<Component>()
                 .HasOne(c => c.ComponentType)
                 .WithMany()
                 .HasForeignKey(c => c.ComponentTypeId);

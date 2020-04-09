@@ -62,6 +62,78 @@ namespace AccounterApplication.Common.LocalizationResources.Shared.Messages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Възникна проблем при изтриване на компонентата..
+        /// </summary>
+        public static string ComponenDeleteError {
+            get {
+                return ResourceManager.GetString("ComponenDeleteError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Възникна проблем при добавяне на сумата..
+        /// </summary>
+        public static string ComponentAddAmountError {
+            get {
+                return ResourceManager.GetString("ComponentAddAmountError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Сумата беше добавена успешно..
+        /// </summary>
+        public static string ComponentAddAmountSuccess {
+            get {
+                return ResourceManager.GetString("ComponentAddAmountSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Възникна проблем при добавяне на компонентата..
+        /// </summary>
+        public static string ComponentAddError {
+            get {
+                return ResourceManager.GetString("ComponentAddError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Компонентата беше добавена успешно..
+        /// </summary>
+        public static string ComponentAddSuccess {
+            get {
+                return ResourceManager.GetString("ComponentAddSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Компонентата беше изтрита успешно..
+        /// </summary>
+        public static string ComponentDeleteSuccess {
+            get {
+                return ResourceManager.GetString("ComponentDeleteSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Възникна проблем при обновяване на компонентата..
+        /// </summary>
+        public static string ComponentUpdatedError {
+            get {
+                return ResourceManager.GetString("ComponentUpdatedError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Компонентата беше обновена успешно..
+        /// </summary>
+        public static string ComponentUpdatedSuccess {
+            get {
+                return ResourceManager.GetString("ComponentUpdatedSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Сигурни ли сте ?.
         /// </summary>
         public static string Confirmation {

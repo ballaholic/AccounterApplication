@@ -168,7 +168,9 @@
             if (!this.ModelState.IsValid)
             {
                 var language = this.GetCurrentLanguage();
+
                 model.ExpenseGroupListItems = await this.expenseGroupService.AllLocalized<ExpenseGroupSelectListItem>(language);
+
                 return View(model);
             }
 
@@ -178,9 +180,7 @@
                 ExpenseGroupId = model.ExpenseGroupId,
                 Description = model.Description,
                 ExpenseAmount = model.ExpenseAmount,
-                ExpenseDate = model.DateOfExpense,
-                IsDeleted = false,
-                DeletedOn = null
+                ExpenseDate = model.DateOfExpense
             };
 
             await this.expensesService.AddAsync(entityToAdd);

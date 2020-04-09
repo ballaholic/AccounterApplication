@@ -117,79 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ComponenDeleteError" xml:space="preserve">
-    <value>Възникна проблем при изтриване на компонентата.</value>
+  <data name="ComponentType" xml:space="preserve">
+    <value>Component Type</value>
   </data>
-  <data name="ComponentAddAmountError" xml:space="preserve">
-    <value>Възникна проблем при добавяне на сумата.</value>
+  <data name="Currency" xml:space="preserve">
+    <value>Currency</value>
   </data>
-  <data name="ComponentAddAmountSuccess" xml:space="preserve">
-    <value>Сумата беше добавена успешно.</value>
+  <data name="IsActive" xml:space="preserve">
+    <value>Is Active</value>
   </data>
-  <data name="ComponentAddError" xml:space="preserve">
-    <value>Възникна проблем при добавяне на компонентата.</value>
+  <data name="Name" xml:space="preserve">
+    <value>Component name</value>
   </data>
-  <data name="ComponentAddSuccess" xml:space="preserve">
-    <value>Компонентата беше добавена успешно.</value>
+  <data name="NameTooLong" xml:space="preserve">
+    <value>The 'Name' field is too long.</value>
   </data>
-  <data name="ComponentDeleteSuccess" xml:space="preserve">
-    <value>Компонентата беше изтрита успешно.</value>
-  </data>
-  <data name="ComponentUpdatedError" xml:space="preserve">
-    <value>Възникна проблем при обновяване на компонентата.</value>
-  </data>
-  <data name="ComponentUpdatedSuccess" xml:space="preserve">
-    <value>Компонентата беше обновена успешно.</value>
-  </data>
-  <data name="Confirmation" xml:space="preserve">
-    <value>Сигурни ли сте ?</value>
-  </data>
-  <data name="DeleteExpenseConfirmation" xml:space="preserve">
-    <value>Сигурни ли сте, че искате да изтриете този разход ?</value>
-  </data>
-  <data name="DeleteIncomeConfirmation" xml:space="preserve">
-    <value>Сигурни ли сте, че искате да изтриете този приход ?</value>
-  </data>
-  <data name="Error" xml:space="preserve">
-    <value>Грешка!</value>
-  </data>
-  <data name="ExpenseAddError" xml:space="preserve">
-    <value>Възникна проблем при добавяне на разхода.</value>
-  </data>
-  <data name="ExpenseAddSuccess" xml:space="preserve">
-    <value>Разходът беше добавен успешно.</value>
-  </data>
-  <data name="ExpenseDeleteError" xml:space="preserve">
-    <value>Възникна проблем при изтриване на разхода.</value>
-  </data>
-  <data name="ExpenseDeleteSuccess" xml:space="preserve">
-    <value>Разходът беше изтрит успешно.</value>
-  </data>
-  <data name="ExpenseUpdatedError" xml:space="preserve">
-    <value>Възникна проблем при обновяване на разхода.</value>
-  </data>
-  <data name="ExpenseUpdatedSuccess" xml:space="preserve">
-    <value>Разходът беше обновен успешно.</value>
-  </data>
-  <data name="MonthlyIncomeAddError" xml:space="preserve">
-    <value>Възникна проблем при добавяне на прихода.</value>
-  </data>
-  <data name="MonthlyIncomeAddSuccess" xml:space="preserve">
-    <value>Приходът беше добавен успешно.</value>
-  </data>
-  <data name="MonthlyIncomeDeleteError" xml:space="preserve">
-    <value>Възникна проблем при изтриване на прихода.</value>
-  </data>
-  <data name="MonthlyIncomeDeleteSuccess" xml:space="preserve">
-    <value>Приходът беше изтрит успешно.</value>
-  </data>
-  <data name="MonthlyIncomeUpdatedError" xml:space="preserve">
-    <value>Възникна проблем при обновяване на прихода.</value>
-  </data>
-  <data name="MonthlyIncomeUpdatedSuccess" xml:space="preserve">
-    <value>Приходът беше обновен успешно.</value>
-  </data>
-  <data name="Success" xml:space="preserve">
-    <value>Успех!</value>
+  <data name="Required" xml:space="preserve">
+    <value>The field is required.</value>
   </data>
 </root>

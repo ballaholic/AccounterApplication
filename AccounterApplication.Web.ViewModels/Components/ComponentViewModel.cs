@@ -16,11 +16,15 @@
 
         public bool IsActive { get; set; }
 
+        public int ComponentTypeId { get; set; }
+
         public string ComponentTypeName { get; set; }
 
         public string CurrencyName { get; set; }
 
         public string CurrencyCode { get; set; }
+
+        public string CurrencySign { get; set; }
 
         public void CreateMappings(IProfileExpression configuration)
         {
@@ -41,7 +45,10 @@
                             : x.Currency.NameEN))
                 .ForMember(
                     m => m.CurrencyCode,
-                    opt => opt.MapFrom(x => x.Currency.Code));
+                    opt => opt.MapFrom(x => x.Currency.Code))
+                .ForMember(
+                    m => m.CurrencySign,
+                    opt => opt.MapFrom(x => x.Currency.Sign));
         }
     }
 }

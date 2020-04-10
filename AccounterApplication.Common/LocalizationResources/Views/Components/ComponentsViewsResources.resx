@@ -129,13 +129,19 @@
   <data name="DeleteComponent" xml:space="preserve">
     <value>Изтрий</value>
   </data>
-  <data name="EditComponent" xml:space="preserve">
-    <value>Промени</value>
-  </data>
   <data name="Funds" xml:space="preserve">
     <value>Средства</value>
   </data>
+  <data name="NewTransaction" xml:space="preserve">
+    <value>Нова Транзакция</value>
+  </data>
+  <data name="Rename" xml:space="preserve">
+    <value>Преименувай</value>
+  </data>
   <data name="SaveOrWithdraw" xml:space="preserve">
     <value>Спести/Изтегли</value>
+  </data>
+  <data name="SaveOrWithdrawAmount" xml:space="preserve">
+    <value>Спести или изтегли сума.</value>
   </data>
 </root>

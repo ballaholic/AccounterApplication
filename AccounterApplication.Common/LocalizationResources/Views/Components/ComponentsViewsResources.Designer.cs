@@ -98,15 +98,6 @@ namespace AccounterApplication.Common.LocalizationResources.Views.Components {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Промени.
-        /// </summary>
-        public static string EditComponent {
-            get {
-                return ResourceManager.GetString("EditComponent", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Средства.
         /// </summary>
         public static string Funds {
@@ -116,11 +107,38 @@ namespace AccounterApplication.Common.LocalizationResources.Views.Components {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Нова Транзакция.
+        /// </summary>
+        public static string NewTransaction {
+            get {
+                return ResourceManager.GetString("NewTransaction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Преименувай.
+        /// </summary>
+        public static string Rename {
+            get {
+                return ResourceManager.GetString("Rename", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Спести/Изтегли.
         /// </summary>
         public static string SaveOrWithdraw {
             get {
                 return ResourceManager.GetString("SaveOrWithdraw", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Спести или изтегли сума..
+        /// </summary>
+        public static string SaveOrWithdrawAmount {
+            get {
+                return ResourceManager.GetString("SaveOrWithdrawAmount", resourceCulture);
             }
         }
     }

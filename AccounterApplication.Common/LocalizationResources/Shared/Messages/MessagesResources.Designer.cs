@@ -285,5 +285,23 @@ namespace AccounterApplication.Common.LocalizationResources.Shared.Messages {
                 return ResourceManager.GetString("Success", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Възникна проблем при осъществяване на транзакцията..
+        /// </summary>
+        public static string TransactionResultError {
+            get {
+                return ResourceManager.GetString("TransactionResultError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Транзакцията беше осъществена успешно..
+        /// </summary>
+        public static string TransactionResultSuccess {
+            get {
+                return ResourceManager.GetString("TransactionResultSuccess", resourceCulture);
+            }
+        }
     }
 }

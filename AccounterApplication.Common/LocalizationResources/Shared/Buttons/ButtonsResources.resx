@@ -135,10 +135,16 @@
   <data name="Register" xml:space="preserve">
     <value>Регистрация</value>
   </data>
+  <data name="Save" xml:space="preserve">
+    <value>Спести</value>
+  </data>
   <data name="Update" xml:space="preserve">
     <value>Обнови</value>
   </data>
   <data name="UpdatePassword" xml:space="preserve">
     <value>Обнови паролата</value>
+  </data>
+  <data name="Withdraw" xml:space="preserve">
+    <value>Изтегли</value>
   </data>
 </root>

@@ -192,4 +192,10 @@
   <data name="Success" xml:space="preserve">
     <value>Success!</value>
   </data>
+  <data name="TransactionResultError" xml:space="preserve">
+    <value>There was an error trying to process your transaction.</value>
+  </data>
+  <data name="TransactionResultSuccess" xml:space="preserve">
+    <value>The transaction was processed successfuly.</value>
+  </data>
 </root>

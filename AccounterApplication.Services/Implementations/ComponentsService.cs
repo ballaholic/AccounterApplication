@@ -1,6 +1,5 @@
 ﻿namespace AccounterApplication.Services.Implementations
 {
-    using System;
     using System.Linq;
     using System.Threading.Tasks;
     using System.Collections.Generic;
@@ -36,8 +35,22 @@
                 .To<T>(new { language })
                 .ToListAsync();
 
+        public async Task<IEnumerable<T>> AllByUserIdAndTypeIdLocalized<T>(string userId, int typeId, Languages language)
+            => await this.componentsRepository
+                .All()
+                .Where(c => c.UserId.Equals(userId) && c.ComponentTypeId.Equals(typeId))
+                .To<T>(new { language })
+                .ToListAsync();
+
         public void Delete(Component component)
             => this.componentsRepository.Delete(component);
+
+        public async Task<T> GetByIdAsync<T>(string userId, string id)
+            => await this.componentsRepository
+                .All()
+                .Where(c => c.UserId.Equals(userId) && c.Id.Equals(id))
+                .To<T>()
+                .FirstOrDefaultAsync();
 
         public async Task<Component> GetByIdAsync(string userId, string id)
             => await this.componentsRepository.GetByIdWithoutDeletedAsync(userId, id);
@@ -78,6 +91,21 @@
         {
             await this.componentsRepository.AddAsync(component);
             await this.componentsRepository.SaveChangesAsync();
+        }
+
+        public async Task<bool> TransactionBetweenComponents(Component senderComponent, Component receiverComponent, decimal transactionAmount)
+        {
+            if (senderComponent.Amount < transactionAmount || transactionAmount < 0)
+            {
+                return false;
+            }
+
+            receiverComponent.Amount += transactionAmount;
+            senderComponent.Amount -= transactionAmount;
+
+            await this.componentsRepository.SaveChangesAsync();
+
+            return true;
         }
     }
 }

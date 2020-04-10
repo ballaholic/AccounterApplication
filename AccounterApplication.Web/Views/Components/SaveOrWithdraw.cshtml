@@ -1,0 +1,57 @@
+﻿@using AccounterApplication.Web.Controllers
+@using AccounterApplication.Web.ViewModels.Components
+
+@using Resources = AccounterApplication.Common.LocalizationResources.Views.Components.ComponentsViewsResources;
+
+@model ComponentsSaveWithdrawInputModel
+
+@{
+    ViewData["Title"] = Resources.SaveOrWithdraw;
+}
+
+<div class="row mb-5">
+    <div class="col">
+        <h1>@ViewData["Title"]</h1>
+    </div>
+</div>
+
+<div class="jumbotron">
+    <h1 class="display-4">@Resources.NewTransaction</h1>
+    <p class="lead">@Resources.SaveOrWithdrawAmount</p>
+    <hr class="my-4">
+    <form asp-controller="@nameof(ComponentsController).Replace(nameof(Controller), string.Empty)" asp-action="@nameof(ComponentsController.SaveOrWithdraw)" class="form" method="post">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm form-group">
+                    <label asp-for="UserPaymentComponentId"></label>
+                    <select asp-for="UserPaymentComponentId" class="form-control" asp-items="Model.UserPaymentComponents"></select>
+                    <span asp-validation-for="UserPaymentComponentId" class="text-danger"></span>
+                </div>
+                <div class="col-sm form-group">
+                    <label asp-for="Amount"></label>
+                    <input asp-for="Amount" class="form-control" data-val="false" />
+                    <span asp-validation-for="Amount" class="text-danger"></span>
+                </div>
+                <div class="col-sm form-group">
+                    <label asp-for="TargetComponentAmount"></label>
+                    <input asp-for="TargetComponentAmount" value="@Model.TargetComponentAmount" class="form-control" disabled />
+                    <span asp-validation-for="TargetComponentAmount" class="text-danger"></span>
+                </div>
+                <input asp-for="TargetComponentId" hidden />
+            </div>
+            <hr />
+            <div class="row justify-content-center">
+                <div class="col-md-auto mr-md-0">
+                    <input type="submit" asp-route-transactionType="1" value=@ButtonsResources.Save class="btn btn-primary btn-outline-dark" />
+                </div>
+                <div class="col-md-auto mr-md-0">
+                    <input type="submit" asp-route-transactionType="2" value=@ButtonsResources.Withdraw class="btn btn-light btn-outline-dark" />
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

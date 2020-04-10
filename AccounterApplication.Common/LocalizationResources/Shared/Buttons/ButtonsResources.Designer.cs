@@ -116,6 +116,15 @@ namespace AccounterApplication.Common.LocalizationResources.Shared.Buttons {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Спести.
+        /// </summary>
+        public static string Save {
+            get {
+                return ResourceManager.GetString("Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Обнови.
         /// </summary>
         public static string Update {
@@ -130,6 +139,15 @@ namespace AccounterApplication.Common.LocalizationResources.Shared.Buttons {
         public static string UpdatePassword {
             get {
                 return ResourceManager.GetString("UpdatePassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Изтегли.
+        /// </summary>
+        public static string Withdraw {
+            get {
+                return ResourceManager.GetString("Withdraw", resourceCulture);
             }
         }
     }

@@ -34,6 +34,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>ComponentInputModelResources.resx</DependentUpon>
     </Compile>
+    <Compile Update="LocalizationResources\ViewModels\ComponentSaveWithdrawInputModelResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ComponentSaveWithdrawInputModelResources.resx</DependentUpon>
+    </Compile>
     <Compile Update="LocalizationResources\ViewModels\ExpenseInputModelResources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -111,6 +116,10 @@
     <EmbeddedResource Update="LocalizationResources\ViewModels\ComponentInputModelResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ComponentInputModelResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="LocalizationResources\ViewModels\ComponentSaveWithdrawInputModelResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ComponentSaveWithdrawInputModelResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="LocalizationResources\ViewModels\ExpenseInputModelResources.en.resx">
       <Generator></Generator>

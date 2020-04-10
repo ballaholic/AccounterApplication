@@ -43,15 +43,10 @@
                         @if (component.ComponentTypeId.Equals((int)ComponentTypes.SavingsComponent))
                         {
                             <div class="col-md-3 mr-md-3 float-left">
-                                <a href="#" class="btn btn-no-shadow trigger-save-withdraw"
-                                   data-id="@component.Id"
-                                   data-controller="@nameof(ComponentsController).Replace(nameof(Controller), string.Empty)"
-                                   data-action="@nameof(ComponentsController)"
-                                   data-modal-title="@MessagesResources.Confirmation"
-                                   data-body-message="@MessagesResources.DeleteExpenseConfirmation"
-                                   data-button-delete="@ButtonsResources.Delete"
-                                   data-button-cancel="@ButtonsResources.Cancel"
-                                   data-redirect-url="@Url.Action(nameof(ComponentsController.Index), nameof(ComponentsController).Replace(nameof(Controller), string.Empty))">
+                                <a class="btn btn-no-shadow"
+                                   asp-controller="@(nameof(ComponentsController).Replace(nameof(Controller), string.Empty))"
+                                   asp-action="@(nameof(ComponentsController.SaveOrWithdraw))"
+                                   asp-route-id="@component.Id">
                                     <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
                                 </a>
                                 <div class="h6 mb-0 text-gray-700">@Resources.SaveOrWithdraw</div>
@@ -60,22 +55,17 @@
                         else
                         {
                             <div class="col-md-3 mr-md-3 float-left">
-                                <a href="#" class="btn btn-no-shadow trigger-add-amount"
-                                   data-id="@component.Id"
-                                   data-controller="@nameof(ComponentsController).Replace(nameof(Controller), string.Empty)"
-                                   data-action="@nameof(ComponentsController)"
-                                   data-modal-title="@MessagesResources.Confirmation"
-                                   data-body-message="@MessagesResources.DeleteExpenseConfirmation"
-                                   data-button-delete="@ButtonsResources.Delete"
-                                   data-button-cancel="@ButtonsResources.Cancel"
-                                   data-redirect-url="@Url.Action(nameof(ComponentsController.Index), nameof(ComponentsController).Replace(nameof(Controller), string.Empty))">
+                                <a class="btn btn-no-shadow"
+                                   asp-controller="@(nameof(ComponentsController).Replace(nameof(Controller), string.Empty))"
+                                   asp-action="@(nameof(ComponentsController.AddAmount))"
+                                   asp-route-id="@component.Id">
                                     <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
                                 </a>
                                 <div class="h6 mb-0 text-gray-700">@Resources.AddAmount</div>
                             </div>
                         }
                         <div class="col-md-auto mr-md-3">
-                            <a href="#" class="btn btn-no-shadow trigger-edit"
+                            <a href="#" class="btn btn-no-shadow trigger-rename"
                                data-id="@component.Id"
                                data-controller="@nameof(ComponentsController).Replace(nameof(Controller), string.Empty)"
                                data-action="@nameof(ComponentsController)"
@@ -86,7 +76,7 @@
                                data-redirect-url="@Url.Action(nameof(ComponentsController.Index), nameof(ComponentsController).Replace(nameof(Controller), string.Empty))">
                                 <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
                             </a>
-                            <div class="h6 mb-0 text-gray-700">@Resources.EditComponent</div>
+                            <div class="h6 mb-0 text-gray-700">@Resources.Rename</div>
                         </div>
                         <div class="col-md-auto float-right">
                             <a href="#" class="btn btn-no-shadow trigger-delete"

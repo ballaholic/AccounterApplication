@@ -11,8 +11,8 @@
     using ViewModels.Components;
     using ViewModels.Currencies;
     using ViewModels.ComponentTypes;
+    using Common.Enumerations;
 
-    using AlertType = Common.Enumerations.AlertMessageTypes;
     using Resources = Common.LocalizationResources.Shared.Messages.MessagesResources;
 
     public class ComponentsController : BaseController
@@ -84,14 +84,89 @@
                 };
 
                 await this.componentsService.AddAsync(entityToAdd);
-                this.AddAlertMessageToTempData(AlertType.Success, Resources.Success, Resources.ComponentAddSuccess);
+                this.AddAlertMessageToTempData(AlertMessageTypes.Success, Resources.Success, Resources.ComponentAddSuccess);
             }
             catch (Exception)
             {
-                this.AddAlertMessageToTempData(AlertType.Error, Resources.Error, Resources.ComponentAddError);
+                this.AddAlertMessageToTempData(AlertMessageTypes.Error, Resources.Error, Resources.ComponentAddError);
             }
 
             return this.RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> SaveOrWithdraw([FromRoute(Name = "id")]string componentId)
+        {
+            var language = this.GetCurrentLanguage();
+            var userId = this.GetUserId<string>();
+            var componentTypeId = (int)ComponentTypes.PaymentComponent;
+
+            var targetComponent = await this.componentsService.GetByIdAsync<ComponentViewModel>(userId, componentId);
+            var paymentComponents = await this.componentsService.AllByUserIdAndTypeIdLocalized<ComponentsSelectListItem>(userId, componentTypeId , language);
+
+            var viewModel = new ComponentsSaveWithdrawInputModel
+            {
+                TargetComponentId = targetComponent.Id,
+                TargetComponentName = targetComponent.Name,
+                TargetComponentAmount = targetComponent.Amount,
+                TargetComponentCurrencyCode = targetComponent.CurrencyCode,
+                UserPaymentComponents = paymentComponents
+            };
+
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> SaveOrWithdraw(ComponentsSaveWithdrawInputModel model, string transactionType)
+        {
+            var language = this.GetCurrentLanguage();
+            var userId = this.GetUserId<string>();
+            var paymentComponentTypeId = (int)ComponentTypes.PaymentComponent;
+
+            if (!ModelState.IsValid ||
+                (int.TryParse(transactionType, out int transactionTypeId) && !Enum.IsDefined(typeof(TransactionTypes), transactionTypeId)))
+            {
+                model.UserPaymentComponents = await this.componentsService.AllByUserIdAndTypeIdLocalized<ComponentsSelectListItem>(userId, paymentComponentTypeId, language);
+
+                var targetComponent = await this.componentsService.GetByIdAsync(userId, model.TargetComponentId);
+                model.TargetComponentAmount = targetComponent.Amount;
+
+                return View(model);
+            }
+
+            var savingsComponent = await this.componentsService.GetByIdAsync(userId, model.TargetComponentId);
+            var paymentComponent = await this.componentsService.GetByIdAsync(userId, model.UserPaymentComponentId);
+            bool result = false;
+
+            switch ((TransactionTypes)transactionTypeId)
+            {
+                case TransactionTypes.Save:
+                    result = await this.componentsService.TransactionBetweenComponents(paymentComponent, savingsComponent, model.Amount);
+                    break;
+                case TransactionTypes.Withdraw:
+                    result = await this.componentsService.TransactionBetweenComponents(savingsComponent, paymentComponent, model.Amount);
+                    break;
+                default:
+                    break;
+            }
+
+            if (result)
+            {
+                this.AddAlertMessageToTempData(AlertMessageTypes.Success, Resources.Success, Resources.TransactionResultSuccess);
+            }
+            else
+            {
+                this.AddAlertMessageToTempData(AlertMessageTypes.Error, Resources.Error, Resources.TransactionResultError);
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        public async Task<IActionResult> AddAmount(string id)
+        {
+            return View();
         }
     }
 }

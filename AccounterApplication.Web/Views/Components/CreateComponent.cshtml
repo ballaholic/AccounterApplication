@@ -9,7 +9,11 @@
     ViewData["Title"] = Resources.AddComponent;
 }
 
-<h1>@ViewData["Title"]</h1>
+<div class="row mb-5">
+    <div class="col">
+        <h1>@ViewData["Title"]</h1>
+    </div>
+</div>
 
 <div class="col-md-6">
     <form asp-controller="@nameof(ComponentsController).Replace(nameof(Controller), string.Empty)" asp-action="@nameof(ComponentsController.CreateComponent)" class="form" method="post">

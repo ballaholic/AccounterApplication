@@ -62,6 +62,15 @@ namespace AccounterApplication.Common.LocalizationResources.Views.Components {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Добави сума.
+        /// </summary>
+        public static string AddAmount {
+            get {
+                return ResourceManager.GetString("AddAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Създай нова сметка.
         /// </summary>
         public static string AddComponent {

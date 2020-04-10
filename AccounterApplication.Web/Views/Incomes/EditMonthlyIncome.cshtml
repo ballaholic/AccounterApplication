@@ -8,13 +8,17 @@
     ViewData["Title"] = Resources.EditMonthlyIncome;
 }
 
-<h1>Edit Monthly Income</h1>
+<div class="row mb-5">
+    <div class="col">
+        <h1>@ViewData["Title"]</h1>
+    </div>
+</div>
 
 <div class="col-md-6">
     <form asp-controller="@nameof(IncomesController).Replace(nameof(Controller), string.Empty)" asp-action="@(nameof(IncomesController.EditMonthlyIncome))" class="form" method="post">
         <div class="form-group">
             <input asp-for="Id" type="hidden" />
-        </div>     
+        </div>
         <div class="form-group">
             <label asp-for="Amount"></label>
             <input asp-for="Amount" class="form-control" />

@@ -42,8 +42,8 @@
                         </div>
                         @if (component.ComponentTypeId.Equals((int)ComponentTypes.SavingsComponent))
                         {
-                            <div class="col-auto">
-                                <a href="#" class="btn btn-no-shadow hov-green trigger-save-withdraw"
+                            <div class="col-md-3 mr-md-3 float-left">
+                                <a href="#" class="btn btn-no-shadow hov-green trigger-edit"
                                    data-id="@component.Id"
                                    data-controller="@nameof(ComponentsController).Replace(nameof(Controller), string.Empty)"
                                    data-action="@nameof(ComponentsController)"
@@ -53,11 +53,28 @@
                                    data-button-cancel="@ButtonsResources.Cancel"
                                    data-redirect-url="@Url.Action(nameof(ComponentsController.Index), nameof(ComponentsController).Replace(nameof(Controller), string.Empty))">
                                     <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                    <div class="h6 mb-0 text-gray-700 hov-green">@Resources.SaveOrWithdraw</div>
                                 </a>
+                                <div class="h6 mb-0 text-gray-700">@Resources.SaveOrWithdraw</div>
                             </div>
                         }
-                        <div class="col-auto">
+                        else
+                        {
+                            <div class="col-md-3 mr-md-3 float-left">
+                                <a href="#" class="btn btn-no-shadow hov-green trigger-edit"
+                                   data-id="@component.Id"
+                                   data-controller="@nameof(ComponentsController).Replace(nameof(Controller), string.Empty)"
+                                   data-action="@nameof(ComponentsController)"
+                                   data-modal-title="@MessagesResources.Confirmation"
+                                   data-body-message="@MessagesResources.DeleteExpenseConfirmation"
+                                   data-button-delete="@ButtonsResources.Delete"
+                                   data-button-cancel="@ButtonsResources.Cancel"
+                                   data-redirect-url="@Url.Action(nameof(ComponentsController.Index), nameof(ComponentsController).Replace(nameof(Controller), string.Empty))">
+                                    <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                </a>
+                                <div class="h6 mb-0 text-gray-700">@Resources.AddAmount</div>
+                            </div>
+                        }
+                        <div class="col-md-auto mr-md-3">
                             <a href="#" class="btn btn-no-shadow hov-green trigger-save-withdraw"
                                data-id="@component.Id"
                                data-controller="@nameof(ComponentsController).Replace(nameof(Controller), string.Empty)"
@@ -68,10 +85,10 @@
                                data-button-cancel="@ButtonsResources.Cancel"
                                data-redirect-url="@Url.Action(nameof(ComponentsController.Index), nameof(ComponentsController).Replace(nameof(Controller), string.Empty))">
                                 <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                                <div class="h6 mb-0 text-gray-700 hov-yellow">@Resources.EditComponent</div>
                             </a>
+                            <div class="h6 mb-0 text-gray-700">@Resources.EditComponent</div>
                         </div>
-                        <div class="col-auto float-right">
+                        <div class="col-md-auto float-right">
                             <a href="#" class="btn btn-no-shadow trigger-delete"
                                data-id="@component.Id"
                                data-controller="@nameof(ComponentsController).Replace(nameof(Controller), string.Empty)"
@@ -82,8 +99,8 @@
                                data-button-cancel="@ButtonsResources.Cancel"
                                data-redirect-url="@Url.Action(nameof(ComponentsController.Index), nameof(ComponentsController).Replace(nameof(Controller), string.Empty))">
                                 <i class="fas fa-trash fa-2x text-gray-300"></i>
-                                <div class="h6 mb-0 text-gray-700 hov-red">@Resources.DeleteComponent</div>
                             </a>
+                            <div class="h6 mb-0 text-gray-700">@Resources.DeleteComponent</div>
                         </div>
                     </div>
                 </div>

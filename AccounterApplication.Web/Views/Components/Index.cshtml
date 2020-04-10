@@ -43,7 +43,7 @@
                         @if (component.ComponentTypeId.Equals((int)ComponentTypes.SavingsComponent))
                         {
                             <div class="col-md-3 mr-md-3 float-left">
-                                <a href="#" class="btn btn-no-shadow hov-green trigger-edit"
+                                <a href="#" class="btn btn-no-shadow trigger-save-withdraw"
                                    data-id="@component.Id"
                                    data-controller="@nameof(ComponentsController).Replace(nameof(Controller), string.Empty)"
                                    data-action="@nameof(ComponentsController)"
@@ -60,7 +60,7 @@
                         else
                         {
                             <div class="col-md-3 mr-md-3 float-left">
-                                <a href="#" class="btn btn-no-shadow hov-green trigger-edit"
+                                <a href="#" class="btn btn-no-shadow trigger-add-amount"
                                    data-id="@component.Id"
                                    data-controller="@nameof(ComponentsController).Replace(nameof(Controller), string.Empty)"
                                    data-action="@nameof(ComponentsController)"
@@ -75,7 +75,7 @@
                             </div>
                         }
                         <div class="col-md-auto mr-md-3">
-                            <a href="#" class="btn btn-no-shadow hov-green trigger-save-withdraw"
+                            <a href="#" class="btn btn-no-shadow trigger-edit"
                                data-id="@component.Id"
                                data-controller="@nameof(ComponentsController).Replace(nameof(Controller), string.Empty)"
                                data-action="@nameof(ComponentsController)"

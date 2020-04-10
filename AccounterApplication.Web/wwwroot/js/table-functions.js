@@ -37,7 +37,7 @@
     // It won't get bound to elements created in the future.To do that, we have to create a "delegated" binding by using on(). 
     $(document).on("click", "#confirm-delete", () => triggerConfirmDelete());
 
-    function triggerDelete (e) {
+    function triggerDelete(e) {
         e.preventDefault();
         target = $(e.target);
 
@@ -65,7 +65,7 @@
         $("#deleteModal").modal('show');
     }
 
-    function triggerConfirmDelete () {
+    function triggerConfirmDelete() {
         $.get(url)
             .done(() => {
                 if (!redirectUrl) {
@@ -101,7 +101,7 @@ $(function () {
     $(".sort-amount-incomes").click((e) => triggerSortIncomes(e));
 
     // Grouping
-    $(".dropdown-item-toggle-group-expenses").click(() => triggerGrouping());
+    $(".dropdown-item-toggle-group-expenses").click((e) => triggerGrouping(e));
 
     function triggerEdit(e) {
 
@@ -179,19 +179,17 @@ $(function () {
             });
     }
 
-    function triggerGrouping() {
+    function triggerGrouping(e) {
 
-        $(".dropdown-item-toggle-group-expenses").click(function (e) {
-            let target = $(e.target);
-            let groupId = target.data("id");
-            let url = target.parent().data("url");
-            let data = { groupId: groupId };
+        let target = $(e.target);
+        let groupId = target.data("id");
+        let url = target.parent().data("url");
+        let data = { groupId: groupId };
 
-            $.get(url, data)
-                .done((result) => {
-                    $('input[name = "expenseGroupSelectedValue"]').val(groupId);
-                    $(".expenses-table-body").html(result);
-                });
-        });
+        $.get(url, data)
+            .done((result) => {
+                $('input[name = "expenseGroupSelectedValue"]').val(groupId);
+                $(".expenses-table-body").html(result);
+            });
     }
 });

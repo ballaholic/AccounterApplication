@@ -55,16 +55,16 @@
         public async Task<Component> GetByIdAsync(string userId, string id)
             => await this.componentsRepository.GetByIdWithoutDeletedAsync(userId, id);
 
-        public async Task<bool> AddAmount(string userId, Component component)
+        public async Task<bool> AddAmount(string userId, string componentId, decimal amount)
         {
-            Component entityToUpdate = await this.componentsRepository.GetByIdWithoutDeletedAsync(userId, component.Id);
+            Component entityToUpdate = await this.componentsRepository.GetByIdWithoutDeletedAsync(userId, componentId);
 
             if (entityToUpdate == null)
             {
                 return false;
             }
 
-            entityToUpdate.Amount += component.Amount;
+            entityToUpdate.Amount += amount;
 
             await this.componentsRepository.SaveChangesAsync();
 

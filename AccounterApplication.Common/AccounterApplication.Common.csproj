@@ -29,6 +29,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>MessagesResources.resx</DependentUpon>
     </Compile>
+    <Compile Update="LocalizationResources\ViewModels\ComponentAddAmountInputModel.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ComponentAddAmountInputModel.resx</DependentUpon>
+    </Compile>
     <Compile Update="LocalizationResources\ViewModels\ComponentInputModelResources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -112,6 +117,10 @@
     <EmbeddedResource Update="LocalizationResources\Shared\Messages\MessagesResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>MessagesResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="LocalizationResources\ViewModels\ComponentAddAmountInputModel.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ComponentAddAmountInputModel.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="LocalizationResources\ViewModels\ComponentInputModelResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

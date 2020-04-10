@@ -22,14 +22,14 @@ namespace AccounterApplication.Common.LocalizationResources.ViewModels {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class ComponentSaveWithdrawInputModelResources {
+    public class ComponentAddAmountInputModel {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal ComponentSaveWithdrawInputModelResources() {
+        internal ComponentAddAmountInputModel() {
         }
         
         /// <summary>
@@ -39,8 +39,8 @@ namespace AccounterApplication.Common.LocalizationResources.ViewModels {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AccounterApplication.Common.LocalizationResources.ViewModels.ComponentSaveWithdra" +
-                            "wInputModelResources", typeof(ComponentSaveWithdrawInputModelResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AccounterApplication.Common.LocalizationResources.ViewModels.ComponentAddAmountIn" +
+                            "putModel", typeof(ComponentAddAmountInputModel).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -62,7 +62,16 @@ namespace AccounterApplication.Common.LocalizationResources.ViewModels {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Сумата трябва да е число между 0,1 и 1000000..
+        ///   Looks up a localized string similar to Сума.
+        /// </summary>
+        public static string Amount {
+            get {
+                return ResourceManager.GetString("Amount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Сумата трябва да е число между 0,1 и 1000000000..
         /// </summary>
         public static string AmountNotInRange {
             get {
@@ -71,29 +80,11 @@ namespace AccounterApplication.Common.LocalizationResources.ViewModels {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Сума.
+        ///   Looks up a localized string similar to Име на текущата сметка.
         /// </summary>
-        public static string TransactionAmount {
+        public static string PaymentComponent {
             get {
-                return ResourceManager.GetString("TransactionAmount", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Разплащателна компонента.
-        /// </summary>
-        public static string UserPaymentComponent {
-            get {
-                return ResourceManager.GetString("UserPaymentComponent", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Спестовна компонента.
-        /// </summary>
-        public static string UserSavingsComponent {
-            get {
-                return ResourceManager.GetString("UserSavingsComponent", resourceCulture);
+                return ResourceManager.GetString("PaymentComponent", resourceCulture);
             }
         }
     }

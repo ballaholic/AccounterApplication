@@ -120,6 +120,9 @@
   <data name="AddAmount" xml:space="preserve">
     <value>Add Amount</value>
   </data>
+  <data name="AddAmountDescription" xml:space="preserve">
+    <value>Add amount to current component.</value>
+  </data>
   <data name="AddComponent" xml:space="preserve">
     <value>Create new component</value>
   </data>

@@ -123,6 +123,9 @@
   <data name="Add" xml:space="preserve">
     <value>Добави</value>
   </data>
+  <data name="AddAmount" xml:space="preserve">
+    <value>Добави сума</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>Отказ</value>
   </data>

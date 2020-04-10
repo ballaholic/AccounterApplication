@@ -117,16 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AmountNotInRange" xml:space="preserve">
-    <value>Сумата трябва да е число между 0,1 и 1000000.</value>
-  </data>
-  <data name="TransactionAmount" xml:space="preserve">
+  <data name="Amount" xml:space="preserve">
     <value>Сума</value>
   </data>
-  <data name="UserPaymentComponent" xml:space="preserve">
-    <value>Разплащателна компонента</value>
+  <data name="AmountNotInRange" xml:space="preserve">
+    <value>Сумата трябва да е число между 0,1 и 1000000000.</value>
   </data>
-  <data name="UserSavingsComponent" xml:space="preserve">
-    <value>Спестовна компонента</value>
+  <data name="PaymentComponent" xml:space="preserve">
+    <value>Име на текущата сметка</value>
   </data>
 </root>

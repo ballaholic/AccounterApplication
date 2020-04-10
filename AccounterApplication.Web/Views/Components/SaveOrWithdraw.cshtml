@@ -16,7 +16,7 @@
 </div>
 
 <div class="jumbotron">
-    <h1 class="display-4">@Resources.NewTransaction</h1>
+    <h2 class="display-4">@Resources.NewTransaction</h2>
     <p class="lead">@Resources.SaveOrWithdrawAmount</p>
     <hr class="my-4">
     <form asp-controller="@nameof(ComponentsController).Replace(nameof(Controller), string.Empty)" asp-action="@nameof(ComponentsController.SaveOrWithdraw)" class="form" method="post">

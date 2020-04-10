@@ -18,7 +18,7 @@
 
         Task<Component> GetByIdAsync(string userId, string id);
 
-        Task<bool> AddAmount(string userId, Component component);
+        Task<bool> AddAmount(string userId, string componentId, decimal amount);
 
         Task<bool> RemoveAmount(string userId, Component component);
 

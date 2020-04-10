@@ -120,6 +120,9 @@
   <data name="AddAmount" xml:space="preserve">
     <value>Добави сума</value>
   </data>
+  <data name="AddAmountDescription" xml:space="preserve">
+    <value>Добави сума към текущата сметка.</value>
+  </data>
   <data name="AddComponent" xml:space="preserve">
     <value>Създай нова сметка</value>
   </data>

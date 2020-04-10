@@ -1,0 +1,54 @@
+﻿@using AccounterApplication.Web.Controllers
+@using AccounterApplication.Common.GlobalConstants
+@using AccounterApplication.Web.ViewModels.Components
+
+@using Resources = AccounterApplication.Common.LocalizationResources.Views.Components.ComponentsViewsResources;
+
+@model ComponentAddAmountInputModel
+
+@{
+    ViewData["Title"] = Resources.AddAmount;
+}
+
+<div class="row mb-5">
+    <div class="col">
+        <h1>@ViewData["Title"]</h1>
+    </div>
+</div>
+
+<div class="jumbotron">
+    <h2 class="display-4">@Resources.NewTransaction</h2>
+    <p class="lead">@Resources.AddAmountDescription</p>
+    <hr class="my-4">
+    <form asp-controller="@nameof(ComponentsController).Replace(nameof(Controller), string.Empty)" asp-action="@nameof(ComponentsController.AddAmount)" class="form" method="post">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm form-group">
+                    <label asp-for="Component"></label>
+                    <input asp-for="Component.ComponentNameAndCurrencyCode" class="form-control" disabled />
+                    <span asp-validation-for="Component.ComponentNameAndCurrencyCode" class="text-danger"></span>
+                </div>
+                <div class="col-sm form-group">
+                    <label asp-for="Amount"></label>
+                    <input asp-for="Amount" class="form-control" data-val="false" />
+                    <span asp-validation-for="Amount" class="text-danger"></span>
+                </div>
+                <input asp-for="Component.Id" hidden />
+            </div>
+            <hr />
+            <div class="row justify-content-center">
+                <div class="col-md-auto mr-md-0">
+                    <input type="submit" asp-route-submitType="@ButtonValueConstants.ButtonSubmit" value=@ButtonsResources.AddAmount class="btn btn-primary btn-outline-dark" />
+                </div>
+                <div class="col-md-auto mr-md-0">
+                    <input type="submit" asp-route-submitType="@ButtonValueConstants.ButtonCancel" value=@ButtonsResources.Cancel class="btn btn-light btn-outline-dark" />
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}
+

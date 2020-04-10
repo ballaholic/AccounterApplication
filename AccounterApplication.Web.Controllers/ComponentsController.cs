@@ -8,10 +8,11 @@
 
     using Data.Models;
     using Services.Contracts;
+    using Common.Enumerations;
+    using Common.GlobalConstants;
     using ViewModels.Components;
     using ViewModels.Currencies;
     using ViewModels.ComponentTypes;
-    using Common.Enumerations;
 
     using Resources = Common.LocalizationResources.Shared.Messages.MessagesResources;
 
@@ -164,9 +165,63 @@
             return RedirectToAction("Index");
         }
 
-        public async Task<IActionResult> AddAmount(string id)
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> AddAmount([FromRoute(Name = "id")]string componentId)
         {
-            return View();
+            var language = this.GetCurrentLanguage();
+            var userId = this.GetUserId<string>();
+            var targetComponent = await this.componentsService.GetByIdAsync<ComponentViewModel>(userId, componentId);
+
+            var viewModel = new ComponentAddAmountInputModel
+            {
+                Component = targetComponent,
+                Amount = 0.1m
+            };
+
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> AddAmount(ComponentAddAmountInputModel model, string submitType)
+        {
+            if (submitType.Equals(ButtonValueConstants.ButtonCancel))
+            {
+                return RedirectToAction("Index");
+            }
+
+            var userId = this.GetUserId<string>();
+            var targetComponent = await this.componentsService.GetByIdAsync<ComponentViewModel>(userId, model.Component.Id);
+
+            if (!ModelState.IsValid)
+            {
+                model.Component = targetComponent;
+                model.Amount = 0.1m;
+
+                return View(model);
+            }
+
+            try
+            {
+                var result = await this.componentsService.AddAmount(userId, targetComponent.Id, model.Amount);
+
+                if (result)
+                {
+                    this.AddAlertMessageToTempData(AlertMessageTypes.Success, Resources.Success, Resources.TransactionResultSuccess);
+                }
+                else
+                {
+                    this.AddAlertMessageToTempData(AlertMessageTypes.Error, Resources.Error, Resources.TransactionResultError);
+                }
+            }
+            catch (Exception)
+            {
+                this.AddAlertMessageToTempData(AlertMessageTypes.Error, Resources.Error, Resources.TransactionResultError);
+            }
+
+
+            return RedirectToAction("Index");
         }
     }
 }

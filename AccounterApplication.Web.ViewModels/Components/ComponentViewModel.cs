@@ -12,6 +12,8 @@
 
         public string Name { get; set; }
 
+        public string ComponentNameAndCurrencyCode { get; set; }
+
         public decimal Amount { get; set; }
 
         public bool IsActive { get; set; }
@@ -48,7 +50,10 @@
                     opt => opt.MapFrom(x => x.Currency.Code))
                 .ForMember(
                     m => m.CurrencySign,
-                    opt => opt.MapFrom(x => x.Currency.Sign));
+                    opt => opt.MapFrom(x => x.Currency.Sign))
+                .ForMember(
+                    m => m.ComponentNameAndCurrencyCode,
+                    opt => opt.MapFrom(x => $"{x.Name} - {x.Currency.Code}"));
         }
     }
 }

@@ -22,6 +22,7 @@
         public IEnumerable<ComponentsSelectListItem> UserPaymentComponents { get; set; }
 
         [Display(Name = "TransactionAmount", ResourceType = typeof(Resources))]
+        [Range(0.1, 1000000, ErrorMessageResourceName = "AmountNotInRange", ErrorMessageResourceType = typeof(Resources))]
         public decimal Amount { get; set; }
     }
 }

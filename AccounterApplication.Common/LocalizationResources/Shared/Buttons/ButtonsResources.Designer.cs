@@ -80,6 +80,15 @@ namespace AccounterApplication.Common.LocalizationResources.Shared.Buttons {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Добави сума.
+        /// </summary>
+        public static string AddAmount {
+            get {
+                return ResourceManager.GetString("AddAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Отказ.
         /// </summary>
         public static string Cancel {

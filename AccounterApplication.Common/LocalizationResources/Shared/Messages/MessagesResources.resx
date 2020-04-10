@@ -117,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ComponenDeleteError" xml:space="preserve">
-    <value>Възникна проблем при изтриване на компонентата.</value>
-  </data>
   <data name="ComponentAddAmountError" xml:space="preserve">
     <value>Възникна проблем при добавяне на сумата.</value>
   </data>
@@ -132,6 +129,9 @@
   <data name="ComponentAddSuccess" xml:space="preserve">
     <value>Компонентата беше добавена успешно.</value>
   </data>
+  <data name="ComponentDeleteError" xml:space="preserve">
+    <value>Възникна проблем при изтриване на компонентата.</value>
+  </data>
   <data name="ComponentDeleteSuccess" xml:space="preserve">
     <value>Компонентата беше изтрита успешно.</value>
   </data>
@@ -143,6 +143,9 @@
   </data>
   <data name="Confirmation" xml:space="preserve">
     <value>Сигурни ли сте ?</value>
+  </data>
+  <data name="DeleteComponentConfirmation" xml:space="preserve">
+    <value>Сигурни ли сте, че искате да изтриете тази сметка ?</value>
   </data>
   <data name="DeleteExpenseConfirmation" xml:space="preserve">
     <value>Сигурни ли сте, че искате да изтриете този разход ?</value>

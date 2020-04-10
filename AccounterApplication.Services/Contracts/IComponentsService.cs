@@ -27,5 +27,7 @@
         Task AddAsync(Component component);
 
         void Delete(Component component);
+
+        bool CheckIfComponentIsValid(string userId, string componentId);
     }
 }

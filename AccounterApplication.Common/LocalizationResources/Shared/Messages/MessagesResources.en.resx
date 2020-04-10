@@ -144,6 +144,9 @@
   <data name="Confirmation" xml:space="preserve">
     <value>Are you sure ?</value>
   </data>
+  <data name="DeleteComponentConfirmation" xml:space="preserve">
+    <value>Are you sure you want to delete this component ?</value>
+  </data>
   <data name="DeleteExpenseConfirmation" xml:space="preserve">
     <value>Are you sure you want to delete this expense ?</value>
   </data>

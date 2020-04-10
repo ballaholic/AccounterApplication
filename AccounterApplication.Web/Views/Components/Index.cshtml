@@ -82,9 +82,9 @@
                             <a href="#" class="btn btn-no-shadow trigger-delete"
                                data-id="@component.Id"
                                data-controller="@nameof(ComponentsController).Replace(nameof(Controller), string.Empty)"
-                               data-action="@nameof(ComponentsController)"
+                               data-action="@nameof(ComponentsController.DeleteComponent)"
                                data-modal-title="@MessagesResources.Confirmation"
-                               data-body-message="@MessagesResources.DeleteExpenseConfirmation"
+                               data-body-message="@MessagesResources.DeleteComponentConfirmation"
                                data-button-delete="@ButtonsResources.Delete"
                                data-button-cancel="@ButtonsResources.Cancel"
                                data-redirect-url="@Url.Action(nameof(ComponentsController.Index), nameof(ComponentsController).Replace(nameof(Controller), string.Empty))">
@@ -97,4 +97,9 @@
             </div>
         </div>
     </div>
+}
+
+@section Scripts
+{
+    <script src="~/js/table-functions.js" type="text/javascript" asp-append-version="true"></script>
 }

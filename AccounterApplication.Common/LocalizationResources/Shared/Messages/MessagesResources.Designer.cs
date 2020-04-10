@@ -62,15 +62,6 @@ namespace AccounterApplication.Common.LocalizationResources.Shared.Messages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Възникна проблем при изтриване на компонентата..
-        /// </summary>
-        public static string ComponenDeleteError {
-            get {
-                return ResourceManager.GetString("ComponenDeleteError", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Възникна проблем при добавяне на сумата..
         /// </summary>
         public static string ComponentAddAmountError {
@@ -107,6 +98,15 @@ namespace AccounterApplication.Common.LocalizationResources.Shared.Messages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Възникна проблем при изтриване на компонентата..
+        /// </summary>
+        public static string ComponentDeleteError {
+            get {
+                return ResourceManager.GetString("ComponentDeleteError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Компонентата беше изтрита успешно..
         /// </summary>
         public static string ComponentDeleteSuccess {
@@ -139,6 +139,15 @@ namespace AccounterApplication.Common.LocalizationResources.Shared.Messages {
         public static string Confirmation {
             get {
                 return ResourceManager.GetString("Confirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Сигурни ли сте, че искате да изтриете тази сметка ?.
+        /// </summary>
+        public static string DeleteComponentConfirmation {
+            get {
+                return ResourceManager.GetString("DeleteComponentConfirmation", resourceCulture);
             }
         }
         

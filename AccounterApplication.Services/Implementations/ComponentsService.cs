@@ -107,5 +107,10 @@
 
             return true;
         }
+
+        public bool CheckIfComponentIsValid(string userId, string componentId)
+        => this.componentsRepository
+                .AllAsNoTracking()
+                .Any(x => x.Id.Equals(componentId) && x.UserId.Equals(userId));
     }
 }

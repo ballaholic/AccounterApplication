@@ -223,5 +223,30 @@
 
             return RedirectToAction("Index");
         }
+
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> DeleteComponent(string id)
+        {
+            var userId = this.GetUserId<string>();
+            bool itemIdIsValid = this.componentsService.CheckIfComponentIsValid(userId, id);
+            bool result;
+
+            if (itemIdIsValid)
+            {
+                var expense = await this.componentsService.GetByIdAsync(userId, id);
+                this.componentsService.Delete(expense);
+
+                this.AddAlertMessageToTempData(AlertMessageTypes.Success, Resources.Success, Resources.ComponentDeleteSuccess);
+                result = true;
+            }
+            else
+            {
+                this.AddAlertMessageToTempData(AlertMessageTypes.Error, Resources.Error, Resources.ComponentDeleteError);
+                result = false;
+            }
+
+            return this.Json(result);
+        }
     }
 }

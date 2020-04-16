@@ -12,6 +12,7 @@
     using Services.Contracts;
     using Common.Enumerations;
     using ViewModels.MonthlyIncomes;
+    using AccounterApplication.Common.GlobalConstants;
 
     using AlertType = Common.Enumerations.AlertMessageTypes;
     using Resources = Common.LocalizationResources.Shared.Messages.MessagesResources;
@@ -31,7 +32,8 @@
             var userId = this.GetUserId<string>();
             var monthlyIncomes = await this.monthlyIncomeService.AllByUserIdLocalized<MonthlyIncomeViewModel>(userId, language);
             var viewModel = new MonthlyIncomesListingViewModel { MonthlyIncomes = monthlyIncomes };
-            return View(viewModel);
+
+            return this.View(viewModel);
         }
 
         [HttpGet]
@@ -53,7 +55,7 @@
 
             var viewModel = new MonthlyIncomesListingViewModel { MonthlyIncomes = incomes };
 
-            return PartialView("_MonthlyIncomesTableBodyPartial", viewModel);
+            return this.PartialView("_MonthlyIncomesTableBodyPartial", viewModel);
         }
 
         [HttpGet]
@@ -75,7 +77,7 @@
 
             var viewModel = new MonthlyIncomesListingViewModel { MonthlyIncomes = incomes };
 
-            return PartialView("_MonthlyIncomesTableBodyPartial", viewModel);
+            return this.PartialView("_MonthlyIncomesTableBodyPartial", viewModel);
         }
 
         [HttpGet]
@@ -83,16 +85,22 @@
         public IActionResult AddMonthlyIncome()
         {
             var model = new MonthlyIncomeInputModel();
-            return View(model);
+
+            return this.View(model);
         }
 
         [HttpPost]
         [Authorize]
-        public async Task<IActionResult> AddMonthlyIncome(MonthlyIncomeInputModel model)
+        public async Task<IActionResult> AddMonthlyIncome(MonthlyIncomeInputModel model, string submitType)
         {
+            if (submitType.Equals(ButtonValueConstants.ButtonCancel))
+            {
+                return this.RedirectToAction("Index");
+            }
+
             if (!this.ModelState.IsValid)
             {
-                return View(model);
+                return this.View(model);
             }
 
             var entityToAdd = new MonthlyIncome
@@ -106,7 +114,7 @@
 
             this.AddAlertMessageToTempData(AlertType.Success, Resources.Success, Resources.MonthlyIncomeAddSuccess);
 
-            return RedirectToAction("Index");
+            return this.RedirectToAction("Index");
         }
 
         [HttpGet]
@@ -122,16 +130,21 @@
                 IncomePeriod = monthlyIncome.IncomePeriod
             };
             
-            return View(model);
+            return this.View(model);
         }
 
         [HttpPost]
         [Authorize]
-        public async Task<IActionResult> EditMonthlyIncome(MonthlyIncomeInputModel model)
+        public async Task<IActionResult> EditMonthlyIncome(MonthlyIncomeInputModel model, string submitType)
         {
+            if (submitType.Equals(ButtonValueConstants.ButtonCancel))
+            {
+                return this.RedirectToAction("Index");
+            }
+
             if (!this.ModelState.IsValid)
             {
-                return View(model);
+                return this.View(model);
             }
 
             try
@@ -153,11 +166,11 @@
                     this.AddAlertMessageToTempData(AlertType.Error, Resources.Error, Resources.MonthlyIncomeUpdatedError);   
                 }
 
-                return RedirectToAction("Index");
+                return this.RedirectToAction("Index");
             }
             catch (Exception)
             {
-                return View("Error");
+                return this.View("Error");
             }      
         }
 

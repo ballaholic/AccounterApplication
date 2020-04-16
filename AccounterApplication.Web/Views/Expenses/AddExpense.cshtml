@@ -1,5 +1,7 @@
 ﻿@using AccounterApplication.Web.Controllers
+@using AccounterApplication.Common.GlobalConstants
 @using AccounterApplication.Web.ViewModels.Expenses
+
 @using Resources = AccounterApplication.Common.LocalizationResources.Views.Expenses.ExpensesViewsResources;
 
 @model ExpenseInputModel
@@ -37,7 +39,7 @@
         </div>
 
         <hr />
-        <input type="submit" value=@ButtonsResources.Add class="btn btn-primary" />
+        <input type="submit" value=@ButtonsResources.Add class="btn btn-primary btn-outline-dark" />
     </form>
 </div>
 

@@ -13,6 +13,7 @@
     using Common.Enumerations;
     using ViewModels.Expenses;
     using ViewModels.ExpenseGroups;
+    using AccounterApplication.Common.GlobalConstants;
 
     using AlertType = Common.Enumerations.AlertMessageTypes;
     using Resources = Common.LocalizationResources.Shared.Messages.MessagesResources;
@@ -210,8 +211,13 @@
 
         [HttpPost]
         [Authorize]
-        public async Task<IActionResult> EditExpense(ExpenseInputModel model)
+        public async Task<IActionResult> EditExpense(ExpenseInputModel model, string submitType)
         {
+            if (submitType.Equals(ButtonValueConstants.ButtonCancel))
+            {
+                return this.RedirectToAction("Index");
+            }
+
             if (!this.ModelState.IsValid)
             {
                 return View(model);

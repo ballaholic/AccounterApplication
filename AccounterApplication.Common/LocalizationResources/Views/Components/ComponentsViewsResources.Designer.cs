@@ -62,6 +62,15 @@ namespace AccounterApplication.Common.LocalizationResources.Views.Components {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Активна.
+        /// </summary>
+        public static string Active {
+            get {
+                return ResourceManager.GetString("Active", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Добави сума.
         /// </summary>
         public static string AddAmount {
@@ -121,6 +130,15 @@ namespace AccounterApplication.Common.LocalizationResources.Views.Components {
         public static string Funds {
             get {
                 return ResourceManager.GetString("Funds", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Неактивна.
+        /// </summary>
+        public static string Inactive {
+            get {
+                return ResourceManager.GetString("Inactive", resourceCulture);
             }
         }
         

@@ -38,7 +38,7 @@
                         <div class="col mr-md-4">
                             <div class="text-lg font-weight-bold text-primary text-uppercase mb-1">@component.Name - @component.CurrencyCode</div>
                             <div class="h5 mb-0 font-weight-bold amount-primary">@component.CurrencySign @component.Amount</div>
-                            <div class="h6 mb-0 text-gray-700">@Resources.Available</div>
+                            <div class="h6 mb-0 text-gray-700">@(component.IsActive ? Resources.Active : Resources.Inactive)</div>
                         </div>
                         @if (component.ComponentTypeId.Equals((int)ComponentTypes.SavingsComponent))
                         {

@@ -35,10 +35,25 @@
                 .To<T>(new { language })
                 .ToListAsync();
 
+        public async Task<IEnumerable<T>> AllByUserIdActiveLocalized<T>(string userId, Languages language)
+            => await this.componentsRepository
+                .All()
+                .Where(c => c.UserId.Equals(userId) && c.IsActive)
+                .OrderByDescending(c => c.CreatedOn)
+                .To<T>(new { language })
+                .ToListAsync();
+
         public async Task<IEnumerable<T>> AllByUserIdAndTypeIdLocalized<T>(string userId, int typeId, Languages language)
             => await this.componentsRepository
                 .All()
                 .Where(c => c.UserId.Equals(userId) && c.ComponentTypeId.Equals(typeId))
+                .To<T>(new { language })
+                .ToListAsync();
+
+        public async Task<IEnumerable<T>> AllByUserIdAndTypeIdActiveLocalized<T>(string userId, int typeId, Languages language)
+            => await this.componentsRepository
+                .All()
+                .Where(c => c.UserId.Equals(userId) && c.ComponentTypeId.Equals(typeId) && c.IsActive)
                 .To<T>(new { language })
                 .ToListAsync();
 

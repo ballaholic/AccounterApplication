@@ -105,7 +105,7 @@
             var componentTypeId = (int)ComponentTypes.PaymentComponent;
 
             var targetComponent = await this.componentsService.GetByIdAsync<ComponentViewModel>(userId, componentId);
-            var paymentComponents = await this.componentsService.AllByUserIdAndTypeIdLocalized<ComponentsSelectListItem>(userId, componentTypeId, language);
+            var paymentComponents = await this.componentsService.AllByUserIdAndTypeIdActiveLocalized<ComponentsSelectListItem>(userId, componentTypeId, language);
 
             var viewModel = new ComponentsSaveWithdrawInputModel
             {
@@ -130,7 +130,7 @@
             if (!ModelState.IsValid ||
                 (int.TryParse(transactionType, out int transactionTypeId) && !Enum.IsDefined(typeof(TransactionTypes), transactionTypeId)))
             {
-                model.UserPaymentComponents = await this.componentsService.AllByUserIdAndTypeIdLocalized<ComponentsSelectListItem>(userId, paymentComponentTypeId, language);
+                model.UserPaymentComponents = await this.componentsService.AllByUserIdAndTypeIdActiveLocalized<ComponentsSelectListItem>(userId, paymentComponentTypeId, language);
 
                 var targetComponent = await this.componentsService.GetByIdAsync(userId, model.TargetComponentId);
                 model.TargetComponentAmount = targetComponent.Amount;

@@ -12,7 +12,11 @@
 
         Task<IEnumerable<T>> AllByUserIdLocalized<T>(string userId, Languages language);
 
+        Task<IEnumerable<T>> AllByUserIdActiveLocalized<T>(string userId, Languages language);
+
         Task<IEnumerable<T>> AllByUserIdAndTypeIdLocalized<T>(string userId, int typeId, Languages language);
+
+        Task<IEnumerable<T>> AllByUserIdAndTypeIdActiveLocalized<T>(string userId, int typeId, Languages language);
 
         Task<T> GetByIdAsync<T>(string userId, string id);
 

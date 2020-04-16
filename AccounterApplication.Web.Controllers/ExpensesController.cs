@@ -236,11 +236,11 @@
                     this.AddAlertMessageToTempData(AlertType.Error, Resources.Error, Resources.ExpenseUpdatedError);
                 }
 
-                return RedirectToAction("Index");
+                return this.RedirectToAction("Index");
             }
             catch (Exception)
             {
-                return View("Error");
+                return this.View("Error");
             }
         }
 

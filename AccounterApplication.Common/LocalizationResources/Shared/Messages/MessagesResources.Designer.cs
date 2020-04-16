@@ -287,6 +287,15 @@ namespace AccounterApplication.Common.LocalizationResources.Shared.Messages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Преименувай компонента.
+        /// </summary>
+        public static string RenameComponent {
+            get {
+                return ResourceManager.GetString("RenameComponent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Успех!.
         /// </summary>
         public static string Success {

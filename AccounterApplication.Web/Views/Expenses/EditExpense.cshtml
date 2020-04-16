@@ -1,4 +1,5 @@
 ﻿@using AccounterApplication.Web.Controllers
+@using AccounterApplication.Common.GlobalConstants
 @using AccounterApplication.Web.ViewModels.Expenses
 @using Resources = AccounterApplication.Common.LocalizationResources.Views.Expenses.ExpensesViewsResources;
 
@@ -16,7 +17,7 @@
 <div class="col-md-6">
     <form asp-controller="@nameof(ExpensesController).Replace(nameof(Controller), string.Empty)" asp-action="@nameof(ExpensesController.AddExpense)" class="form" method="post">
         <div class="form-group">
-            <input asp-for="Id" type="hidden" />
+            <input asp-for="Id" hidden />
         </div>
         <div class="form-group">
             <label asp-for="Description"></label>
@@ -33,9 +34,9 @@
             <input asp-for="DateOfExpense" class="form-control" />
             <span asp-validation-for="DateOfExpense" class="text-danger"></span>
         </div>
-        <div class="modal-footer">
-            <input type="submit" value="@ButtonsResources.Update" class="btn btn-primary" />
-        </div>
+        <hr class="my-4" />
+        <input type="submit" asp-route-submitType="@ButtonValueConstants.ButtonSubmit" value=@ButtonsResources.Update class="btn btn-primary btn-outline-dark" />
+        <input type="submit" asp-route-submitType="@ButtonValueConstants.ButtonCancel" value=@ButtonsResources.Cancel class="btn btn-light btn-outline-dark" />
     </form>
 
 </div>

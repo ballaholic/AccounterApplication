@@ -112,5 +112,22 @@
         => this.componentsRepository
                 .AllAsNoTracking()
                 .Any(x => x.Id.Equals(componentId) && x.UserId.Equals(userId));
+
+        public async Task<bool> Update(string userId, Component component)
+        {
+            Component entityToUpdate = await this.componentsRepository.GetByIdWithoutDeletedAsync(userId, component.Id);
+
+            if (entityToUpdate == null)
+            {
+                return false;
+            }
+
+            entityToUpdate.Name = component.Name;
+            entityToUpdate.IsActive = component.IsActive;
+
+            await this.componentsRepository.SaveChangesAsync();
+
+            return true;
+        }
     }
 }

@@ -116,6 +116,15 @@ namespace AccounterApplication.Common.LocalizationResources.Shared.Buttons {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Промени.
+        /// </summary>
+        public static string Edit {
+            get {
+                return ResourceManager.GetString("Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Регистрация.
         /// </summary>
         public static string Register {

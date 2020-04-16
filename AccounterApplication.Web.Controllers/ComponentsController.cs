@@ -14,6 +14,7 @@
     using ViewModels.Currencies;
     using ViewModels.ComponentTypes;
 
+    using AlertType = Common.Enumerations.AlertMessageTypes;
     using Resources = Common.LocalizationResources.Shared.Messages.MessagesResources;
 
     public class ComponentsController : BaseController
@@ -40,7 +41,7 @@
 
             var viewModel = new ComponentsListingViewModel { Components = components };
 
-            return View(viewModel);
+            return this.View(viewModel);
         }
 
         [HttpGet]
@@ -49,13 +50,13 @@
         {
             var language = this.GetCurrentLanguage();
 
-            var viewModel = new ComponentInputModel 
+            var viewModel = new ComponentInputModel
             {
                 CurrencyListItems = await this.currenciesService.AllLocalized<CurrencySelectListItem>(language),
                 ComponentTypeListItems = await this.componentTypesService.AllLocalized<ComponentTypeSelectListItem>(language)
             };
 
-            return View(viewModel);
+            return this.View(viewModel);
         }
 
         [HttpPost]
@@ -69,7 +70,7 @@
                 model.CurrencyListItems = await this.currenciesService.AllLocalized<CurrencySelectListItem>(language);
                 model.ComponentTypeListItems = await this.componentTypesService.AllLocalized<ComponentTypeSelectListItem>(language);
 
-                return View(model);
+                return this.View(model);
             }
 
             try
@@ -104,7 +105,7 @@
             var componentTypeId = (int)ComponentTypes.PaymentComponent;
 
             var targetComponent = await this.componentsService.GetByIdAsync<ComponentViewModel>(userId, componentId);
-            var paymentComponents = await this.componentsService.AllByUserIdAndTypeIdLocalized<ComponentsSelectListItem>(userId, componentTypeId , language);
+            var paymentComponents = await this.componentsService.AllByUserIdAndTypeIdLocalized<ComponentsSelectListItem>(userId, componentTypeId, language);
 
             var viewModel = new ComponentsSaveWithdrawInputModel
             {
@@ -115,7 +116,7 @@
                 UserPaymentComponents = paymentComponents
             };
 
-            return View(viewModel);
+            return this.View(viewModel);
         }
 
         [HttpPost]
@@ -134,7 +135,7 @@
                 var targetComponent = await this.componentsService.GetByIdAsync(userId, model.TargetComponentId);
                 model.TargetComponentAmount = targetComponent.Amount;
 
-                return View(model);
+                return this.View(model);
             }
 
             var savingsComponent = await this.componentsService.GetByIdAsync(userId, model.TargetComponentId);
@@ -162,7 +163,7 @@
                 this.AddAlertMessageToTempData(AlertMessageTypes.Error, Resources.Error, Resources.TransactionResultError);
             }
 
-            return RedirectToAction("Index");
+            return this.RedirectToAction("Index");
         }
 
         [HttpGet]
@@ -179,7 +180,7 @@
                 Amount = 0.1m
             };
 
-            return View(viewModel);
+            return this.View(viewModel);
         }
 
         [HttpPost]
@@ -188,7 +189,7 @@
         {
             if (submitType.Equals(ButtonValueConstants.ButtonCancel))
             {
-                return RedirectToAction("Index");
+                return this.RedirectToAction("Index");
             }
 
             var userId = this.GetUserId<string>();
@@ -199,7 +200,7 @@
                 model.Component = targetComponent;
                 model.Amount = 0.1m;
 
-                return View(model);
+                return this.View(model);
             }
 
             try
@@ -221,7 +222,7 @@
             }
 
 
-            return RedirectToAction("Index");
+            return this.RedirectToAction("Index");
         }
 
         [HttpGet]
@@ -247,6 +248,60 @@
             }
 
             return this.Json(result);
+        }
+
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> EditComponent(string id)
+        {
+            var userId = this.GetUserId<string>();
+            var viewModel = await this.componentsService.GetByIdAsync<ComponentEditInputModel>(userId, id);
+
+            return this.View(viewModel);
+        }
+
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> EditComponent(ComponentEditInputModel model, string submitType)
+        {
+            if (submitType.Equals(ButtonValueConstants.ButtonCancel))
+            {
+                return RedirectToAction("Index");
+            }
+
+            var userId = this.GetUserId<string>();
+            var component = await this.componentsService.GetByIdAsync(userId, model.Id);
+
+            if (!ModelState.IsValid)
+            {
+                model.Name = component.Name;
+                model.IsActive = component.IsActive;
+
+                return this.View(model);
+            }
+
+            try
+            {
+                this.Mapper.Map(model, component);
+
+                bool isUpdated = await this.componentsService.Update(userId, component);
+
+                if (isUpdated)
+                {
+                    this.AddAlertMessageToTempData(AlertType.Success, Resources.Success, Resources.ComponentUpdatedSuccess);
+
+                }
+                else
+                {
+                    this.AddAlertMessageToTempData(AlertType.Error, Resources.Error, Resources.ComponentUpdatedError);
+                }
+
+                return this.RedirectToAction("Index");
+            }
+            catch (Exception)
+            {
+                return this.View("Error");
+            }
         }
     }
 }

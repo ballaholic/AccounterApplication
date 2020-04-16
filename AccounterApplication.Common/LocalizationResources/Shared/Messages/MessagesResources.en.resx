@@ -192,6 +192,9 @@
   <data name="MonthlyIncomeUpdatedSuccess" xml:space="preserve">
     <value>The Monthly Income was updated successfully.</value>
   </data>
+  <data name="RenameComponent" xml:space="preserve">
+    <value>Rename Component</value>
+  </data>
   <data name="Success" xml:space="preserve">
     <value>Success!</value>
   </data>

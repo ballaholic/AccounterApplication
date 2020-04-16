@@ -132,6 +132,9 @@
   <data name="DeleteComponent" xml:space="preserve">
     <value>Изтрий</value>
   </data>
+  <data name="EditComponent" xml:space="preserve">
+    <value>Промени компонента</value>
+  </data>
   <data name="Funds" xml:space="preserve">
     <value>Средства</value>
   </data>

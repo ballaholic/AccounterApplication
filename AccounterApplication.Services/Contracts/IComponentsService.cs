@@ -28,6 +28,8 @@
 
         void Delete(Component component);
 
+        Task<bool> Update(string userId, Component component);
+
         bool CheckIfComponentIsValid(string userId, string componentId);
     }
 }

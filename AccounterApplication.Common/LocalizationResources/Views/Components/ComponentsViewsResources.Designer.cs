@@ -107,6 +107,15 @@ namespace AccounterApplication.Common.LocalizationResources.Views.Components {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Промени компонента.
+        /// </summary>
+        public static string EditComponent {
+            get {
+                return ResourceManager.GetString("EditComponent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Средства.
         /// </summary>
         public static string Funds {

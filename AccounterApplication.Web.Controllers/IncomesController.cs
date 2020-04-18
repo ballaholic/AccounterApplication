@@ -16,13 +16,18 @@
 
     using AlertType = Common.Enumerations.AlertMessageTypes;
     using Resources = Common.LocalizationResources.Shared.Messages.MessagesResources;
+    using AccounterApplication.Web.ViewModels.Components;
 
     public class IncomesController : BaseController
     {
+        private readonly IComponentsService componentsService;
         private readonly IMonthlyIncomeService monthlyIncomeService;
 
-        public IncomesController(IMonthlyIncomeService monthlyIncomeService)
-            => this.monthlyIncomeService = monthlyIncomeService;
+        public IncomesController(IMonthlyIncomeService monthlyIncomeService, IComponentsService componentsService)
+        {
+            this.componentsService = componentsService;
+            this.monthlyIncomeService = monthlyIncomeService;
+        }
 
         [HttpGet]
         [Authorize]
@@ -82,9 +87,12 @@
 
         [HttpGet]
         [Authorize]
-        public IActionResult AddMonthlyIncome()
+        public async Task<IActionResult> AddMonthlyIncome()
         {
-            var model = new MonthlyIncomeInputModel();
+            var language = this.GetCurrentLanguage();
+            var userId = this.GetUserId<string>();
+            var componentTypeId = (int)ComponentTypes.PaymentComponent;
+            var model = new MonthlyIncomeInputModel { ComponentsSelectListItems = await this.componentsService.AllByUserIdAndTypeIdActiveLocalized<ComponentsSelectListItem>(userId, componentTypeId, language) };
 
             return this.View(model);
         }
@@ -98,21 +106,43 @@
                 return this.RedirectToAction("Index");
             }
 
+            var userId = this.GetUserId<string>();
+            var language = this.GetCurrentLanguage();
+            var componentTypeId = (int)ComponentTypes.PaymentComponent;
+
             if (!this.ModelState.IsValid)
             {
+                model.ComponentsSelectListItems = await this.componentsService.AllByUserIdAndTypeIdActiveLocalized<ComponentsSelectListItem>(userId, componentTypeId, language);
                 return this.View(model);
             }
 
-            var entityToAdd = new MonthlyIncome
+            try
             {
-                Amount = model.Amount,
-                UserId = this.User.GetLoggedInUserId<string>(),
-                IncomePeriod = model.IncomePeriod
-            };
+                var entityToAdd = new MonthlyIncome
+                {
+                    Amount = model.Amount,
+                    UserId = userId,
+                    IncomePeriod = model.IncomePeriod,
+                    ComponentId = model.ComponentId                 
+                };
 
-            await this.monthlyIncomeService.AddAsync(entityToAdd);
+                await this.monthlyIncomeService.AddAsync(entityToAdd);
 
-            this.AddAlertMessageToTempData(AlertType.Success, Resources.Success, Resources.MonthlyIncomeAddSuccess);
+                var result = await this.componentsService.AddAmount(userId, model.ComponentId, model.Amount);
+
+                if (result)
+                {
+                    this.AddAlertMessageToTempData(AlertType.Success, Resources.Success, Resources.MonthlyIncomeAddSuccess);
+                }
+                else
+                {
+                    this.AddAlertMessageToTempData(AlertType.Error, Resources.Error, Resources.MonthlyIncomeAddError);
+                }
+            }
+            catch (Exception)
+            {
+                this.AddAlertMessageToTempData(AlertType.Error, Resources.Error, Resources.MonthlyIncomeAddError);
+            }      
 
             return this.RedirectToAction("Index");
         }

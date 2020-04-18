@@ -28,6 +28,11 @@
             <input asp-for="IncomePeriod" class="form-control" />
             <span asp-validation-for="IncomePeriod" class="text-danger"></span>
         </div>
+        <div class="form-group">
+            <label asp-for="ComponentId"></label>
+            <select asp-for="ComponentId" class="form-control" asp-items="@Model.ComponentsSelectListItems"></select>
+            <span asp-validation-for="ComponentId" class="text-danger"></span>
+        </div>
         <hr />
         <input type="submit" asp-route-submitType="@ButtonValueConstants.ButtonSubmit" value="@ButtonsResources.Add" class="btn btn-primary btn-outline-dark" />
         <input type="submit" asp-route-submitType="@ButtonValueConstants.ButtonCancel" value=@ButtonsResources.Cancel class="btn btn-light btn-outline-dark" />

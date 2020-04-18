@@ -71,6 +71,15 @@ namespace AccounterApplication.Common.LocalizationResources.ViewModels {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Сметка.
+        /// </summary>
+        public static string Component {
+            get {
+                return ResourceManager.GetString("Component", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Датата не е валидна..
         /// </summary>
         public static string DateNotValid {

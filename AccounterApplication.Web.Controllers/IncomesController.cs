@@ -152,13 +152,7 @@
         public async Task<IActionResult> EditMonthlyIncome(int id)
         {
             var userId = this.GetUserId<string>();
-            var monthlyIncome = await this.monthlyIncomeService.GetByIdAsync(userId, id);
-            var model = new MonthlyIncomeInputModel
-            {
-                Id = monthlyIncome.Id,
-                Amount = monthlyIncome.Amount,
-                IncomePeriod = monthlyIncome.IncomePeriod
-            };
+            var model = await this.monthlyIncomeService.GetByIdAsync<MonthlyIncomeInputModel>(userId, id);
             
             return this.View(model);
         }
@@ -182,12 +176,15 @@
                 var userId = this.GetUserId<string>();
 
                 var monthlyIncome = await this.monthlyIncomeService.GetByIdAsync(userId, model.Id);
+                var amountDifference = model.Amount - monthlyIncome.Amount;
 
                 this.Mapper.Map(model, monthlyIncome);
 
-                bool isUpdated = await this.monthlyIncomeService.Update(userId, monthlyIncome);
+                bool isIncomeUpdated = await this.monthlyIncomeService.Update(userId, monthlyIncome);
 
-                if (isUpdated)
+                bool isComponentAmountUpdated = await this.componentsService.UpdateComponentAmount(userId, model.ComponentId, amountDifference);
+
+                if (isIncomeUpdated && isComponentAmountUpdated)
                 {
                     this.AddAlertMessageToTempData(AlertType.Success, Resources.Success, Resources.MonthlyIncomeUpdatedSuccess);
                 }

@@ -117,6 +117,13 @@
         public async Task<MonthlyIncome> GetByIdAsync(string userId, int id)
             => await this.monthlyIncomeRepository.GetByIdWithoutDeletedAsync(userId, id);
 
+        public async Task<T> GetByIdAsync<T>(string userId, int id)
+            => await this.monthlyIncomeRepository
+                .All()
+                .Where(x => x.UserId.Equals(userId) && x.Id.Equals(id))
+                .To<T>()
+                .FirstOrDefaultAsync();
+
         public async Task<bool> Update(string userId, MonthlyIncome monthlyIncome)
         {
             MonthlyIncome entityToUpdate = await this.monthlyIncomeRepository.GetByIdWithoutDeletedAsync(userId, monthlyIncome.Id);
@@ -140,6 +147,6 @@
                 .Any(x => x.Id.Equals(id) && x.UserId.Equals(userId));
 
         public void Delete(MonthlyIncome monthlyIncome)
-            => this.monthlyIncomeRepository.Delete(monthlyIncome);
+            => this.monthlyIncomeRepository.Delete(monthlyIncome);      
     }
 }

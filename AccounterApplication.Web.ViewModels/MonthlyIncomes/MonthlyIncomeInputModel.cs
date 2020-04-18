@@ -4,13 +4,14 @@
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
+    using AutoMapper;
     using Components;
     using Data.Models;
     using Services.Mapping;
 
     using Resources = Common.LocalizationResources.ViewModels.MonthlyIncomeInputModelResources;
 
-    public class MonthlyIncomeInputModel : IMapTo<MonthlyIncome>
+    public class MonthlyIncomeInputModel : IMapTo<MonthlyIncome>, IMapFrom<MonthlyIncome>, IHaveCustomMappings
     {
         public MonthlyIncomeInputModel()
         {
@@ -33,9 +34,17 @@
 
         [Required(ErrorMessageResourceType = typeof(Resources), ErrorMessageResourceName = "Required")]
         [Display(Name = "Component", ResourceType = typeof(Resources))]
-
         public string ComponentId { get; set; }
 
+        [Display(Name = "Component", ResourceType = typeof(Resources))]
+        public string ComponentName { get; set; }
+
         public IEnumerable<ComponentsSelectListItem> ComponentsSelectListItems { get; set; }
+
+        public void CreateMappings(IProfileExpression configuration)
+            => configuration.CreateMap<MonthlyIncome, MonthlyIncomeInputModel>()
+                .ForMember(
+                    m => m.ComponentName,
+                    opt => opt.MapFrom(x => $"{x.Component.Name} - {x.Component.Currency.Code}"));
     }
 }

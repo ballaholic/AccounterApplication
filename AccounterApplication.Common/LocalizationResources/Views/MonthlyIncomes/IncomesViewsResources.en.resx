@@ -123,6 +123,9 @@
   <data name="Amount" xml:space="preserve">
     <value>Amount</value>
   </data>
+  <data name="Component" xml:space="preserve">
+    <value>Component</value>
+  </data>
   <data name="Date" xml:space="preserve">
     <value>Date</value>
   </data>

@@ -175,6 +175,14 @@ a.th-sortable {
         color: #0366d6;
     }
 
+a.th-unsortable {
+    color: #6e707e;
+}
+
+    a.th-unsortable:hover {
+        color: #6e707e;
+    }
+
 .th-dropdown {
     color: #6e707e;
     border: none;

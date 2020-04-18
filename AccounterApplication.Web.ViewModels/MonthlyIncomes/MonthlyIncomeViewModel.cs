@@ -11,10 +11,15 @@
         public string UserId { get; set; }
         public decimal Amount { get; set; }
         public string IncomePeriod { get; set; }
+        public string ComponentName { get; set; }
 
         public void CreateMappings(IProfileExpression configuration)
-            => configuration.CreateMap<MonthlyIncome, MonthlyIncomeViewModel>().ForMember(
-                m => m.IncomePeriod,
-                opt => opt.MapFrom(x => x.CreatedOn.ToShortDateString()));
+            => configuration.CreateMap<MonthlyIncome, MonthlyIncomeViewModel>()
+                .ForMember(
+                    m => m.IncomePeriod,
+                    opt => opt.MapFrom(x => x.CreatedOn.ToShortDateString()))
+                .ForMember(
+                    m => m.ComponentName,
+                    opt => opt.MapFrom(x => $"{x.Component.Name} - {x.Component.Currency.Code}"));
     }
 }

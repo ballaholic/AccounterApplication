@@ -117,7 +117,7 @@
             builder
                 .Entity<Component>()
                 .HasOne(c => c.Currency)
-                .WithMany()
+                .WithMany(c => c.Components)
                 .HasForeignKey(c => c.CurrencyId);
             builder
                 .Entity<Component>()

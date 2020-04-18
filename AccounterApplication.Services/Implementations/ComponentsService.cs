@@ -144,5 +144,21 @@
 
             return true;
         }
+
+        public async Task<bool> UpdateComponentAmount(string userId, string componentId, decimal amountDifference)
+        {
+            Component entityToUpdate = await this.componentsRepository.GetByIdWithoutDeletedAsync(userId, componentId);
+
+            if (entityToUpdate == null)
+            {
+                return false;
+            }
+
+            entityToUpdate.Amount += amountDifference;
+
+            await this.componentsRepository.SaveChangesAsync();
+
+            return true;
+        }
     }
 }

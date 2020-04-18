@@ -34,6 +34,8 @@
 
         Task<bool> Update(string userId, Component component);
 
+        Task<bool> UpdateComponentAmount(string userId, string componentId, decimal amountDifference);
+
         bool CheckIfComponentIsValid(string userId, string componentId);
     }
 }

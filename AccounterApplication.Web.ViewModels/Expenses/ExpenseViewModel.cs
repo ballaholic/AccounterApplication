@@ -18,6 +18,8 @@
 
         public string ExpenseGroupName { get; set; }
 
+        public string ComponentName { get; set; }
+
         public void CreateMappings(IProfileExpression configuration)
         {
             var language = Languages.English;
@@ -31,7 +33,10 @@
                     opt => opt.MapFrom(x =>
                         language.Equals(Languages.Bulgarian)
                             ? x.ExpenseGroup.NameBG
-                            : x.ExpenseGroup.NameEN));
+                            : x.ExpenseGroup.NameEN))
+                .ForMember(
+                    m => m.ComponentName,
+                    opt => opt.MapFrom(x => $"{x.Component.Name} - {x.Component.Currency.Code}"));
         }
     }
 }

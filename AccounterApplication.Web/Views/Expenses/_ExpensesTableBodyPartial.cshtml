@@ -10,6 +10,7 @@
         <td class="cell-clickable-edit pointer" data-url="@Url.Action(nameof(ExpensesController.EditExpense), nameof(ExpensesController).Replace(nameof(Controller), string.Empty))" data-id="@expense.Id">@expense.ExpenseAmount</td>
         <td class="cell-clickable-edit pointer" data-url="@Url.Action(nameof(ExpensesController.EditExpense), nameof(ExpensesController).Replace(nameof(Controller), string.Empty))" data-id="@expense.Id">@expense.Description</td>
         <td class="cell-clickable-edit pointer" data-url="@Url.Action(nameof(ExpensesController.EditExpense), nameof(ExpensesController).Replace(nameof(Controller), string.Empty))" data-id="@expense.Id">@expense.ExpenseGroupName</td>
+        <td class="cell-clickable-edit pointer" data-url="@Url.Action(nameof(ExpensesController.EditExpense), nameof(ExpensesController).Replace(nameof(Controller), string.Empty))" data-id="@expense.Id">@expense.ComponentName</td>
         <td>
             <a href="#" class="btn btn-no-shadow trigger-delete"
                data-id="@expense.Id"

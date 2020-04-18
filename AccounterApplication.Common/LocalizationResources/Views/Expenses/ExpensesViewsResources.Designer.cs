@@ -80,6 +80,15 @@ namespace AccounterApplication.Common.LocalizationResources.Views.Expenses {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Сметка.
+        /// </summary>
+        public static string Component {
+            get {
+                return ResourceManager.GetString("Component", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Дата.
         /// </summary>
         public static string Date {

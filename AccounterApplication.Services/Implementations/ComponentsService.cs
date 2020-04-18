@@ -86,16 +86,16 @@
             return true;
         }
 
-        public async Task<bool> RemoveAmount(string userId, Component component)
+        public async Task<bool> RemoveAmount(string userId, string componentId, decimal amount)
         {
-            Component entityToUpdate = await this.componentsRepository.GetByIdWithoutDeletedAsync(userId, component.Id);
+            Component entityToUpdate = await this.componentsRepository.GetByIdWithoutDeletedAsync(userId, componentId);
 
             if (entityToUpdate == null)
             {
                 return false;
             }
 
-            entityToUpdate.Amount -= component.Amount;
+            entityToUpdate.Amount -= amount;
 
             await this.componentsRepository.SaveChangesAsync();
 
@@ -145,7 +145,7 @@
             return true;
         }
 
-        public async Task<bool> UpdateComponentAmount(string userId, string componentId, decimal amountDifference)
+        public async Task<bool> UpdateComponentAmount(string userId, string componentId, decimal amountDifference, ComponentAmountUpdateTypes updateType)
         {
             Component entityToUpdate = await this.componentsRepository.GetByIdWithoutDeletedAsync(userId, componentId);
 
@@ -154,7 +154,17 @@
                 return false;
             }
 
-            entityToUpdate.Amount += amountDifference;
+            switch (updateType)
+            {
+                case ComponentAmountUpdateTypes.Income:
+                    entityToUpdate.Amount += amountDifference;
+                    break;
+                case ComponentAmountUpdateTypes.Expense:
+                    entityToUpdate.Amount -= amountDifference;
+                    break;
+                default:
+                    break;
+            }
 
             await this.componentsRepository.SaveChangesAsync();
 

@@ -24,7 +24,7 @@
 
         Task<bool> AddAmount(string userId, string componentId, decimal amount);
 
-        Task<bool> RemoveAmount(string userId, Component component);
+        Task<bool> RemoveAmount(string userId, string componentId, decimal amount);
 
         Task<bool> TransactionBetweenComponents(Component senderComponent, Component receiverComponent, decimal transactionAmount);
 
@@ -34,7 +34,7 @@
 
         Task<bool> Update(string userId, Component component);
 
-        Task<bool> UpdateComponentAmount(string userId, string componentId, decimal amountDifference);
+        Task<bool> UpdateComponentAmount(string userId, string componentId, decimal amountDifference, ComponentAmountUpdateTypes updateType);
 
         bool CheckIfComponentIsValid(string userId, string componentId);
     }

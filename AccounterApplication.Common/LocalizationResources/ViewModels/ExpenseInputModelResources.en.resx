@@ -120,6 +120,9 @@
   <data name="Amount" xml:space="preserve">
     <value>Amount</value>
   </data>
+  <data name="Component" xml:space="preserve">
+    <value>Component</value>
+  </data>
   <data name="DateNotValid" xml:space="preserve">
     <value>The Date is not valid.</value>
   </data>

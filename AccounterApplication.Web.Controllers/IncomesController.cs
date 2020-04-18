@@ -182,7 +182,7 @@
 
                 bool isIncomeUpdated = await this.monthlyIncomeService.Update(userId, monthlyIncome);
 
-                bool isComponentAmountUpdated = await this.componentsService.UpdateComponentAmount(userId, model.ComponentId, amountDifference);
+                bool isComponentAmountUpdated = await this.componentsService.UpdateComponentAmount(userId, model.ComponentId, amountDifference, ComponentAmountUpdateTypes.Income);
 
                 if (isIncomeUpdated && isComponentAmountUpdated)
                 {

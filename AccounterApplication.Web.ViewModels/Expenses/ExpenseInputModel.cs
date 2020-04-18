@@ -3,21 +3,21 @@
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-
     using AutoMapper;
 
+    using Components;
     using Data.Models;
     using ExpenseGroups;
     using Services.Mapping;
 
     using Resources = Common.LocalizationResources.ViewModels.ExpenseInputModelResources;
 
-    public class ExpenseInputModel : IMapTo<Expense>, IHaveCustomMappings
+    public class ExpenseInputModel : IMapFrom<Expense>, IMapTo<Expense>, IHaveCustomMappings
     {
         public ExpenseInputModel()
         {
             this.ExpenseAmount = 0.1m;
-            this.DateOfExpense = DateTime.UtcNow.Date;
+            this.ExpenseDate = DateTime.UtcNow.Date;
         }
 
         [Required]
@@ -36,7 +36,7 @@
         [Required(ErrorMessageResourceType = typeof(Resources), ErrorMessageResourceName = "Required")]
         [Display(Name = "ExpenseDate", ResourceType = typeof(Resources))]
         [DataType(DataType.Date, ErrorMessageResourceType = typeof(Resources), ErrorMessageResourceName = "DateNotValid")]
-        public DateTime DateOfExpense { get; set; }
+        public DateTime ExpenseDate { get; set; }
 
         [Required(ErrorMessageResourceType = typeof(Resources), ErrorMessageResourceName = "Required")]
         [Display(Name = "ExpenseGroup", ResourceType = typeof(Resources))]
@@ -44,9 +44,19 @@
 
         public IEnumerable<ExpenseGroupSelectListItem> ExpenseGroupListItems { get; set; }
 
+        [Required(ErrorMessageResourceType = typeof(Resources), ErrorMessageResourceName = "Required")]
+        [Display(Name = "Component", ResourceType = typeof(Resources))]
+        public string ComponentId { get; set; }
+
+        [Display(Name = "Component", ResourceType = typeof(Resources))]
+        public string ComponentName { get; set; }
+
+        public IEnumerable<ComponentsSelectListItem> ComponentsSelectListItems { get; set; }
+
+
         public void CreateMappings(IProfileExpression configuration)
-           => configuration.CreateMap<ExpenseInputModel, Expense>().ForMember(
-               m => m.ExpenseDate,
-               opt => opt.MapFrom(x => x.DateOfExpense));
+           => configuration.CreateMap<Expense, ExpenseInputModel>().ForMember(
+               m => m.ComponentName,
+               opt => opt.MapFrom(x => $"{x.Component.Name} - {x.Component.Currency.Code}"));
     }
 }

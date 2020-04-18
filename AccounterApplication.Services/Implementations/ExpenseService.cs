@@ -144,6 +144,13 @@
         public async Task<Expense> GetByIdAsync(string userId, int id)
             => await this.expenseRepository.GetByIdWithoutDeletedAsync(userId, id);
 
+        public async Task<T> GetByIdAsync<T>(string userId, int id)
+            => await this.expenseRepository
+                .All()
+                .Where(e => e.UserId.Equals(userId) && e.Id.Equals(id))
+                .To<T>()
+                .FirstOrDefaultAsync();
+
         public async Task<bool> Update(string userId, Expense expense)
         {
             Expense entityToUpdate = await this.expenseRepository.GetByIdWithoutDeletedAsync(userId, expense.Id);

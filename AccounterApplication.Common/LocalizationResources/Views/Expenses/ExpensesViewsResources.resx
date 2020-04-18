@@ -123,6 +123,9 @@
   <data name="Amount" xml:space="preserve">
     <value>Сума</value>
   </data>
+  <data name="Component" xml:space="preserve">
+    <value>Сметка</value>
+  </data>
   <data name="Date" xml:space="preserve">
     <value>Дата</value>
   </data>

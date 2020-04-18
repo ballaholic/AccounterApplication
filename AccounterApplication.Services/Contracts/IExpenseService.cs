@@ -28,6 +28,8 @@
 
         Task AddAsync(Expense expense);
 
+        Task<T> GetByIdAsync<T>(string userId, int id);
+
         Task<Expense> GetByIdAsync(string userId, int id);
 
         Task<bool> Update(string userId, Expense expense);

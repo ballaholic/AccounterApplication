@@ -35,5 +35,6 @@
 
         public ICollection<MonthlyIncome> Incomes { get; set; } = new List<MonthlyIncome>();
 
+        public ICollection<Expense> Expenses { get; set; } = new List<Expense>();
     }
 }

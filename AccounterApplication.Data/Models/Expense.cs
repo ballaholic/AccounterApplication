@@ -29,5 +29,10 @@
         public string UserId { get; set; }
 
         public ApplicationUser User { get; set; }
+
+        [Required]
+        public string ComponentId { get; set; }
+
+        public Component Component { get; set; }
     }
 }

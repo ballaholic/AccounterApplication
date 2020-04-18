@@ -1,6 +1,11 @@
-﻿
+﻿@using AccounterApplication.Web.ViewModels.UserDashboard
+
+@using Resources = AccounterApplication.Common.LocalizationResources.Views.UserDashboard.UserDashboardResources
+
+@model UserDashboardViewModel
+
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = Resources.Dashboard;
 }
 
 <div class="row mb-5">
@@ -9,3 +14,11 @@
     </div>
 </div>
 
+<div class="row">
+    <partial name="_UserDashboardCardsPartial" />
+</div>
+<div class="row">
+    <div class="col-xl-12 col-lg-7">
+        <partial name="_UserDashboardLastExpensesPartial" />
+    </div>
+</div>

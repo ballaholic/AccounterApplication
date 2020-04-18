@@ -126,6 +126,15 @@
                     .ToListAsync();
         }
 
+        public async Task<IEnumerable<T>> NewestByUserIdLocalized<T>(string userId, Languages language, int count)
+            => await this.expenseRepository
+                .All()
+                .Where(e => e.UserId.Equals(userId))
+                .OrderByDescending(e => e.ExpenseDate)
+                .Take(count)
+                .To<T>(new { language })
+                .ToListAsync();
+
         public async Task AddAsync(Expense expense)
         {
             await this.expenseRepository.AddAsync(expense);

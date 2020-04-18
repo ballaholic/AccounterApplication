@@ -5,25 +5,33 @@
 
     using System.Threading.Tasks;
 
-    using Infrastructure;
     using Services.Contracts;
+    using ViewModels.Expenses;
     using ViewModels.UserDashboard;
     using ViewModels.MonthlyIncomes;
 
     public class UserDashboardController : BaseController
     {
-        private readonly IMonthlyIncomeService monthlyIncomeService;
+        private readonly IExpenseService expenseService;
 
-        public UserDashboardController(IMonthlyIncomeService monthlyIncomeService)
-            => this.monthlyIncomeService = monthlyIncomeService;
+        public UserDashboardController(IExpenseService expenseService)
+            => this.expenseService = expenseService;
 
         [HttpGet]
         [Authorize]
         public async Task<IActionResult> Index()
         {
             var userId = this.GetUserId<string>();
-            var monthlyIncomes = await this.monthlyIncomeService.AllFromCurrentMonthByUserId<MonthlyIncomeViewModel>(userId);
-            var viewModel = new UserDashboardViewModel { MonthlyIncomes = monthlyIncomes };
+            var language = this.GetCurrentLanguage();
+
+            var lastTenExpenses = await this.expenseService.NewestByUserIdLocalized<ExpenseViewModel>(userId, language, 10);
+
+            var viewModel = new UserDashboardViewModel
+            {
+                FundsAmount = 3000, 
+                SavingsAmount = 2000,
+                Expenses = lastTenExpenses
+            };
 
             return View(viewModel);
         }

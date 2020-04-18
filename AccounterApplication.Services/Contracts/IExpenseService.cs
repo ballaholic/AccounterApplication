@@ -24,6 +24,8 @@
 
         Task<IEnumerable<T>> AllByUserIdAndGroupIdLocalizedSortedByDescription<T>(string userId, int groupId, Languages language, SortTypes sortType);
 
+        Task<IEnumerable<T>> NewestByUserIdLocalized<T>(string userId, Languages language, int count);
+
         Task AddAsync(Expense expense);
 
         Task<Expense> GetByIdAsync(string userId, int id);

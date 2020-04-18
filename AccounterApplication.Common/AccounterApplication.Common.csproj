@@ -99,6 +99,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>LoginResources.resx</DependentUpon>
     </Compile>
+    <Compile Update="LocalizationResources\Views\UserDashboard\UserDashboardResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>UserDashboardResources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -176,6 +181,10 @@
     <EmbeddedResource Update="LocalizationResources\Views\Shared\LoginResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>LoginResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="LocalizationResources\Views\UserDashboard\UserDashboardResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>UserDashboardResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 

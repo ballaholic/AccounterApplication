@@ -1,5 +1,6 @@
 ﻿namespace AccounterApplication.Data.Models
 {
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
@@ -31,5 +32,8 @@
         public string UserId { get; set; }
 
         public ApplicationUser User { get; set; }
+
+        public ICollection<MonthlyIncome> Incomes { get; set; } = new List<MonthlyIncome>();
+
     }
 }

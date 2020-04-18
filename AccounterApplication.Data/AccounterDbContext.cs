@@ -101,6 +101,11 @@
                 .WithMany(a => a.MonthlyIncomes)
                 .HasForeignKey(a => a.UserId);
             builder
+                .Entity<MonthlyIncome>()
+                .HasOne(a => a.Component)
+                .WithMany(a => a.Incomes)
+                .HasForeignKey(a => a.ComponentId);
+            builder
                 .Entity<Component>()
                 .Property(c => c.Id)
                 .ValueGeneratedOnAdd();

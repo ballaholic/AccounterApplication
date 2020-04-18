@@ -19,5 +19,10 @@
 
         [Required]
         public DateTime IncomePeriod { get; set; }
+
+        [Required]
+        public string ComponentId { get; set; }
+
+        public Component Component { get; set; }
     }
 }

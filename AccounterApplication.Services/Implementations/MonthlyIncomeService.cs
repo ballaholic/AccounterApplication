@@ -124,21 +124,10 @@
                 .To<T>()
                 .FirstOrDefaultAsync();
 
-        public async Task<bool> Update(string userId, MonthlyIncome monthlyIncome)
+        public async Task Update(string userId, MonthlyIncome monthlyIncome)
         {
-            MonthlyIncome entityToUpdate = await this.monthlyIncomeRepository.GetByIdWithoutDeletedAsync(userId, monthlyIncome.Id);
-
-            if (entityToUpdate == null)
-            {
-                return false;
-            }
-
-            entityToUpdate.Amount = monthlyIncome.Amount;
-            entityToUpdate.IncomePeriod = monthlyIncome.IncomePeriod;
-
+            this.monthlyIncomeRepository.Update(monthlyIncome);
             await this.monthlyIncomeRepository.SaveChangesAsync();
-
-            return true;
         }
 
         public bool CheckIfMonthlyIncomeIdIsValid(int id, string userId)

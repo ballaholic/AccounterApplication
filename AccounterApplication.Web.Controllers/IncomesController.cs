@@ -123,7 +123,7 @@
                     Amount = model.Amount,
                     UserId = userId,
                     IncomePeriod = model.IncomePeriod,
-                    ComponentId = model.ComponentId                 
+                    ComponentId = model.ComponentId
                 };
 
                 await this.monthlyIncomeService.AddAsync(entityToAdd);
@@ -142,7 +142,7 @@
             catch (Exception)
             {
                 this.AddAlertMessageToTempData(AlertType.Error, Resources.Error, Resources.MonthlyIncomeAddError);
-            }      
+            }
 
             return this.RedirectToAction("Index");
         }
@@ -153,7 +153,7 @@
         {
             var userId = this.GetUserId<string>();
             var model = await this.monthlyIncomeService.GetByIdAsync<MonthlyIncomeInputModel>(userId, id);
-            
+
             return this.View(model);
         }
 
@@ -180,25 +180,17 @@
 
                 this.Mapper.Map(model, monthlyIncome);
 
-                bool isIncomeUpdated = await this.monthlyIncomeService.Update(userId, monthlyIncome);
+                await this.monthlyIncomeService.Update(userId, monthlyIncome);
+                await this.componentsService.UpdateComponentAmount(userId, model.ComponentId, amountDifference, ComponentAmountUpdateTypes.Income);
 
-                bool isComponentAmountUpdated = await this.componentsService.UpdateComponentAmount(userId, model.ComponentId, amountDifference, ComponentAmountUpdateTypes.Income);
-
-                if (isIncomeUpdated && isComponentAmountUpdated)
-                {
-                    this.AddAlertMessageToTempData(AlertType.Success, Resources.Success, Resources.MonthlyIncomeUpdatedSuccess);
-                }
-                else
-                {
-                    this.AddAlertMessageToTempData(AlertType.Error, Resources.Error, Resources.MonthlyIncomeUpdatedError);   
-                }
-
-                return this.RedirectToAction("Index");
+                this.AddAlertMessageToTempData(AlertType.Success, Resources.Success, Resources.MonthlyIncomeUpdatedSuccess);
             }
             catch (Exception)
             {
-                return this.View("Error");
-            }      
+                this.AddAlertMessageToTempData(AlertType.Error, Resources.Error, Resources.MonthlyIncomeUpdatedError);
+            }
+
+            return this.RedirectToAction("Index");
         }
 
         [HttpGet]

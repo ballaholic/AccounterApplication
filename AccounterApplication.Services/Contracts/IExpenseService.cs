@@ -32,7 +32,7 @@
 
         Task<Expense> GetByIdAsync(string userId, int id);
 
-        Task<bool> Update(string userId, Expense expense);
+        Task Update(string userId, Expense expense);
 
         bool CheckIfExpenseIdIsValid(int id, string userId);
 

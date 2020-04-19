@@ -32,7 +32,7 @@
 
         void Delete(Component component);
 
-        Task<bool> Update(string userId, Component component);
+        Task Update(string userId, Component component);
 
         Task<bool> UpdateComponentAmount(string userId, string componentId, decimal amountDifference, ComponentAmountUpdateTypes updateType);
 

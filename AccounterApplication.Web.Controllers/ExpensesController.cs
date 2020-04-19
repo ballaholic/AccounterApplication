@@ -3,7 +3,7 @@
     using System;
     using System.Threading.Tasks;
     using System.Collections.Generic;
-    
+
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Authorization;
 
@@ -40,8 +40,8 @@
             var userId = this.GetUserId<string>();
             var expenses = await this.expensesService.AllByUserIdLocalized<ExpenseViewModel>(userId, language);
             var expenseGroups = await this.expenseGroupService.AllLocalized<ExpenseGroupSelectListItem>(language);
-            var viewModel = new ExpensesListingViewModel 
-            { 
+            var viewModel = new ExpensesListingViewModel
+            {
                 Expenses = expenses,
                 ExpenseGroupListItems = expenseGroups
             };
@@ -64,9 +64,9 @@
             {
                 expenses = await this.expensesService.AllByUserIdLocalized<ExpenseViewModel>(userId, language);
             }
-          
-            var viewModel = new ExpensesListingViewModel 
-            { 
+
+            var viewModel = new ExpensesListingViewModel
+            {
                 Expenses = expenses,
                 ExpenseGroupListItems = await this.expenseGroupService.AllLocalized<ExpenseGroupSelectListItem>(language)
             };
@@ -91,7 +91,7 @@
                 expenses = await this.expensesService.AllByUserIdLocalized<ExpenseViewModel>(userId, language);
             }
 
-            var viewModel = new ExpensesListingViewModel 
+            var viewModel = new ExpensesListingViewModel
             {
                 Expenses = expenses,
                 ExpenseGroupListItems = await this.expenseGroupService.AllLocalized<ExpenseGroupSelectListItem>(language)
@@ -117,7 +117,7 @@
                 expenses = await this.expensesService.AllByUserIdLocalized<ExpenseViewModel>(userId, language);
             }
 
-            var viewModel = new ExpensesListingViewModel 
+            var viewModel = new ExpensesListingViewModel
             {
                 Expenses = expenses,
                 ExpenseGroupListItems = await this.expenseGroupService.AllLocalized<ExpenseGroupSelectListItem>(language)
@@ -142,7 +142,7 @@
             {
                 expenses = await this.expensesService.AllByUserIdAndGroupIdLocalized<ExpenseViewModel>(userId, groupId, language);
             }
-            
+
             var viewModel = new ExpensesListingViewModel
             {
                 Expenses = expenses,
@@ -235,16 +235,16 @@
         [Authorize]
         public async Task<IActionResult> EditExpense(int id)
         {
+            var language = this.GetCurrentLanguage();
             var userId = this.GetUserId<string>();
-            var expense = await this.expensesService.GetByIdAsync(userId, id);
-            var model = await this.expensesService.GetByIdAsync<ExpenseInputModel>(userId, id);
-
+            var model = await this.expensesService.GetByIdAsync<ExpenseEditInputModel>(userId, id);
+            model.ExpenseGroupListItems = await this.expenseGroupService.AllLocalized<ExpenseGroupSelectListItem>(language);
             return this.View(model);
         }
 
         [HttpPost]
         [Authorize]
-        public async Task<IActionResult> EditExpense(ExpenseInputModel model, string submitType)
+        public async Task<IActionResult> EditExpense(ExpenseEditInputModel model, string submitType)
         {
             if (submitType.Equals(ButtonValueConstants.ButtonCancel))
             {
@@ -253,6 +253,9 @@
 
             if (!this.ModelState.IsValid)
             {
+                var language = this.GetCurrentLanguage();
+                model.ExpenseGroupListItems = await this.expenseGroupService.AllLocalized<ExpenseGroupSelectListItem>(language);
+
                 return this.View(model);
             }
 
@@ -261,29 +264,19 @@
                 var userId = this.GetUserId<string>();
 
                 var expense = await this.expensesService.GetByIdAsync(userId, model.Id);
-                var amountDifference = model.ExpenseAmount - expense.ExpenseAmount;
 
                 this.Mapper.Map(model, expense);
 
-                bool isExpenseUpdated = await this.expensesService.Update(userId, expense);
+                await this.expensesService.Update(userId, expense);
 
-                bool isComponentUpdated = await this.componentsService.UpdateComponentAmount(userId, model.ComponentId, amountDifference, ComponentAmountUpdateTypes.Expense);
-
-                if (isExpenseUpdated && isComponentUpdated)
-                {
-                    this.AddAlertMessageToTempData(AlertType.Success, Resources.Success, Resources.ExpenseUpdatedSuccess);
-                }
-                else
-                {
-                    this.AddAlertMessageToTempData(AlertType.Error, Resources.Error, Resources.ExpenseUpdatedError);
-                }
-
-                return this.RedirectToAction("Index");
+                this.AddAlertMessageToTempData(AlertType.Success, Resources.Success, Resources.ExpenseUpdatedSuccess);
             }
             catch (Exception)
             {
-                return this.View("Error");
+                this.AddAlertMessageToTempData(AlertType.Error, Resources.Error, Resources.ExpenseUpdatedError);
             }
+
+            return this.RedirectToAction("Index");
         }
 
         [HttpGet]

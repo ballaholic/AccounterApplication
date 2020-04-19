@@ -153,23 +153,10 @@
                 .To<T>()
                 .FirstOrDefaultAsync();
 
-        public async Task<bool> Update(string userId, Expense expense)
+        public async Task Update(string userId, Expense expense)
         {
-            Expense entityToUpdate = await this.expenseRepository.GetByIdWithoutDeletedAsync(userId, expense.Id);
-
-            if (entityToUpdate == null)
-            {
-                return false;
-            }
-
-            entityToUpdate.ExpenseDate = expense.ExpenseDate;
-            entityToUpdate.ExpenseAmount = expense.ExpenseAmount;
-            entityToUpdate.Description = expense.Description;
-            entityToUpdate.ExpenseGroupId = expense.ExpenseGroupId;
-
+            this.expenseRepository.Update(expense);
             await this.expenseRepository.SaveChangesAsync();
-
-            return true;
         }
 
         public bool CheckIfExpenseIdIsValid(int id, string userId)

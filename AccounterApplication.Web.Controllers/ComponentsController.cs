@@ -284,24 +284,16 @@
             {
                 this.Mapper.Map(model, component);
 
-                bool isUpdated = await this.componentsService.Update(userId, component);
+                await this.componentsService.Update(userId, component);
 
-                if (isUpdated)
-                {
-                    this.AddAlertMessageToTempData(AlertType.Success, Resources.Success, Resources.ComponentUpdatedSuccess);
-
-                }
-                else
-                {
-                    this.AddAlertMessageToTempData(AlertType.Error, Resources.Error, Resources.ComponentUpdatedError);
-                }
-
-                return this.RedirectToAction("Index");
+                this.AddAlertMessageToTempData(AlertType.Success, Resources.Success, Resources.ComponentUpdatedSuccess);
             }
             catch (Exception)
             {
-                return this.View("Error");
+                this.AddAlertMessageToTempData(AlertType.Error, Resources.Error, Resources.ComponentUpdatedError);
             }
+
+            return this.RedirectToAction("Index");
         }
     }
 }

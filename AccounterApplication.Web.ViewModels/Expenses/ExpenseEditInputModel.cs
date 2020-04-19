@@ -3,23 +3,17 @@
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+
     using AutoMapper;
 
-    using Components;
     using Data.Models;
     using ExpenseGroups;
     using Services.Mapping;
 
     using Resources = Common.LocalizationResources.ViewModels.ExpenseInputModelResources;
 
-    public class ExpenseInputModel : IMapFrom<Expense>, IMapTo<Expense>, IHaveCustomMappings
+    public class ExpenseEditInputModel : IMapFrom<Expense>, IMapTo<Expense>, IHaveCustomMappings
     {
-        public ExpenseInputModel()
-        {
-            this.ExpenseAmount = 0.1m;
-            this.ExpenseDate = DateTime.UtcNow.Date;
-        }
-
         [Required]
         public int Id { get; set; }
 
@@ -28,9 +22,7 @@
         [MaxLength(200, ErrorMessageResourceType = typeof(Resources), ErrorMessageResourceName = "DescriptionTooLong")]
         public string Description { get; set; }
 
-        [Required(ErrorMessageResourceType = typeof(Resources), ErrorMessageResourceName = "Required")]
         [Display(Name = "Amount", ResourceType = typeof(Resources))]
-        [Range(0.01, 1000000000, ErrorMessageResourceType = typeof(Resources), ErrorMessageResourceName = "ExpenseAmountNotInRange")]
         public decimal ExpenseAmount { get; set; }
 
         [Required(ErrorMessageResourceType = typeof(Resources), ErrorMessageResourceName = "Required")]
@@ -45,15 +37,8 @@
 
         public IEnumerable<ExpenseGroupSelectListItem> ExpenseGroupListItems { get; set; }
 
-        [Required(ErrorMessageResourceType = typeof(Resources), ErrorMessageResourceName = "Required")]
-        [Display(Name = "Component", ResourceType = typeof(Resources))]
-        public string ComponentId { get; set; }
-
         [Display(Name = "Component", ResourceType = typeof(Resources))]
         public string ComponentName { get; set; }
-
-        public IEnumerable<ComponentsSelectListItem> ComponentsSelectListItems { get; set; }
-
 
         public void CreateMappings(IProfileExpression configuration)
            => configuration.CreateMap<Expense, ExpenseInputModel>().ForMember(

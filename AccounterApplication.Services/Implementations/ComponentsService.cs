@@ -131,21 +131,10 @@
         public bool CheckIfComponentHasEnoughAmount(string userId, string componentId, decimal amount)
             =>  this.componentsRepository.GetByIdWithoutDeletedAsync(userId, componentId).Result.Amount > amount;
 
-        public async Task<bool> Update(string userId, Component component)
+        public async Task Update(string userId, Component component)
         {
-            Component entityToUpdate = await this.componentsRepository.GetByIdWithoutDeletedAsync(userId, component.Id);
-
-            if (entityToUpdate == null)
-            {
-                return false;
-            }
-
-            entityToUpdate.Name = component.Name;
-            entityToUpdate.IsActive = component.IsActive;
-
+            this.componentsRepository.Update(component);
             await this.componentsRepository.SaveChangesAsync();
-
-            return true;
         }
 
         public async Task<bool> UpdateComponentAmount(string userId, string componentId, decimal amountDifference, ComponentAmountUpdateTypes updateType)
@@ -169,6 +158,7 @@
                     break;
             }
 
+            this.componentsRepository.Update(entityToUpdate);
             await this.componentsRepository.SaveChangesAsync();
 
             return true;

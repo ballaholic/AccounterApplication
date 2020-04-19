@@ -16,8 +16,7 @@
                     opt => opt.MapFrom(x => x.Id))
                 .ForMember(
                     x => x.Text,
-                    opt => opt.MapFrom(x => $"{x.Name} - {x.Currency.Code}"));
+                    opt => opt.MapFrom(x => $"{x.Name} - ({x.Amount} - {x.Currency.Code})"));
     }
-
 }
 

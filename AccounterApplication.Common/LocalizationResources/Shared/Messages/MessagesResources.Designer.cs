@@ -287,6 +287,15 @@ namespace AccounterApplication.Common.LocalizationResources.Shared.Messages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Няма достатъчна наличност в избраната сметка..
+        /// </summary>
+        public static string NotEnoughAmount {
+            get {
+                return ResourceManager.GetString("NotEnoughAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Преименувай компонента.
         /// </summary>
         public static string RenameComponent {

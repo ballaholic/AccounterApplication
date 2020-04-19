@@ -38,6 +38,8 @@
 
         bool CheckIfComponentIsValid(string userId, string componentId);
 
+        bool CheckIfComponentHasEnoughAmount(string userId, string componentId, decimal amount);
+
         Task<decimal> AmountSumOfActiveComponentsByTypeAndUserId(string userId, ComponentTypes componentType);
     }
 }

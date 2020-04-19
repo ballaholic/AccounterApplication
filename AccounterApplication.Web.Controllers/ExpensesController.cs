@@ -186,6 +186,19 @@
                 return this.View(model);
             }
 
+            if (!this.componentsService.CheckIfComponentHasEnoughAmount(userId, model.ComponentId, model.ExpenseAmount))
+            {
+                this.AddAlertMessageToTempData(AlertType.Error, Resources.Error, Resources.NotEnoughAmount);
+
+                var language = this.GetCurrentLanguage();
+                var componentTypeId = (int)ComponentTypes.PaymentComponent;
+
+                model.ExpenseGroupListItems = await this.expenseGroupService.AllLocalized<ExpenseGroupSelectListItem>(language);
+                model.ComponentsSelectListItems = await this.componentsService.AllByUserIdAndTypeIdActiveLocalized<ComponentsSelectListItem>(userId, componentTypeId, language);
+
+                return this.View(model);
+            }
+
             try
             {
                 var entityToAdd = new Expense

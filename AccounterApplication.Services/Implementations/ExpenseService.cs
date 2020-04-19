@@ -40,7 +40,8 @@
             => await this.expenseRepository
                 .All()
                 .Where(e => e.UserId.Equals(userId))
-                .OrderByDescending(e => e.CreatedOn)
+                .OrderByDescending(e => e.ExpenseDate)
+                .ThenByDescending(e => e.CreatedOn)
                 .To<T>(new { language })
                 .ToListAsync();
 
@@ -131,6 +132,7 @@
                 .All()
                 .Where(e => e.UserId.Equals(userId))
                 .OrderByDescending(e => e.ExpenseDate)
+                .ThenByDescending(e => e.CreatedOn)
                 .Take(count)
                 .To<T>(new { language })
                 .ToListAsync();

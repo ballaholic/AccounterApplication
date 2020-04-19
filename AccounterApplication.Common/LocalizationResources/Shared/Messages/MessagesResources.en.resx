@@ -192,6 +192,9 @@
   <data name="MonthlyIncomeUpdatedSuccess" xml:space="preserve">
     <value>The Monthly Income was updated successfully.</value>
   </data>
+  <data name="NotEnoughAmount" xml:space="preserve">
+    <value>There is not enough cash in the selected account.</value>
+  </data>
   <data name="RenameComponent" xml:space="preserve">
     <value>Rename Component</value>
   </data>

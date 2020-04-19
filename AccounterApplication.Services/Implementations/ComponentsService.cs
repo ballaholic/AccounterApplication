@@ -128,6 +128,9 @@
                 .AllAsNoTracking()
                 .Any(x => x.Id.Equals(componentId) && x.UserId.Equals(userId));
 
+        public bool CheckIfComponentHasEnoughAmount(string userId, string componentId, decimal amount)
+            =>  this.componentsRepository.GetByIdWithoutDeletedAsync(userId, componentId).Result.Amount > amount;
+
         public async Task<bool> Update(string userId, Component component)
         {
             Component entityToUpdate = await this.componentsRepository.GetByIdWithoutDeletedAsync(userId, component.Id);
@@ -176,7 +179,6 @@
                 .All()
                 .Where(c => c.UserId.Equals(userId) && c.ComponentTypeId.Equals((int)componentType) && c.IsActive)
                 .Select(c => c.Amount)
-                .SumAsync();
-                
+                .SumAsync();      
     }
 }

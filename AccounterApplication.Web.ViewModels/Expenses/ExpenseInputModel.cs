@@ -35,6 +35,7 @@
 
         [Required(ErrorMessageResourceType = typeof(Resources), ErrorMessageResourceName = "Required")]
         [Display(Name = "ExpenseDate", ResourceType = typeof(Resources))]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         [DataType(DataType.Date, ErrorMessageResourceType = typeof(Resources), ErrorMessageResourceName = "DateNotValid")]
         public DateTime ExpenseDate { get; set; }
 

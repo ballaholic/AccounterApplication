@@ -192,6 +192,9 @@
   <data name="MonthlyIncomeUpdatedSuccess" xml:space="preserve">
     <value>Приходът беше обновен успешно.</value>
   </data>
+  <data name="NotEnoughAmount" xml:space="preserve">
+    <value>Няма достатъчна наличност в избраната сметка.</value>
+  </data>
   <data name="RenameComponent" xml:space="preserve">
     <value>Преименувай компонента</value>
   </data>

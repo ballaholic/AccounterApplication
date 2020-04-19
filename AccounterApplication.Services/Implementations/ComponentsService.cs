@@ -170,5 +170,13 @@
 
             return true;
         }
+
+        public async Task<decimal> AmountSumOfActiveComponentsByTypeAndUserId(string userId, ComponentTypes componentType)
+            => await this.componentsRepository
+                .All()
+                .Where(c => c.UserId.Equals(userId) && c.ComponentTypeId.Equals((int)componentType) && c.IsActive)
+                .Select(c => c.Amount)
+                .SumAsync();
+                
     }
 }

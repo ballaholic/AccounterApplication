@@ -135,6 +135,9 @@
   <data name="LastExpenses" xml:space="preserve">
     <value>Последни разходи</value>
   </data>
+  <data name="Results" xml:space="preserve">
+    <value>Резултати</value>
+  </data>
   <data name="Savings" xml:space="preserve">
     <value>Спестявания</value>
   </data>

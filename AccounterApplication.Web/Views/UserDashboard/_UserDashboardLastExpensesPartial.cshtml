@@ -1,15 +1,31 @@
-﻿@using AccounterApplication.Web.ViewModels.UserDashboard
-
+﻿@using AccounterApplication.Web.ViewModels.Expenses
 @using Resources = AccounterApplication.Common.LocalizationResources.Views.UserDashboard.UserDashboardResources
 
-@model UserDashboardViewModel
+@model IEnumerable<ExpenseViewModel>
+
+@{
+    int countOfExpenses = Model.Count();
+}
 
 
-<div class="card shadow mb-4">
-    <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">@Resources.LastExpenses</h6>
+@for (int i = 0; i < countOfExpenses; i++)
+{
+    <div class="row no-gutters align-items-center">
+        <div class="col-md-4 mr-md-3">
+            <div class="h5 mb-0 font-weight-bold amount-primary">@Model.ElementAt(i).ExpenseAmount</div>
+            <div class="h6 mb-0 text-gray-700">@Model.ElementAt(i).ExpenseDate</div>
+        </div>
+        <div class="col-md-4 mr-md-3">
+            <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.ElementAt(i).Description</div>
+            <div class="h6 mb-0 text-gray-700">@Model.ElementAt(i).ExpenseGroupName</div>
+        </div>
+        <div class="col-md-auto mr-md-3">
+            <div class="h6 mb-0 text-gray-700">@Model.ElementAt(i).ComponentName</div>
+        </div>
     </div>
-    <div class="card-body">
 
-    </div>
-</div>
+    if (i != (countOfExpenses - 1))
+    {
+        <hr class="my-4" />
+    }
+}

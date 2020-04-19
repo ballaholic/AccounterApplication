@@ -135,6 +135,9 @@
   <data name="LastExpenses" xml:space="preserve">
     <value>Last expenses</value>
   </data>
+  <data name="Results" xml:space="preserve">
+    <value>Results</value>
+  </data>
   <data name="Savings" xml:space="preserve">
     <value>Savings</value>
   </data>

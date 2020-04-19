@@ -37,5 +37,7 @@
         Task<bool> UpdateComponentAmount(string userId, string componentId, decimal amountDifference, ComponentAmountUpdateTypes updateType);
 
         bool CheckIfComponentIsValid(string userId, string componentId);
+
+        Task<decimal> AmountSumOfActiveComponentsByTypeAndUserId(string userId, ComponentTypes componentType);
     }
 }

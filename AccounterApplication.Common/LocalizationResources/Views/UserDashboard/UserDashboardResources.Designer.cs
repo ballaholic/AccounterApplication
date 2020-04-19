@@ -116,6 +116,15 @@ namespace AccounterApplication.Common.LocalizationResources.Views.UserDashboard 
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Резултати.
+        /// </summary>
+        public static string Results {
+            get {
+                return ResourceManager.GetString("Results", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Спестявания.
         /// </summary>
         public static string Savings {

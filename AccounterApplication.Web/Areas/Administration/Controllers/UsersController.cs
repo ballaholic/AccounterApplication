@@ -7,7 +7,7 @@
 
     [Area("Administration")]
     [Authorize(Roles = AdministrationConstants.AdministratorRoleName)]
-    public class HomeController : BaseController
+    public class UsersController : BaseController
     {
         [HttpGet]
         public IActionResult Index()

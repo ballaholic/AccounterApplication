@@ -14,6 +14,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>HomeViewResources.resx</DependentUpon>
     </Compile>
+    <Compile Update="LocalizationResources\Areas\Administration\Views\Nomenclatures\NomenclatureViewResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>NomenclatureViewResources.resx</DependentUpon>
+    </Compile>
     <Compile Update="LocalizationResources\ModelBinders\ModelBinderResources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -115,6 +120,10 @@
     <EmbeddedResource Update="LocalizationResources\Areas\Administration\Views\Home\HomeViewResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>HomeViewResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="LocalizationResources\Areas\Administration\Views\Nomenclatures\NomenclatureViewResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>NomenclatureViewResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="LocalizationResources\ModelBinders\ModelBinderResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

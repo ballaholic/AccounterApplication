@@ -1,0 +1,31 @@
+﻿@using AccounterApplication.Web.Areas.Administration.Controllers;
+
+@using Resources = AccounterApplication.Common.LocalizationResources.Areas.Administration.Views.Nomenclatures.NomenclatureViewResources;
+
+@{
+    ViewData["Title"] = Resources.Nomenclatures;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    string nomenclaturesController = nameof(NomenclaturesController).Replace(nameof(Controller), string.Empty);
+}
+
+<div class="row mb-5">
+    <div class="col">
+        <h1 class="text-gray-800">@ViewData["Title"]</h1>
+    </div>
+</div>
+<div class="row mb-lg-3">
+    <div class="col">
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-action border-left-primary">
+                <a asp-area="Administration" asp-controller="@nomenclaturesController" asp-action="@nameof(NomenclaturesController.ComponentTypes)">@Resources.ComponentTypes</a>
+            </li>
+            <li class="list-group-item list-group-item-action border-left-primary">
+                <a asp-area="Administration" asp-controller="@nomenclaturesController" asp-action="@nameof(NomenclaturesController.Currencies)">@Resources.Currencies</a>
+            </li>
+            <li class="list-group-item list-group-item-action border-left-primary">
+                <a asp-area="Administration" asp-controller="@nomenclaturesController" asp-action="@nameof(NomenclaturesController.ExpenseGroups)">@Resources.ExpenseGroups</a>
+            </li>
+        </ul>
+    </div>
+</div>

@@ -1,8 +1,13 @@
-﻿@using Resources = AccounterApplication.Common.LocalizationResources.Areas.Administration.Views.Home.HomeViewResources;
+﻿@using AccounterApplication.Web.Areas.Administration.Controllers
+
+@using Resources = AccounterApplication.Common.LocalizationResources.Areas.Administration.Views.Home.HomeViewResources
 
 @{
     ViewData["Title"] = Resources.Administration;
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+    string nomenclatureController = nameof(NomenclaturesController).Replace(nameof(Controller), string.Empty);
+    string usersController = nameof(UsersController).Replace(nameof(Controller), string.Empty);
 }
 
 <div class="row mb-5">
@@ -15,10 +20,10 @@
         <h4 class="text-gray-700">@Resources.HelperLinks</h4>
         <ul class="list-group">
             <li class="list-group-item list-group-item-action border-left-primary">
-                <a asp-area="Administration" asp-controller="Nomeclatures" asp-action="Index">@Resources.Nomenclatures</a>
+                <a asp-area="Administration" asp-controller="@nomenclatureController" asp-action="@nameof(NomenclaturesController.Index)">@Resources.Nomenclatures</a>
             </li>
             <li class="list-group-item list-group-item-action border-left-primary">
-                <a asp-area="Administration" asp-controller="Users" asp-action="Index">@Resources.Users</a>
+                <a asp-area="Administration" asp-controller="@usersController" asp-action="@nameof(UsersController.Index)">@Resources.Users</a>
             </li>
         </ul>
     </div>

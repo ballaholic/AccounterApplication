@@ -26,4 +26,10 @@
     <ProjectReference Include="..\AccounterApplication.Web.ViewModels\AccounterApplication.Web.ViewModels.csproj" />
   </ItemGroup>
 
+
+  <ItemGroup>
+    <Folder Include="Areas\Administration\Data\" />
+    <Folder Include="Areas\Administration\Models\" />
+  </ItemGroup>
+
 </Project>

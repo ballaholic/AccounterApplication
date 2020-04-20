@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AccounterApplication.Common.LocalizationResources.Views.Shared {
+namespace AccounterApplication.Common.LocalizationResources.Areas.Administration.Views.Home {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace AccounterApplication.Common.LocalizationResources.Views.Shared {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class LayoutResources {
+    public class HomeViewResources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal LayoutResources() {
+        internal HomeViewResources() {
         }
         
         /// <summary>
@@ -39,7 +39,8 @@ namespace AccounterApplication.Common.LocalizationResources.Views.Shared {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AccounterApplication.Common.LocalizationResources.Views.Shared.LayoutResources", typeof(LayoutResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AccounterApplication.Common.LocalizationResources.Areas.Administration.Views.Home" +
+                            ".HomeViewResources", typeof(HomeViewResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,24 +62,6 @@ namespace AccounterApplication.Common.LocalizationResources.Views.Shared {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Добави Разход.
-        /// </summary>
-        public static string AddExpense {
-            get {
-                return ResourceManager.GetString("AddExpense", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Добави Приход.
-        /// </summary>
-        public static string AddIncome {
-            get {
-                return ResourceManager.GetString("AddIncome", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Администрация.
         /// </summary>
         public static string Administration {
@@ -88,56 +71,29 @@ namespace AccounterApplication.Common.LocalizationResources.Views.Shared {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ние използваме бисквитки, за да разберем как използвате нашия сайт и да подобрим вашето преживяване..
+        ///   Looks up a localized string similar to Помощни линкове.
         /// </summary>
-        public static string CookieConsent {
+        public static string HelperLinks {
             get {
-                return ResourceManager.GetString("CookieConsent", resourceCulture);
+                return ResourceManager.GetString("HelperLinks", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Табло.
+        ///   Looks up a localized string similar to Номенклатури.
         /// </summary>
-        public static string Dashboard {
+        public static string Nomenclatures {
             get {
-                return ResourceManager.GetString("Dashboard", resourceCulture);
+                return ResourceManager.GetString("Nomenclatures", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Разходи.
+        ///   Looks up a localized string similar to Потребители.
         /// </summary>
-        public static string Expenses {
+        public static string Users {
             get {
-                return ResourceManager.GetString("Expenses", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Средства.
-        /// </summary>
-        public static string Funds {
-            get {
-                return ResourceManager.GetString("Funds", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Приходи.
-        /// </summary>
-        public static string Incomes {
-            get {
-                return ResourceManager.GetString("Incomes", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Преглед.
-        /// </summary>
-        public static string Overview {
-            get {
-                return ResourceManager.GetString("Overview", resourceCulture);
+                return ResourceManager.GetString("Users", resourceCulture);
             }
         }
     }

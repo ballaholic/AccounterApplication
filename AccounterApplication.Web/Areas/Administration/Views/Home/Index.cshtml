@@ -1,0 +1,26 @@
+﻿@using Resources = AccounterApplication.Common.LocalizationResources.Areas.Administration.Views.Home.HomeViewResources;
+
+@{
+    ViewData["Title"] = Resources.Administration;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row mb-5">
+    <div class="col">
+        <h1 class="text-gray-800">@ViewData["Title"]</h1>
+    </div>
+</div>
+<div class="row mb-lg-3">
+    <div class="col">
+        <h4 class="text-gray-700">@Resources.HelperLinks</h4>
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-action border-left-primary">
+                <a asp-area="Administration" asp-controller="Nomeclatures" asp-action="Index">@Resources.Nomenclatures</a>
+            </li>
+            <li class="list-group-item list-group-item-action border-left-primary">
+                <a asp-area="Administration" asp-controller="Users" asp-action="Index">@Resources.Users</a>
+            </li>
+        </ul>
+    </div>
+</div>
+

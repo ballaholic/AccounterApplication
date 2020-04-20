@@ -117,31 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AddExpense" xml:space="preserve">
-    <value>Add Expense</value>
-  </data>
-  <data name="AddIncome" xml:space="preserve">
-    <value>Add Income</value>
-  </data>
   <data name="Administration" xml:space="preserve">
-    <value>Administration</value>
+    <value>Администрация</value>
   </data>
-  <data name="CookieConsent" xml:space="preserve">
-    <value>We use cookies to understand how you use our site and to improve your experience.</value>
+  <data name="HelperLinks" xml:space="preserve">
+    <value>Помощни линкове</value>
   </data>
-  <data name="Dashboard" xml:space="preserve">
-    <value>Dashboard</value>
+  <data name="Nomenclatures" xml:space="preserve">
+    <value>Номенклатури</value>
   </data>
-  <data name="Expenses" xml:space="preserve">
-    <value>Expenses</value>
-  </data>
-  <data name="Funds" xml:space="preserve">
-    <value>Funds</value>
-  </data>
-  <data name="Incomes" xml:space="preserve">
-    <value>Incomes</value>
-  </data>
-  <data name="Overview" xml:space="preserve">
-    <value>Overview</value>
+  <data name="Users" xml:space="preserve">
+    <value>Потребители</value>
   </data>
 </root>

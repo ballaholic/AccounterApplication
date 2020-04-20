@@ -55,9 +55,12 @@
             => app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
+                    name: "Administration",
+                    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
-                endpoints.MapRazorPages();
+                endpoints.MapRazorPages();              
             });
 
         public static IApplicationBuilder SeedDatabase(this IApplicationBuilder app, IWebHostEnvironment env)

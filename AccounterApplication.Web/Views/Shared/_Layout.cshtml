@@ -54,6 +54,7 @@
 
             <li class="nav-item">
                 <a class="nav-link"
+                   asp-area=""
                    asp-controller="@(nameof(UserDashboardController).Replace(nameof(Controller), string.Empty))"
                    asp-action="@(nameof(UserDashboardController.Index))">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
@@ -69,9 +70,11 @@
                 <div id="collapseExpenses" class="collapse" aria-labelledby="headingExpenses" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item"
+                           asp-area=""
                            asp-controller="@(nameof(ExpensesController).Replace(nameof(Controller), string.Empty))"
                            asp-action="@(nameof(ExpensesController.Index))">@Resources.Overview</a>
                         <a class="collapse-item"
+                           asp-area=""
                            asp-controller="@(nameof(ExpensesController).Replace(nameof(Controller), string.Empty))"
                            asp-action="@(nameof(ExpensesController.AddExpense))">@Resources.AddExpense</a>
                     </div>
@@ -86,9 +89,11 @@
                 <div id="collapseIncomes" class="collapse" aria-labelledby="headingIncomes" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item"
+                           asp-area=""
                            asp-controller="@(nameof(IncomesController).Replace(nameof(Controller), string.Empty))"
                            asp-action="@nameof(IncomesController.Index)">@Resources.Overview</a>
                         <a class="collapse-item"
+                           asp-area=""
                            asp-controller="@(nameof(IncomesController).Replace(nameof(Controller), string.Empty))"
                            asp-action="@(nameof(IncomesController.AddMonthlyIncome))">@Resources.AddIncome</a>
                     </div>
@@ -97,10 +102,23 @@
 
             <li class="nav-item">
                 <a class="nav-link"
+                   asp-area=""
                    asp-controller="@(nameof(ComponentsController).Replace(nameof(Controller), string.Empty))"
                    asp-action="@(nameof(ComponentsController.Index))">
                     <i class="fa fa-credit-card" aria-hidden="true"></i>
                     <span>@Resources.Funds</span>
+                </a>
+            </li>
+
+            <hr class="sidebar-divider">
+
+            <li class="nav-item">
+                <a class="nav-link"
+                   asp-area="Administration"
+                   asp-controller="@(nameof(HomeController).Replace(nameof(Controller), string.Empty))"
+                   asp-action="@(nameof(HomeController.Index))">
+                    <i class="fa fa-lock" aria-hidden="true"></i>
+                    <span>@Resources.Administration</span>
                 </a>
             </li>
 

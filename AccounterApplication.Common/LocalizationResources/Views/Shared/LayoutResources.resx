@@ -123,6 +123,9 @@
   <data name="AddIncome" xml:space="preserve">
     <value>Добави Приход</value>
   </data>
+  <data name="Administration" xml:space="preserve">
+    <value>Администрация</value>
+  </data>
   <data name="CookieConsent" xml:space="preserve">
     <value>Ние използваме бисквитки, за да разберем как използвате нашия сайт и да подобрим вашето преживяване.</value>
   </data>

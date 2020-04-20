@@ -9,6 +9,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="LocalizationResources\Areas\Administration\Views\Home\HomeViewResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>HomeViewResources.resx</DependentUpon>
+    </Compile>
     <Compile Update="LocalizationResources\ModelBinders\ModelBinderResources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -107,6 +112,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="LocalizationResources\Areas\Administration\Views\Home\HomeViewResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>HomeViewResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Update="LocalizationResources\ModelBinders\ModelBinderResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ModelBinderResources.Designer.cs</LastGenOutput>

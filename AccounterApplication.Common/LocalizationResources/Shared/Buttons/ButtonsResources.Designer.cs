@@ -89,6 +89,15 @@ namespace AccounterApplication.Common.LocalizationResources.Shared.Buttons {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Назад.
+        /// </summary>
+        public static string Back {
+            get {
+                return ResourceManager.GetString("Back", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Отказ.
         /// </summary>
         public static string Cancel {
@@ -103,6 +112,15 @@ namespace AccounterApplication.Common.LocalizationResources.Shared.Buttons {
         public static string CreateFund {
             get {
                 return ResourceManager.GetString("CreateFund", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Създай нов запис.
+        /// </summary>
+        public static string CreateNew {
+            get {
+                return ResourceManager.GetString("CreateNew", resourceCulture);
             }
         }
         

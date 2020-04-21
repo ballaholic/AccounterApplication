@@ -62,11 +62,38 @@ namespace AccounterApplication.Common.LocalizationResources.Areas.Administration
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Код.
+        /// </summary>
+        public static string Code {
+            get {
+                return ResourceManager.GetString("Code", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Типове компоненти.
         /// </summary>
         public static string ComponentTypes {
             get {
                 return ResourceManager.GetString("ComponentTypes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Създай.
+        /// </summary>
+        public static string Create {
+            get {
+                return ResourceManager.GetString("Create", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Създаден на.
+        /// </summary>
+        public static string CreatedOn {
+            get {
+                return ResourceManager.GetString("CreatedOn", resourceCulture);
             }
         }
         
@@ -80,6 +107,24 @@ namespace AccounterApplication.Common.LocalizationResources.Areas.Administration
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Изтрий.
+        /// </summary>
+        public static string Delete {
+            get {
+                return ResourceManager.GetString("Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Промени.
+        /// </summary>
+        public static string Edit {
+            get {
+                return ResourceManager.GetString("Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Разходни групи.
         /// </summary>
         public static string ExpenseGroups {
@@ -89,11 +134,47 @@ namespace AccounterApplication.Common.LocalizationResources.Areas.Administration
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Системен запис.
+        /// </summary>
+        public static string IsMain {
+            get {
+                return ResourceManager.GetString("IsMain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Име БГ.
+        /// </summary>
+        public static string NameBG {
+            get {
+                return ResourceManager.GetString("NameBG", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Име ЕН.
+        /// </summary>
+        public static string NameEN {
+            get {
+                return ResourceManager.GetString("NameEN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Номенклатури.
         /// </summary>
         public static string Nomenclatures {
             get {
                 return ResourceManager.GetString("Nomenclatures", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Знак.
+        /// </summary>
+        public static string Sign {
+            get {
+                return ResourceManager.GetString("Sign", resourceCulture);
             }
         }
     }

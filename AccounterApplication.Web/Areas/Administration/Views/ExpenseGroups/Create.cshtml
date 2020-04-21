@@ -1,0 +1,48 @@
+﻿@using AccounterApplication.Data.Models
+@using Resources = AccounterApplication.Common.LocalizationResources.Areas.Administration.Views.Nomenclatures.NomenclatureViewResources
+
+@model ExpenseGroup
+
+@{
+    ViewData["Title"] = Resources.Create;
+}
+
+<div class="row mb-5">
+    <div class="col">
+        <h1 class="text-gray-800">@ViewData["Title"]</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-5">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="NameEN"></label>
+                <input asp-for="NameEN" class="form-control" />
+                <span asp-validation-for="NameEN" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NameBG"></label>
+                <input asp-for="NameBG" class="form-control" />
+                <span asp-validation-for="NameBG" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsMain" /> @Html.DisplayNameFor(model => model.IsMain)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="@ButtonsResources.CreateNew" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">@ButtonsResources.Back</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

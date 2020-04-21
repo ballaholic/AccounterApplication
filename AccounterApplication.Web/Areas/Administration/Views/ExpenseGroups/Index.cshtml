@@ -1,0 +1,53 @@
+﻿@using AccounterApplication.Data.Models;
+@using AccounterApplication.Web.Areas.Administration.Controllers;
+@using Resources = AccounterApplication.Common.LocalizationResources.Areas.Administration.Views.Nomenclatures.NomenclatureViewResources
+
+@{
+    ViewData["Title"] = Resources.ExpenseGroups;
+    string expenseGroupsController = nameof(ExpenseGroupsController).Replace(nameof(Controller), string.Empty);
+}
+
+@model List<ExpenseGroup>
+
+<div class="row mb-5">
+    <div class="col">
+        <h1 class="text-gray-800">@ViewData["Title"]</h1>
+    </div>
+</div>
+<p>
+    <a asp-action="Create">@ButtonsResources.CreateNew</a>
+</p>
+<div class="table-responsive">
+    <table class="table table-bordered table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">@Resources.NameEN</th>
+                <th scope="col">@Resources.NameBG</th>
+                <th scope="col">@Resources.IsMain</th>
+                <th scope="col">@Resources.CreatedOn</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th scope="row">@item.Id</th>
+                    <td>@item.NameEN</td>
+                    <td>@item.NameBG</td>
+                    <td>@item.IsMain</td>
+                    <td>@item.CreatedOn</td>
+                    <td>
+                        <a asp-action="@nameof(ExpenseGroupsController.Edit)" asp-controller="@expenseGroupsController" asp-route-id="@item.Id">@ButtonsResources.Edit</a>
+                    </td>
+                    <td>
+                        <a asp-action="@nameof(ExpenseGroupsController.Delete)" asp-controller="@expenseGroupsController" asp-route-id="@item.Id">@ButtonsResources.Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

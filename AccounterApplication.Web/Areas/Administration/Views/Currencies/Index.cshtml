@@ -1,0 +1,56 @@
+﻿@using AccounterApplication.Data.Models;
+@using AccounterApplication.Web.Areas.Administration.Controllers;
+@using Resources = AccounterApplication.Common.LocalizationResources.Areas.Administration.Views.Nomenclatures.NomenclatureViewResources
+
+@{
+    ViewData["Title"] = Resources.Currencies;
+    string currenciesController = nameof(CurrenciesController).Replace(nameof(Controller), string.Empty);
+}
+
+@model List<Currency>
+
+<div class="row mb-5">
+    <div class="col">
+        <h1 class="text-gray-800">@ViewData["Title"]</h1>
+    </div>
+</div>
+<p>
+    <a asp-action="Create">@ButtonsResources.CreateNew</a>
+</p>
+<div class="table-responsive">
+    <table class="table table-bordered table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">@Resources.Sign</th>
+                <th scope="col">@Resources.Code</th>
+                <th scope="col">@Resources.NameEN</th>
+                <th scope="col">@Resources.NameBG</th>
+                <th scope="col">@Resources.IsMain</th>
+                <th scope="col">@Resources.CreatedOn</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th scope="row">@item.Id</th>
+                    <td>@item.Sign</td>
+                    <td>@item.Code</td>
+                    <td>@item.NameEN</td>
+                    <td>@item.NameBG</td>
+                    <td>@item.IsMain</td>
+                    <td>@item.CreatedOn</td>
+                    <td>
+                        <a asp-action="@nameof(CurrenciesController.Edit)" asp-controller="@currenciesController" asp-route-id="@item.Id">@ButtonsResources.Edit</a>
+                    </td>
+                    <td>
+                        <a asp-action="@nameof(CurrenciesController.Delete)" asp-controller="@currenciesController" asp-route-id="@item.Id">@ButtonsResources.Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

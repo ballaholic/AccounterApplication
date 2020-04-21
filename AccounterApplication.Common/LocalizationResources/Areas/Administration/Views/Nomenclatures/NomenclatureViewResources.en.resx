@@ -117,16 +117,43 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Code" xml:space="preserve">
+    <value>Code</value>
+  </data>
   <data name="ComponentTypes" xml:space="preserve">
-    <value>ComponentTypes</value>
+    <value>Component Types</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Create</value>
+  </data>
+  <data name="CreatedOn" xml:space="preserve">
+    <value>Created On</value>
   </data>
   <data name="Currencies" xml:space="preserve">
     <value>Currencies</value>
   </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
   <data name="ExpenseGroups" xml:space="preserve">
     <value>Expense Groups</value>
   </data>
+  <data name="IsMain" xml:space="preserve">
+    <value>Is Main</value>
+  </data>
+  <data name="NameBG" xml:space="preserve">
+    <value>Name BG</value>
+  </data>
+  <data name="NameEN" xml:space="preserve">
+    <value>Name EN</value>
+  </data>
   <data name="Nomenclatures" xml:space="preserve">
     <value>Nomenclatures</value>
+  </data>
+  <data name="Sign" xml:space="preserve">
+    <value>Sign</value>
   </data>
 </root>

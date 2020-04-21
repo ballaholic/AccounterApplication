@@ -3,8 +3,7 @@
 @using Resources = AccounterApplication.Common.LocalizationResources.Areas.Administration.Views.Home.HomeViewResources
 
 @{
-    ViewData["Title"] = Resources.Administration;
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = Resources.Administration;    
 
     string nomenclatureController = nameof(NomenclaturesController).Replace(nameof(Controller), string.Empty);
     string usersController = nameof(UsersController).Replace(nameof(Controller), string.Empty);

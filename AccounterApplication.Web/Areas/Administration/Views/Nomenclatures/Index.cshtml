@@ -4,9 +4,10 @@
 
 @{
     ViewData["Title"] = Resources.Nomenclatures;
-    Layout = "~/Views/Shared/_Layout.cshtml";
 
-    string nomenclaturesController = nameof(NomenclaturesController).Replace(nameof(Controller), string.Empty);
+    string componentTypesController = nameof(ComponentTypesController).Replace(nameof(Controller), string.Empty);
+    string currenciesController = nameof(CurrenciesController).Replace(nameof(Controller), string.Empty);
+    string expenseGroupsController = nameof(ExpenseGroupsController).Replace(nameof(Controller), string.Empty);
 }
 
 <div class="row mb-5">
@@ -18,13 +19,13 @@
     <div class="col">
         <ul class="list-group">
             <li class="list-group-item list-group-item-action border-left-primary">
-                <a asp-area="Administration" asp-controller="@nomenclaturesController" asp-action="@nameof(NomenclaturesController.ComponentTypes)">@Resources.ComponentTypes</a>
+                <a asp-area="Administration" asp-controller="@componentTypesController" asp-action="@nameof(ComponentTypesController.Index)">@Resources.ComponentTypes</a>
             </li>
             <li class="list-group-item list-group-item-action border-left-primary">
-                <a asp-area="Administration" asp-controller="@nomenclaturesController" asp-action="@nameof(NomenclaturesController.Currencies)">@Resources.Currencies</a>
+                <a asp-area="Administration" asp-controller="@currenciesController" asp-action="@nameof(CurrenciesController.Index)">@Resources.Currencies</a>
             </li>
             <li class="list-group-item list-group-item-action border-left-primary">
-                <a asp-area="Administration" asp-controller="@nomenclaturesController" asp-action="@nameof(NomenclaturesController.ExpenseGroups)">@Resources.ExpenseGroups</a>
+                <a asp-area="Administration" asp-controller="@expenseGroupsController" asp-action="@nameof(ExpenseGroupsController.Index)">@Resources.ExpenseGroups</a>
             </li>
         </ul>
     </div>

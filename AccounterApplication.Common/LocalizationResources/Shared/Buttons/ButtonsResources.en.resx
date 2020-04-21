@@ -126,11 +126,17 @@
   <data name="AddAmount" xml:space="preserve">
     <value>Add аmount</value>
   </data>
+  <data name="Back" xml:space="preserve">
+    <value>Back</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>Cancel</value>
   </data>
   <data name="CreateFund" xml:space="preserve">
     <value>Create new Fund</value>
+  </data>
+  <data name="CreateNew" xml:space="preserve">
+    <value>Create New</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>Delete</value>

@@ -126,11 +126,17 @@
   <data name="AddAmount" xml:space="preserve">
     <value>Добави сума</value>
   </data>
+  <data name="Back" xml:space="preserve">
+    <value>Назад</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>Отказ</value>
   </data>
   <data name="CreateFund" xml:space="preserve">
     <value>Създай нова сметка</value>
+  </data>
+  <data name="CreateNew" xml:space="preserve">
+    <value>Създай нов запис</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>Изтрий</value>

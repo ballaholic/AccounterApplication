@@ -83,10 +83,8 @@ namespace AccounterApplication.Web
 
             app.UseExceptionHandling(env);
 
-            app.UseStaticFiles();
-
             app.UseHttpsRedirection();
-      
+            app.UseStaticFiles();  
             app.UseCookiePolicy();
 
             app.UseRouting();

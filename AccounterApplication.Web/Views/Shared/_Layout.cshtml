@@ -28,13 +28,13 @@
         <link rel="stylesheet" href="~/css/sb-admin-2.css" type="text/css">
         <link rel="stylesheet" href="~/css/site.css" type="text/css" />
     </environment>
-    @*<environment names="Staging,Production">
+    <environment names="Staging,Production">
             <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
             <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" type="text/css" />
             <link rel="stylesheet" href="~/css/all.min.css" type="text/css">
             <link rel="stylesheet" href="~/css/sb-admin-2.min.css" type="text/css">
-            <link rel="stylesheet" href="~/css/site.css" type="text/css" />
-        </environment>*@
+            <link rel="stylesheet" href="~/css/site.min.css" type="text/css" />
+        </environment>
 
     @RenderSection("Styles", required: false)
 
@@ -163,7 +163,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; 2020 - @SystemConstants.SystemName</span>
+                        <span>&copy; @DateTime.Now.Year - @SystemConstants.SystemName</span>
                         <a class="icons8" href="https://icons8.com/icon/3S2oxo1xZqhQ/transaction">Transaction icon by Icons8</a>
                     </div>
                 </div>
@@ -179,14 +179,14 @@
         <script src="~/js/sb-admin-2.js" type="text/javascript" asp-append-version="true"></script>
         <script src="~/js/site.js" type="text/javascript" asp-append-version="true"></script>
     </environment>
-    @*<environment names="Staging,Production">
+    <environment names="Staging,Production">
             <script src="~/lib/jquery/dist/jquery.min.js" type="text/javascript" asp-append-version="true"></script>
             <script src="~/js/jquery/jquery.min.js" type="text/javascript" asp-append-version="true"></script>
             <script src="~/js/jquery/jquery.easing.min.js" type="text/javascript" asp-append-version="true"></script>
             <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js" type="text/javascript" asp-append-version="true"></script>
             <script src="~/js/sb-admin-2.min.js" type="text/javascript" asp-append-version="true"></script>
-            <script src="~/js/site.js" type="text/javascript" asp-append-version="true"></script>
-        </environment>*@
+            <script src="~/js/site.min.js" type="text/javascript" asp-append-version="true"></script>
+        </environment>
 
     @RenderSection("Scripts", required: false)
 </body>

@@ -20,6 +20,12 @@
                 .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix);
 
             services
+                .AddAntiforgery(options => 
+                { 
+                    options.HeaderName = "X-CSRF-TOKEN"; 
+                });
+
+            services
                 .AddRazorPages();
 
             return services;

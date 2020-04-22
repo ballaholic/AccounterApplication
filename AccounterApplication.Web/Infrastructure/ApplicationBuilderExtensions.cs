@@ -71,10 +71,10 @@
 
                 if (env.IsDevelopment())
                 {
-                    context.Database.Migrate();
+                    context.Database.Migrate();                  
+                }
 
-                    new AccounterDbContextSeeder().SeedAsync(context, scope.ServiceProvider).GetAwaiter().GetResult();
-                }               
+                new AccounterDbContextSeeder().SeedAsync(context, scope.ServiceProvider).GetAwaiter().GetResult();
 
                 return app;
             }         

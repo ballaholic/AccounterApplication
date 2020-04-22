@@ -32,6 +32,7 @@
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("NameEN, NameBG, IsMain")]ComponentType componentType)
         {
             if (ModelState.IsValid)
@@ -63,6 +64,7 @@
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("NameEN, NameBG, IsMain, Id")]ComponentType componentType)
         {
             if (id != componentType.Id)
@@ -100,6 +102,7 @@
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(int id)
         {
             var componentType = await this.context.ComponentTypes.FindAsync(id);

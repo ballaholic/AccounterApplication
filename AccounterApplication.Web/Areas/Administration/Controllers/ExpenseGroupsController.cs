@@ -32,6 +32,7 @@
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("NameEN, NameBG, IsMain")]ExpenseGroup expenseGroup)
         {
             if (ModelState.IsValid)
@@ -63,6 +64,7 @@
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("NameEN, NameBG, IsMain, Id")]ExpenseGroup expenseGroup)
         {
             if (id != expenseGroup.Id)
@@ -100,6 +102,7 @@
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(int id)
         {
             var expenseGroup = await this.context.ExpenseGroups.FindAsync(id);

@@ -32,6 +32,7 @@
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Sign, Code, NameEN, NameBG, IsMain")]Currency currency)
         {
             if (ModelState.IsValid)
@@ -63,6 +64,7 @@
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Sign, Code, NameEN, NameBG, IsMain, Id")]Currency currency)
         {
             if (id != currency.Id)
@@ -100,6 +102,7 @@
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(int id)
         {
             var currency = await this.context.Currencies.FindAsync(id);

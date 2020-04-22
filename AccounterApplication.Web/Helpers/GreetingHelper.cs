@@ -15,6 +15,11 @@
 
         private static string GetGreet()
         {
+            return Resources.Hello;
+        }
+
+        private static string GetGreetByHour()
+        {
             var currentHour = DateTime.Now.Hour;
 
             if (currentHour < 5)

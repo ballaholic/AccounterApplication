@@ -99,13 +99,8 @@
 
         [HttpPost]
         [Authorize]
-        public async Task<IActionResult> AddMonthlyIncome(MonthlyIncomeInputModel model, string submitType)
+        public async Task<IActionResult> AddMonthlyIncome(MonthlyIncomeInputModel model)
         {
-            if (submitType.Equals(ButtonValueConstants.ButtonCancel))
-            {
-                return this.RedirectToAction("Index");
-            }
-
             var userId = this.GetUserId<string>();
             var language = this.GetCurrentLanguage();
             var componentTypeId = (int)ComponentTypes.PaymentComponent;

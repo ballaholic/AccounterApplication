@@ -112,17 +112,20 @@
 
             <hr class="sidebar-divider">
 
-            <li class="nav-item">
-                <a class="nav-link"
-                   asp-area="Administration"
-                   asp-controller="@(nameof(HomeController).Replace(nameof(Controller), string.Empty))"
-                   asp-action="@(nameof(HomeController.Index))">
-                    <i class="fa fa-lock" aria-hidden="true"></i>
-                    <span>@Resources.Administration</span>
-                </a>
-            </li>
+            @if (this.User.IsInRole(AdministrationConstants.AdministratorRoleName))
+            {
+                <li class="nav-item">
+                    <a class="nav-link"
+                       asp-area="Administration"
+                       asp-controller="@(nameof(HomeController).Replace(nameof(Controller), string.Empty))"
+                       asp-action="@(nameof(HomeController.Index))">
+                        <i class="fa fa-lock" aria-hidden="true"></i>
+                        <span>@Resources.Administration</span>
+                    </a>
+                </li>
 
-            <hr class="sidebar-divider">
+                <hr class="sidebar-divider">
+            }
 
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>

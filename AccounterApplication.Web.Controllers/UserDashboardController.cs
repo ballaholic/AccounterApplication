@@ -39,7 +39,7 @@
                 Expenses = lastExpenses
             };
 
-            return View(viewModel);
+            return this.View(viewModel);
         }
 
         [HttpGet]
@@ -50,7 +50,7 @@
             var language = this.GetCurrentLanguage();
             var viewModel = await this.expenseService.NewestByUserIdLocalized<ExpenseViewModel>(userId, language, countOfExpenses);
 
-            return PartialView("_UserDashboardLastExpensesPartial", viewModel);
+            return this.PartialView("_UserDashboardLastExpensesPartial", viewModel);
         }
     }
 }

@@ -89,7 +89,11 @@ namespace AccounterApplication.Web.Areas.Identity.Pages.Account.Manage
             {
                 foreach (var error in changePasswordResult.Errors)
                 {
-                    ModelState.AddModelError(string.Empty, error.Description);
+                    if (error.Code.Equals("PasswordMismatch"))
+                    {
+                        ModelState.AddModelError(string.Empty, Resources.WrongPassword);
+                    }
+                    
                 }
                 return Page();
             }

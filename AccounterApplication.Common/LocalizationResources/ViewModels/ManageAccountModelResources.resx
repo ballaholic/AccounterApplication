@@ -150,4 +150,7 @@
   <data name="Username" xml:space="preserve">
     <value>Потребителско име</value>
   </data>
+  <data name="WrongPassword" xml:space="preserve">
+    <value>Въведената настояща парола е грешна</value>
+  </data>
 </root>

@@ -1,18 +1,20 @@
 ﻿namespace AccounterApplication.Tests.Web.Controllers.Tests.UserDashboard
 { 
     using System.Threading.Tasks;
+    using System.Security.Claims;
     using System.Collections.Generic;
+
     using Moq;
     using Xunit;
-    using Microsoft.AspNetCore.Mvc;
 
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Http;
+
+    using Services.Contracts;   
     using Common.Enumerations;
-    using Services.Contracts;
     using AccounterApplication.Web.Controllers;
     using AccounterApplication.Web.ViewModels.Expenses;
     using AccounterApplication.Web.ViewModels.UserDashboard;
-    using System.Security.Claims;
-    using Microsoft.AspNetCore.Http;
 
     public class UserDashboardControllerTests
     {
